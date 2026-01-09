@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { Parkinsans, Fustat } from "next/font/google";
 import "./globals.css";
+import Header from "./components/header";
+import PageContent from "./components/PageContent";
+import MainContent from "./components/MainContent";
+import Footer from "./components/footer";
+
 
 const ParkinSans = Parkinsans({
   variable: "--font-parkinsans-sans",
@@ -27,7 +32,17 @@ export default function RootLayout({
       <body
         className={`${ParkinSans.variable} ${FustatMono.variable} antialiased`}
       >
-        {children}
+        <Header></Header>
+        
+        <PageContent>
+          <MainContent>
+            Main
+          </MainContent>
+
+          <Footer></Footer>
+        </PageContent>
+
+        
       </body>
     </html>
   );
