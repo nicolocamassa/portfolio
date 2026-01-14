@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Parkinsans, Fustat } from "next/font/google";
 import "./globals.css";
-import Header from "./components/header";
-import Footer from "./components/Footer";
+import Header from "./components/layout/header";
+import Footer from "./components/layout/Footer";
 
 const ParkinSans = Parkinsans({
   variable: "--font-parkinsans-sans",

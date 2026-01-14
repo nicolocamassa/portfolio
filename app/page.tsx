@@ -1,6 +1,6 @@
-import HeroSection from "./components/HeroSection";
-import ProjectSection from "./components/ProjectSection";
-import AboutSection from "./components/AboutSection";
+import HeroSection from "./components/sections/HeroSection";
+import ProjectSection from "./components/sections/ProjectSection";
+import AboutSection from "./components/sections/AboutSection";
 
 export default function Page() {
   return (
