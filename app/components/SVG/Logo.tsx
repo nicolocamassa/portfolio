@@ -23,7 +23,7 @@ export function LogoText() {
       <div className="bg-black rounded-xl w-9 h-9 flex items-center justify-center">
         <Logo></Logo>
       </div>
-      <span className="text-lg font-semibold font-sans">Portfolio</span>
+      <span className="md:text-lg text-md font-semibold font-sans">Portfolio</span>
     </>
   );
 }
