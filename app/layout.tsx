@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import { Parkinsans, Fustat } from "next/font/google";
 import "./globals.css";
-import Header from "./components/header";
-import PageContent from "./components/PageContent";
-import MainContent from "./components/MainContent";
-import Footer from "./components/footer";
+import HeroSection from "./components/HeroSection";
+import Header from "./components/Header";
+import ProjectSection from "./components/ProjectSection";
+import AboutSection from "./components/AboutSection";
+import Footer from "./components/Footer";
+
+
 
 
 const ParkinSans = Parkinsans({
@@ -32,16 +35,16 @@ export default function RootLayout({
       <body
         className={`${ParkinSans.variable} ${FustatMono.variable} antialiased`}
       >
-        <Header></Header>
-        
-        <PageContent>
-          <MainContent>
-            Main
-          </MainContent>
 
-          <Footer></Footer>
-        </PageContent>
+      <Header></Header>
 
+      <main>
+        <HeroSection></HeroSection>
+        <ProjectSection></ProjectSection>
+        <AboutSection></AboutSection>
+      </main>
+
+      <Footer></Footer>
         
       </body>
     </html>
