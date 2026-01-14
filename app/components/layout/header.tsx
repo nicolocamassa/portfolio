@@ -1,4 +1,4 @@
-import { LogoText } from "./SVG/Logo"
+import { LogoText } from "../SVG/Logo"
 
 export default function Header(){
     return (
