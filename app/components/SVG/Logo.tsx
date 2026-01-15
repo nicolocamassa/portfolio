@@ -1,0 +1,29 @@
+export function Logo() {
+  return (
+    <>
+      <svg
+        width="13"
+        height="16"
+        viewBox="0 0 13 16"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M11.0354 2.01275L9.07417 4.02459V5.28003V6.53455L6.51377 3.80309C5.10616 2.30042 3.95079 1.07163 3.94649 1.07163C3.94219 1.07163 3.05285 2.01735 1.96894 3.17353L0 5.27635L1.97152 5.27359L3.94305 5.27176V7.37825V9.48567L1.98013 7.3902L0.0172185 5.29473L0.0172185 10.6474L0.0172185 16L0.0774834 15.9412C0.110199 15.909 0.99351 15.0037 2.0404 13.9293L3.94219 11.9763L3.94305 10.731V9.48567L6.49828 12.2135C7.90331 13.7134 9.05695 14.9403 9.06126 14.9403C9.06642 14.9403 9.95404 13.9964 11.0354 12.8421L13 10.7448L12.9983 5.37285L12.9957 0L11.0354 2.01275ZM11.0371 8.63094L12.9957 10.7218H11.0345H9.07417V8.63094C9.07417 7.48119 9.07503 6.54007 9.07675 6.54007C9.07762 6.54007 9.96007 7.48119 11.0371 8.63094Z"
+          fill="white"
+        />
+      </svg>
+    </>
+  );
+}
+
+export function LogoText() {
+  return (
+    <a className="cursor-pointer flex items-center justify-center gap-2" href="/">
+      <div className="bg-[var(--foreground)] rounded-xl w-9 h-9 flex items-center justify-center">
+        <Logo></Logo>
+      </div>
+      <span className="md:text-lg text-md font-semibold font-sans">Portfolio</span>
+    </a>
+  );
+}

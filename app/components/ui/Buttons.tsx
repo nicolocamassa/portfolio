@@ -5,8 +5,8 @@ const button = tv({
   variants: {
     color: {
       textOnly: "shadow-none hover:text-black text-[var(--text-secondary)]",
-      black: "bg-black text-white hover:bg-stone-800",
-      white: "bg-white text-black hover:bg-[var(--text-highlight)] hover:text-white",
+      black: "bg-[var(--foreground)] text-white hover:bg-stone-800",
+      white: "bg-white text-[var(--text-primary)] hover:bg-[var(--text-highlight)] hover:text-white",
     },
     size: {
       xs: "text-xs px-3 py-1.5",
@@ -27,11 +27,12 @@ type ButtonVariants = VariantProps<typeof button>;
 type ButtonProps = {
   children: React.ReactNode;
   href?: string;
+  className?: string;
 } & ButtonVariants;
 
-export default function Button({ children, href, color, size }: ButtonProps) {
+export default function Button({ children, href, color, size, className }: ButtonProps) {
   return (
-    <a className={button({ color, size })} href={href} role="button">
+    <a className={button({ color, size, className })} href={href} role="button">
       {children}
     </a>
   );
