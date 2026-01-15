@@ -1,9 +1,12 @@
+import Badge from "../ui/Badge"
 import MainContainer from "./MainContainer"
+
 
 export default function HeroSection() {
   return (
     <section className="relative">
       <MainContainer>
+        <Badge size="md">Full-Stack Web Developer</Badge>
         <p>Main</p>
       </MainContainer>
 
