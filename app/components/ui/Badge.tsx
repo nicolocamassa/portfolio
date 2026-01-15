@@ -1,14 +1,14 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
 const badge = tv({
-  base: "inline-flex items-center rounded-full font-medium bg-[var(--text-highlight-15)] text-[var(--text-highlight)]",
+  base: "inline-flex items-center rounded-full bg-[var(--text-highlight-15)] text-[var(--text-highlight)] flex-none",
   variants: {
     size: {
-      xs: "text-xs px-2.5 py-1",
-      sm: "text-sm px-3 py-1.5",
-      md: "text-sm px-3.5 py-2",
-      lg: "text-base px-4 py-2.5",
-      xl: "text-lg px-5 py-3",
+      xs: "text-[10px] px-3 py-1 sm:text-xs sm:px-3.5 sm:py-1.5",
+      sm: "text-xs px-3.5 py-1.5 md:text-sm md:px-4 md:py-2",
+      md: "text-xs px-4 py-2 md:text-sm md:px-5 md:py-2.5",
+      lg: "text-sm px-5 py-2.5 lg:text-sm lg:px-6 lg:py-3",
+      xl: "text-sm px-6 py-3",
     },
   },
   defaultVariants: {

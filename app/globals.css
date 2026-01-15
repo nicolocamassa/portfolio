@@ -38,7 +38,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --text-medium: var(--medium-emphasis)
+  --text-medium: var(--medium-emphasis);
 
 
   --font-sans: var(--font-parkinsans-sans);
@@ -56,10 +56,20 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: "Fustat", sans-serif;
 }
 
-section{
-  padding: 50px 0px;
+section {
+  padding-block: 60px;
 }
 
+@media (min-width: 640px) {
+  section {
+    padding-block: 80px;
+  }
+}
+
+@media (min-width: 1024px) {
+  section {
+    padding-block: 100px;
+  }
+}
