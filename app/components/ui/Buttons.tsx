@@ -1,12 +1,13 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
 const button = tv({
-  base: "inline-flex items-center justify-center hover:cursor-pointer font-medium rounded-xl shadow-[0px_0px_4px_0px_rgba(0,_0,_0,_0.15)] duration-300",
+  base: "inline-flex items-center justify-center border border-[var(--border-default)] hover:cursor-pointer font-medium rounded-xl shadow-[0px_0px_4px_0px_rgba(0,_0,_0,_0.15)] duration-300",
   variants: {
     color: {
       textOnly: "shadow-none hover:text-black text-[var(--text-secondary)]",
-      black: "bg-[var(--foreground)] text-white hover:bg-stone-800",
-      white: "bg-white text-[var(--text-primary)] hover:bg-[var(--text-highlight)] hover:text-white",
+      black: "bg-[var(--btn-primary-bg)] text-[var(--text-inverse)] hover:bg-[var(--btn-primary-bg-hover)]",
+      white: "bg-[var(--btn-secondary-bg)] text-[var(--text-primary)] hover:bg-[var(--btn-secondary-bg-hover)] hover:text-white",
+      cta: "bg-[var(--btn-cta-bg)] hover:bg-[var(--btn-cta-bg-hover)] text-[var(--text-inverse)] border-none"
     },
     size: {
       xs: "text-xs px-3 py-1.5",

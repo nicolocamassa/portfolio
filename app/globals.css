@@ -1,11 +1,38 @@
 @import "tailwindcss";
 
 :root {
+  /* *SUPERFICI */
   --background: #ffffff;
   --foreground: #171717;
+
+  /* *TESTI */
   --text-primary: rgba(0, 0, 0, 0.9);
   --text-secondary: rgba(0, 0, 0, 0.6);
   --text-highlight: #77B2FF;
+  --text-highlight-15: rgba(119, 178, 255, 0.15);
+
+  --text-inverse: #fff;
+
+  /* *BORDERS E DIVISORI */
+  --border-default: rgba(0, 0, 0, 0.15);
+
+  /* *COLORI IDENTIFICATIVI */
+  --brand: #77b2ff;
+  --brand-hover: #94c2ff;
+  --brand-soft: rgba(119, 178, 255, 0.15);
+
+  /* *PULSANTI */
+  --btn-primary-bg: var(--foreground);
+  --btn-primary-text: var(--text-inverse);
+  --btn-primary-bg-hover: #262626;
+
+  /* CTA buttons */
+  --btn-cta-bg: var(--brand);
+  --btn-cta-bg-hover: var(--brand-hover);
+
+  /* White button */
+  --btn-secondary-bg: white;
+  --btn-secondary-bg-hover: var(--brand);
 }
 
 @theme inline {
