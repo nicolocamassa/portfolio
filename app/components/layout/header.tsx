@@ -27,7 +27,7 @@ export default function Header() {
             Contattami
           </Button>
 
-          <Button href="#test" color="white" size="sm">
+          <Button href="#test" color="black" size="sm">
             Scarica CV
           </Button>
         </nav>
