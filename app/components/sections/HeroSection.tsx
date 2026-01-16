@@ -7,19 +7,18 @@ export default function HeroSection() {
   return (
     <section className="relative">
       <MainContainer className="flex flex-col items-center justify-center gap-3 text-center px-4 sm:px-6">
-        <Badge size="md">Full-Stack Web Developer</Badge>
+        <Badge size="lg" type="normal">Full-Stack Web Developer</Badge>
 
-        {/* TODO: Testo troppo piccolo? */}
         <h1
-            className="
-    mt-2 w-full
-    font-sans font-semibold tracking-tighter text-balance
-    text-5xl leading-tight
-    sm:text-6xl sm:leading-[1.05]
-    md:text-7xl md:leading-[1.05]
-    lg:text-8xl lg:leading-none
-    xl:text-9xl xl:leading-none
-  "
+          className="
+            w-full
+            font-sans font-semibold tracking-tighter text-balance
+            text-5xl leading-tighter
+            sm:text-6xl sm:leading-[1.05]
+            md:text-7xl md:leading-[1.05]
+            lg:text-8xl lg:leading-none
+            xl:text-9xl xl:leading-none
+          "
         >
           Gorem ipsum dolor sit amet, consectetur
         </h1>
@@ -58,10 +57,10 @@ export default function HeroSection() {
       </MainContainer>
 
       <div
-        className="relative mt-20 sm:mt-24 lg:mt-50 w-full bg-cover bg-center bg-amber-400 pb-2"
+        className="relative mt-20 sm:mt-24 lg:mt-35 w-full bg-cover bg-center bg-amber-400 pb-2"
         style={{ backgroundImage: "url('/images/bg.png')" }}
       >
-        <MainContainer className="px-4 sm:px-6">
+        <MainContainer className="px-8 sm:px-6">
           <HeroBanner></HeroBanner>
         </MainContainer>
       </div>
