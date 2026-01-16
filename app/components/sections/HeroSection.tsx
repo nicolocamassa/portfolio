@@ -7,7 +7,7 @@ export default function HeroSection() {
   return (
     <section className="relative">
       <MainContainer className="flex flex-col items-center justify-center gap-3 text-center px-4 sm:px-6">
-        <Badge size="lg" type="normal">Full-Stack Web Developer</Badge>
+        <Badge size="md" type="normal">Full-Stack Web Developer</Badge>
 
         <h1
           className="
