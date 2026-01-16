@@ -11,6 +11,8 @@
   --text-highlight: #77b2ff;
   --text-highlight-15: rgba(119, 178, 255, 0.15);
 
+   --text-secondary-dark: rgba(255, 255, 255, 0.603);
+
   --text-inverse: #fff;
 
   /* *BORDERS E DIVISORI */
@@ -48,7 +50,7 @@
 /* * Modalità Dark */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #ededed; /*  #0a0a0a*/
+    --background: #ffffff; /*  #0a0a0a*/
     --foreground: #0a0a0a; /* #ededed */
   }
 }
@@ -60,6 +62,10 @@ body {
 
 section {
   padding-block: 60px;
+}
+
+footer{
+  margin-top: 90px;
 }
 
 @media (min-width: 640px) {

@@ -12,10 +12,11 @@ export default function HeroBanner() {
     <div
       className="
         -translate-y-6 sm:-translate-y-10
-        rounded-2xl bg-white shadow-lg
+        rounded-2xl bg-white
         flex flex-col md:flex-row
         divide-y md:divide-y-0 md:divide-x
         divide-[var(--border-default)]
+        shadow-[0_-8px_24px_-12px_rgba(0,0,0,0.15)]
         overflow-hidden
       "
     >

@@ -5,7 +5,8 @@ export default function MainContainer({ children, className = "" }: { children: 
         <div className={`max-w-[1400px] mx-auto px-3 md:px-5 ${className}
                         [&_h2]:text-4xl  [&_h2]:md:text-6xl 
                         [&_h2]:tracking-tight [&_h2]:text-balance 
-                        [&_h2]:max-w-full [&_h2]:md:max-w-2/3 [&_h2]:font-sans [&_h2]:font-semibold`}>
+                        [&_h2]:max-w-full [&_h2]:md:max-w-2/3 [&_h2]:font-sans [&_h2]:font-semibold
+                        xl:px-0 lg:px-25 md:px-20`}>
             { children }
         </div>
     )
