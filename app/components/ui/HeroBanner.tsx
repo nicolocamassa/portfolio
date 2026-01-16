@@ -23,7 +23,7 @@ export default function HeroBanner() {
         <Badge type="svg">
             <ScanEye size={20} strokeWidth={2.25} color="var(--brand)" />
         </Badge>
-        <h2>Accessibilità</h2>
+        <h3 className="font-semibold text-xl">Accessibilità</h3>
         <article>
           Progetto interfacce pensate per essere comprensibili e utilizzabili da chiunque,
           indipendentemente da abilità.
@@ -34,7 +34,7 @@ export default function HeroBanner() {
         <Badge type="svg">
             <Layers2 size={20} strokeWidth={2.25} color="var(--brand)" />
         </Badge>
-        <h2>Design</h2>
+        <h3 className="font-semibold text-xl">Design</h3>
         <article>
           Progetto interfacce pensate per essere comprensibili e utilizzabili da chiunque,
           indipendentemente da abilità, contesto o dispositivo. 
@@ -45,7 +45,7 @@ export default function HeroBanner() {
         <Badge type="svg">
             <Code size={20} strokeWidth={2.25} color="var(--brand)" />
         </Badge>
-        <h2>Codice</h2>
+        <h3 className="font-semibold text-xl">Codice</h3>
         <article>
           Progetto interfacce pensate per essere comprensibili e utilizzabili da chiunque,
           indipe
