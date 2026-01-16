@@ -10,11 +10,11 @@ const button = tv({
       cta: "bg-[var(--btn-cta-bg)] hover:bg-[var(--btn-cta-bg-hover)] text-[var(--text-inverse)] border-none"
     },
     size: {
-      xs: "text-xs px-3 py-1.5",
-      sm: "text-sm px-4 py-2",
-      md: "text-sm px-5 py-2.5",
-      lg: "text-base px-6 py-3",
-      xl: "text-lg px-7 py-3.5",
+        xs: "text-xs px-4 py-2 sm:text-sm sm:px-5 sm:py-2.5",
+        sm: "text-sm px-5 py-2.5 md:text-sm md:px-6 md:py-3",
+        md: "text-sm px-6 py-3 md:text-base md:px-7 md:py-3.5",
+        lg: "text-base px-7 py-3.5 lg:text-lg lg:px-8 lg:py-4",
+        xl: "text-lg px-8 py-4 lg:text-xl lg:px-9 lg:py-4",
     },
   },
   defaultVariants: {
