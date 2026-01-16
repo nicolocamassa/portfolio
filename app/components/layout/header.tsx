@@ -12,7 +12,7 @@ export default function Header() {
         "
       />
 
-      <div className="relative max-w-[1750px] h-18 mx-auto flex items-center justify-between">
+      <div className="relative max-w-[1750px] h-15 md:h-18 mx-auto flex items-center justify-between">
         <div className="logoContainer flex items-center gap-2">
           <LogoText />
         </div>
