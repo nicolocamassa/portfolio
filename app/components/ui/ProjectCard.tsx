@@ -9,7 +9,7 @@ export default function ProjectCard() {
         mt-10 sm:mt-14 lg:mt-20
         relative overflow-hidden
         rounded-xl border border-[var(--border-default)]
-        xl:py-30 xl:px-50
+        xl:py-20 xl:px-40
         lg:py-20 lg:px-30
         md:py-20 md:px-20
         py-15 px-10

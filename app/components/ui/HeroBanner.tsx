@@ -60,7 +60,7 @@ export function ContentBanner({ children, className }: Content) {
     <div
       className={`
         w-full md:w-1/3
-        px-14 py-8 sm:px-10 sm:py-10 lg:px-18 lg:py-12
+        px-14 py-15 sm:px-10 sm:py-10 lg:px-18 lg:py-12
         flex flex-col items-center text-center gap-2
         [&_h2]:font-black [&_h2]:text-lg sm:[&_h2]:text-xl
         [&_article]:text-sm [&_article]:text-[var(--text-secondary)] sm:[&_article]:text-base text-pretty
