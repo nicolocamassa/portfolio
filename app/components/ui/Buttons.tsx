@@ -7,7 +7,8 @@ const button = tv({
       textOnly: "shadow-none hover:text-black text-[var(--text-secondary)]",
       black: "bg-[var(--btn-primary-bg)] text-[var(--text-inverse)] hover:bg-[var(--btn-primary-bg-hover)]",
       white: "bg-[var(--btn-secondary-bg)] text-[var(--text-primary)] hover:bg-[var(--btn-secondary-bg-hover)] hover:text-white",
-      cta: "bg-[var(--btn-cta-bg)] hover:bg-[var(--btn-cta-bg-hover)] text-[var(--text-inverse)] border-none"
+      cta: "bg-[var(--btn-cta-bg)] hover:bg-[var(--btn-cta-bg-hover)] text-[var(--text-inverse)] border-none",
+      whiteCta: "bg-[var(--background)] text-[var(--text-primary)] underline rounded-full gap-2 font-bold"
     },
     size: {
         xs: "text-xs px-4 py-2 sm:text-sm sm:px-5 sm:py-2.5",
