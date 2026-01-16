@@ -30,7 +30,7 @@ export default function ProjectCard() {
           musicali con la tua crew.
         </article>
 
-        <Button color="cta" size="sm" className="mt-6">
+        <Button color="cta" size="sm" className="mt-10 md:mt-15">
           Scopri gli aggiornamenti
         </Button>
       </div>
