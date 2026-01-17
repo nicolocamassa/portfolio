@@ -8,8 +8,8 @@ export default function ProjectCard() {
     <>
     <div
       className="
+        w-full
         project-container
-        mt-10 sm:mt-14 lg:mt-20
         relative overflow-hidden
         rounded-xl border border-[var(--border-default)]
         xl:py-20 xl:px-40

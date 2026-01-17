@@ -4,7 +4,7 @@ const badge = tv({
   base: "inline-flex flex-none items-center justify-center rounded-full",
   variants: {
     type: {
-      normal: "bg-[var(--text-highlight-15)] text-[var(--text-highlight)] mb-2 md:mb-5",
+      normal: "bg-[var(--text-highlight-15)] text-[var(--text-highlight)]",
       list: "rounded-lg border border-[var(--border-default)] font-semibold text-lg! [&_svg]:w-5 [&_svg]:text-[var(--brand)] gap-2", /* TODO: Cambiare le dimensioni dei testi */
       svg: "border border-[var(--border-default)] bg-white text-[var(--text-primary)]",
     },

@@ -25,7 +25,7 @@ export default function Stack({
     textAlign = "text-left"
 }: StackProps){
     return (
-        <div className={[className, gaps[gap], direction, align, textAlign, "flex"].join(" ")}>
+        <div className={[className, gaps[gap], direction, align, textAlign, "flex w-full"].join(" ")}>
             { children }
         </div>
     )
