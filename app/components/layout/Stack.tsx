@@ -22,7 +22,7 @@ export default function Stack({
     align = "items-start" 
 }: StackProps){
     return (
-        <div className={[className, gaps[gap], direction, align].join(" ")}>
+        <div className={[className, gaps[gap], direction, align, "flex"].join(" ")}>
             { children }
         </div>
     )

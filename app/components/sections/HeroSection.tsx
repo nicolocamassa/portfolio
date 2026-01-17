@@ -3,26 +3,30 @@ import Button from "../ui/Buttons";
 import HeroBanner from "../ui/HeroBanner";
 import Container from "../layout/Container";
 import Section from "../layout/Section";
+import Stack from "../layout/Stack";
 
 export default function HeroSection() {
   return (
     <Section>
       <Container className="flex flex-col items-center justify-center gap-3 text-center px-4 sm:px-6">
-        <Badge size="md" type="normal">Full-Stack Web Developer</Badge>
+        <Stack gap="xl" align="items-center">
+          <Badge size="md" type="normal">Full-Stack Web Developer</Badge>
 
-        <h1
-          className="
-            w-full
-            font-sans font-semibold tracking-tighter text-balance
-            text-5xl leading-tighter
-            sm:text-6xl sm:leading-[1.05]
-            md:text-7xl md:leading-[1.05]
-            lg:text-8xl lg:leading-none
-            xl:text-9xl xl:leading-none
-          "
-        >
-          Gorem ipsum dolor sit amet, consectetur
-        </h1>
+          <h1
+            className="
+              w-full
+              font-sans font-semibold tracking-tighter text-balance
+              text-5xl leading-tighter
+              sm:text-6xl sm:leading-[1.05]
+              md:text-7xl md:leading-[1.05]
+              lg:text-8xl lg:leading-none
+              xl:text-9xl xl:leading-none
+            "
+          >
+            Gorem ipsum dolor sit amet, consectetur
+          </h1>
+        </Stack>
+        
 
         <p
           className="
