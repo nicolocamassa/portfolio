@@ -9,10 +9,10 @@ export default function HeroSection() {
   return (
     <Section>
       <Container>
-        <Stack gap="sm" align="items-center" textAlign="text-center">
+        <Stack gap="sm" className="items-center text-center">
           <Badge size="md" type="normal">Full-Stack Web Developer</Badge>
 
-          <Stack gap="xs" align="items-center" textAlign="text-center">
+          <Stack gap="xs" className="items-center text-center">
              <h1
               className="
                 w-full
@@ -25,18 +25,18 @@ export default function HeroSection() {
                   Gorem ipsum dolor sit amet, consectetur
             </h1>
 
-            <Stack gap="xl" align="items-center" textAlign="text-center">
+            <Stack gap="xl" className="items-center text-center">
                 <p className="
                   max-w-9/10
                   text-base sm:text-md md:text-xl
-                  text-[var(--text-secondary)]
+                  text-(--text-secondary)
                   text-pretty">
                     Jorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
                     vulputate libero et velit interdum.
                 </p>
 
-                <Stack gap="xs" direction="flex-col" align="items-center" 
-                  className="sm:flex-row sm:gap-2 justify-center">
+                <Stack gap="xs" direction="flex-col"
+                  className="sm:flex-row sm:gap-2 justify-center items-center">
                     <Button color="black" size="md">
                       Vedi i progetti
                     </Button>

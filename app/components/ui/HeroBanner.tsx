@@ -15,7 +15,7 @@ export default function HeroBanner() {
         rounded-2xl bg-white
         flex flex-col md:flex-row
         divide-y md:divide-y-0 md:divide-x
-        divide-[var(--border-default)]
+        divide-(--border-default)
         shadow-[0_-8px_24px_-12px_rgba(0,0,0,0.15)]
         overflow-hidden
       "
@@ -64,7 +64,7 @@ export function ContentBanner({ children, className }: Content) {
         px-14 py-15 sm:px-10 sm:py-10 lg:px-18 lg:py-12
         flex flex-col items-center text-center gap-2
         [&_h2]:font-black [&_h2]:text-lg sm:[&_h2]:text-xl
-        [&_article]:text-sm [&_article]:text-[var(--text-secondary)] sm:[&_article]:text-base text-pretty
+        [&_article]:text-sm [&_article]:text-(--text-secondary) sm:[&_article]:text-base text-pretty
         ${className ?? ""}
       `}
     >

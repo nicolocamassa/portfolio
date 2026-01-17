@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  /* *SECTIONS */
+  /* *SECTIONS MARGIN Y*/
   --section-sm: 40px;
   --section-md: 80px;
   --section-lg: 100px;
 
-  /* *STACK */
+  /* *STACK GAP */
   --space-xs: 16px;
   --space-sm: 24px;
   --space-md: 32px;
