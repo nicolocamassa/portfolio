@@ -7,11 +7,11 @@
   --section-lg: 100px;
 
   /* *STACK */
-  --space-xs: 8px;
-  --space-sm: 12px;
-  --space-md: 16px;
-  --space-lg: 24px;
-  --space-xl: 32px;
+  --space-xs: 16px;
+  --space-sm: 1px;
+  --space-md: 32px;
+  --space-lg: 46px;
+  --space-xl: 58px;
 
   /* *SUPERFICI */
   --background: #ffffff;

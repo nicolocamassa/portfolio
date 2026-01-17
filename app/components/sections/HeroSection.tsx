@@ -8,57 +8,47 @@ import Stack from "../layout/Stack";
 export default function HeroSection() {
   return (
     <Section>
-      <Container className="flex flex-col items-center justify-center gap-3 text-center px-4 sm:px-6">
-        <Stack gap="xl" align="items-center">
+      <Container>
+        <Stack gap="sm" align="items-center" textAlign="text-center">
           <Badge size="md" type="normal">Full-Stack Web Developer</Badge>
 
-          <h1
-            className="
-              w-full
-              font-sans font-semibold tracking-tighter text-balance
-              text-5xl leading-tighter
-              sm:text-6xl sm:leading-[1.05]
-              md:text-7xl md:leading-[1.05]
-              lg:text-8xl lg:leading-none
-              xl:text-9xl xl:leading-none
-            "
-          >
-            Gorem ipsum dolor sit amet, consectetur
-          </h1>
+          <Stack gap="xs" align="items-center" textAlign="text-center">
+             <h1
+              className="
+                w-full
+                font-sans font-semibold tracking-tighter text-balance
+                text-5xl leading-tighter
+                sm:text-6xl sm:leading-[1.05]
+                md:text-7xl md:leading-[1.05]
+                lg:text-8xl lg:leading-none
+                xl:text-9xl xl:leading-none">
+                  Gorem ipsum dolor sit amet, consectetur
+            </h1>
+
+            <Stack gap="xl" align="items-center" textAlign="text-center">
+                <p className="
+                  max-w-9/10
+                  text-base sm:text-md md:text-xl
+                  text-[var(--text-secondary)]
+                  text-pretty">
+                    Jorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
+                    vulputate libero et velit interdum.
+                </p>
+
+                <Stack gap="xs" direction="flex-col" align="items-center" 
+                  className="sm:flex-row sm:gap-2 justify-center">
+                    <Button color="black" size="md">
+                      Vedi i progetti
+                    </Button>
+
+                    <Button color="white" size="md">
+                      Contattami
+                    </Button>
+                </Stack>
+              </Stack>
+            
+          </Stack>
         </Stack>
-        
-
-        <p
-          className="
-            mt-2 max-w-3/4 md:max-w-1/2
-            text-base sm:text-md md:text-xl
-            text-[var(--text-secondary)]
-            text-pretty
-          "
-        >
-          Jorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-          vulputate libero et velit interdum.
-        </p>
-
-        <div
-          className="
-            mt-6 md:mt-10
-            flex w-full max-w-md flex-col gap-3
-            sm:max-w-none sm:w-auto sm:flex-row sm:gap-2
-          "
-        >
-          <div className="w-full sm:w-auto">
-            <Button color="black" size="md">
-              Vedi i progetti
-            </Button>
-          </div>
-
-          <div className="w-full sm:w-auto">
-            <Button color="white" size="md">
-              Contattami
-            </Button>
-          </div>
-        </div>
       </Container>
 
       <div

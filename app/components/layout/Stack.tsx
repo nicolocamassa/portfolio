@@ -1,9 +1,11 @@
+import { text } from "stream/consumers";
 
 type StackProps = React.PropsWithChildren<{
     className?: string;
     direction?: "flex-row" | "flex-col";
     gap?: "xs" | "sm" | "md" | "lg" | "xl";
     align?: "items-start" | "items-center" | "items-end";
+    textAlign?: "text-left" | "text-center" | "text-right"
 }>
 
 const gaps = {
@@ -19,10 +21,11 @@ export default function Stack({
     className, 
     gap = "md", 
     direction = "flex-col", 
-    align = "items-start" 
+    align = "items-start",
+    textAlign = "text-left"
 }: StackProps){
     return (
-        <div className={[className, gaps[gap], direction, align, "flex"].join(" ")}>
+        <div className={[className, gaps[gap], direction, align, textAlign, "flex"].join(" ")}>
             { children }
         </div>
     )
