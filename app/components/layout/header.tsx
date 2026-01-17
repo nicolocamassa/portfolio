@@ -7,8 +7,8 @@ export default function Header() {
       <div
         className="
           pointer-events-none absolute inset-0 h-[200%]
-          backdrop-blur-[16px]
-          [mask-image:linear-gradient(to_bottom,black_0%_50%,transparent_50%_100%)]
+          backdrop-blur-lg
+          mask-[linear-gradient(to_bottom,black_0%_50%,transparent_50%_100%)]
         "
       />
 

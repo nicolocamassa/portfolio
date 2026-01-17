@@ -21,7 +21,7 @@ export default function AboutSection() {
 
           {/* Right text (right column) */}
           <div className="md:col-span-5 md:row-span-2 md:row-start-1">
-            <p className="text-base sm:text-lg text-[var(--text-secondary)]">
+            <p className="text-base sm:text-lg text-(--text-secondary)">
               Lavoro unendo UX, UI e sviluppo, così da garantire coerenza tra idea, design e prodotto
               finale. Il risultato è un sito solido, usabile e pronto a crescere nel tempo.
             </p>
@@ -30,7 +30,7 @@ export default function AboutSection() {
               Un buon risultato nasce sempre da un buon processo.
             </h3>
 
-            <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed max-w-prose">
+            <p className="text-sm sm:text-base text-(--text-secondary) leading-relaxed max-w-prose">
               Ogni progetto che realizzo parte dall’ascolto e si sviluppa attraverso fasi precise.
               Non mi limito a “disegnare belle interfacce”, ma progetto esperienze digitali pensate
               per funzionare davvero: chiare, accessibili e orientate agli obiettivi dell’utente e

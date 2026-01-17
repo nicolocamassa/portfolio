@@ -20,7 +20,7 @@ export function Logo() {
 export function LogoText() {
   return (
     <a className="cursor-pointer flex items-center justify-center gap-2" href="/">
-      <div className="bg-[var(--foreground)] rounded-xl w-9 h-9 flex items-center justify-center">
+      <div className="bg-foreground rounded-xl w-9 h-9 flex items-center justify-center">
         <Logo></Logo>
       </div>
       <span className="md:text-lg text-md font-semibold font-sans">Portfolio</span>

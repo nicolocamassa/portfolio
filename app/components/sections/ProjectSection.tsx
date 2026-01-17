@@ -11,7 +11,7 @@ export default function ProjectSection() {
       <Container className="px-4 sm:px-6">
 
         {/* Heading */}
-          <Stack gap="sm">
+          <Stack gap="sm" className="items-start">
             <Badge size="md">Progetti</Badge>
 
             <Stack gap="xl">
@@ -23,7 +23,6 @@ export default function ProjectSection() {
               <ProjectCard></ProjectCard>
             </Stack>
           </Stack>
-        
       </Container>
     </Section>
   );
