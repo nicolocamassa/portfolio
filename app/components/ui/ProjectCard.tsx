@@ -1,8 +1,11 @@
+import { ArrowUpRight } from "lucide-react";
 import Badge from "./Badge";
 import Button from "./Buttons";
 
+
 export default function ProjectCard() {
   return (
+    <>
     <div
       className="
         project-container
@@ -55,5 +58,11 @@ export default function ProjectCard() {
         />
       </div>
     </div>
+
+    <div className="flex mt-2 items-center gap-1">
+      <span className="text-2xl font-semibold">Demo App</span><ArrowUpRight />
+    </div>
+    
+    </>
   );
 }
