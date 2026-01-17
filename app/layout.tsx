@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Parkinsans, Fustat } from "next/font/google";
 import "./globals.css";
-import Header from "./components/layout/header";
-import Footer from "./components/layout/Footer";
+import Footer from "./components/layout/footer/Footer";
+import Header from "./components/layout/Header";
 
 const ParkinSans = Parkinsans({ variable: "--font-parkinsans-sans", subsets: ["latin"], display: "swap" });
 
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={FustatMono.className}>
+    <html lang="it" className={FustatMono.className}>
       <body className={`${ParkinSans.variable} ${FustatMono.variable} antialiased`}>
         <Header />
         {children}

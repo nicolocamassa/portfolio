@@ -1,4 +1,4 @@
-import { LogoText } from "../SVG/Logo";
+import { LogoText } from "../ui/Logo";
 import Button from "../ui/Buttons";
 
 export default function Header() {

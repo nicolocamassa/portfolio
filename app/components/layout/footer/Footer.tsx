@@ -1,5 +1,5 @@
-import FooterCTA from "../ui/FooterCta"
-import FooterNav from "../ui/FooterNav"
+import FooterCTA from "./FooterCta"
+import FooterNav from "./FooterNav"
 
 export default function Footer(){
     return (

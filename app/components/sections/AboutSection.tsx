@@ -1,11 +1,13 @@
 import Badge from "../ui/Badge";
-import MainContainer from "./MainContainer";
+import Container from "../layout/Container";
 import { Sparkles, Layers, SquareTerminal } from "lucide-react";
+import Section from "../layout/Section";
+
 
 export default function AboutSection() {
   return (
-    <section className="relative overflow-hidden">
-      <MainContainer className="px-4 sm:px-6">
+    <Section>
+      <Container className="px-4 sm:px-6">
         <Badge size="md">About</Badge>
 
         {/* Mobile: flex-col | md+: grid 12 cols */}
@@ -60,7 +62,7 @@ export default function AboutSection() {
             </li>
           </ul>
         </div>
-      </MainContainer>
-    </section>
+      </Container>
+    </Section>
   );
 }

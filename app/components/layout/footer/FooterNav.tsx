@@ -1,8 +1,5 @@
-import MainContainer from "../sections/MainContainer";
-import { LogoText } from "../SVG/Logo";
-
-// Nota: Se usi Next.js, sostituisci <a> con <Link href="...">
-// Se usi React Router, usa <Link to="...">
+import MainContainer from "../Container";
+import { LogoText } from "../../ui/Logo";
 
 export default function FooterNav() {
   return (

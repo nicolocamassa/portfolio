@@ -1,12 +1,13 @@
 import Badge from "../ui/Badge";
 import Button from "../ui/Buttons";
 import HeroBanner from "../ui/HeroBanner";
-import MainContainer from "./MainContainer";
+import Container from "../layout/Container";
+import Section from "../layout/Section";
 
 export default function HeroSection() {
   return (
-    <section className="relative">
-      <MainContainer className="flex flex-col items-center justify-center gap-3 text-center px-4 sm:px-6">
+    <Section>
+      <Container className="flex flex-col items-center justify-center gap-3 text-center px-4 sm:px-6">
         <Badge size="md" type="normal">Full-Stack Web Developer</Badge>
 
         <h1
@@ -54,16 +55,16 @@ export default function HeroSection() {
             </Button>
           </div>
         </div>
-      </MainContainer>
+      </Container>
 
       <div
         className="relative mt-20 sm:mt-24 lg:mt-35 w-full bg-cover bg-center bg-amber-400 pb-2"
         style={{ backgroundImage: "url('/images/bg.png')" }}
       >
-        <MainContainer className="px-8 sm:px-6">
+        <Container className="px-8 sm:px-6">
           <HeroBanner></HeroBanner>
-        </MainContainer>
+        </Container>
       </div>
-    </section>
+    </Section>
   );
 }

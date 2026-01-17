@@ -1,5 +1,5 @@
 import { Signature, SendHorizontal } from "lucide-react";
-import Button from "./Buttons";
+import Button from "../../ui/Buttons";
 
 export default function FooterCTA() {
   return (

@@ -1,12 +1,13 @@
 import Badge from "../ui/Badge";
 import ProjectCard from "../ui/ProjectCard";
-import MainContainer from "./MainContainer";
+import Container from "../layout/Container";
+import Section from "../layout/Section";
 
 
 export default function ProjectSection() {
   return (
-    <section className="relative overflow-hidden">
-      <MainContainer className="px-4 sm:px-6">
+    <Section>
+      <Container className="px-4 sm:px-6">
 
         {/* Heading */}
         <div className="text-container">
@@ -17,9 +18,8 @@ export default function ProjectSection() {
             Cerco di dare un valore reale ai miei progetti.
           </h2>
         </div>
-
         <ProjectCard></ProjectCard>
-      </MainContainer>
-    </section>
+      </Container>
+    </Section>
   );
 }
