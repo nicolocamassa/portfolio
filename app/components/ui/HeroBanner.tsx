@@ -1,11 +1,11 @@
+import Stack from "../layout/Stack";
 import Badge from "./Badge";
 import { ScanEye, Layers2, Code } from "lucide-react";
 
 
-type Content = {
-  children: React.ReactNode;
+type Content = React.PropsWithChildren<{
   className?: string;
-};
+}>;
 
 export default function HeroBanner() {
   return (
@@ -58,17 +58,19 @@ export default function HeroBanner() {
 
 export function ContentBanner({ children, className }: Content) {
   return (
-    <div
-      className={`
-        w-full md:w-1/3
-        px-14 py-15 sm:px-10 sm:py-10 lg:px-18 lg:py-12
-        flex flex-col items-center text-center gap-2
-        [&_h2]:font-black [&_h2]:text-lg sm:[&_h2]:text-xl
-        [&_article]:text-sm [&_article]:text-(--text-secondary) sm:[&_article]:text-base text-pretty
-        ${className ?? ""}
-      `}
+    <Stack
+      gap="xs"
+      className={[
+        "w-full md:w-1/3",
+        "px-14 py-15 sm:px-10 sm:py-10 lg:px-18 lg:py-12",
+        "items-center text-center",
+        "[&_h3]:font-semibold [&_h3]:text-xl",
+        "[&_article]:text-sm sm:[&_article]:text-base text-pretty",
+        "[&_article]:text-(--text-secondary)",
+        className ?? "",
+      ].join(" ")}
     >
       {children}
-    </div>
+    </Stack>
   );
 }

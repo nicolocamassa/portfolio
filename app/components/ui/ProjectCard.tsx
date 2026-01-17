@@ -15,7 +15,8 @@ export default function ProjectCard() {
           lg:py-20 lg:px-30
           md:py-20 md:px-20
           py-15 px-10
-          md:flex-row md:items-stretch">
+          md:flex-row md:items-stretch 
+          shadow-[0_0px_24px_-12px_rgba(0,0,0,0.25)]">
 
         {/* Left Container + gap badge */}
         <Stack gap="sm" className="max-w-full md:max-w-1/2 items-center md:items-start">

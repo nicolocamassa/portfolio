@@ -1,6 +1,10 @@
 @import "tailwindcss";
 
 :root {
+  /* *CONTAINER WIDTH */
+  --container-layout: 1750px;
+  --container-main: 1300px;
+
   /* *SECTIONS MARGIN Y*/
   --section-sm: 40px;
   --section-md: 80px;

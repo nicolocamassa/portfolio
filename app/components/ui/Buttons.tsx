@@ -26,11 +26,10 @@ const button = tv({
 
 type ButtonVariants = VariantProps<typeof button>;
 
-type ButtonProps = {
-  children: React.ReactNode;
+type ButtonProps = React.PropsWithChildren<{
   href?: string;
   className?: string;
-} & ButtonVariants;
+}> & ButtonVariants;
 
 export default function Button({ children, href, color, size, className }: ButtonProps) {
   return (

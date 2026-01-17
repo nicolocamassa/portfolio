@@ -1,4 +1,3 @@
-/* TODO: mettere React.PropsWithChildren a tutti i componenti */
 type SectionProps = React.PropsWithChildren<{
     className?: string;
     size?: "sm" | "md" | "lg";

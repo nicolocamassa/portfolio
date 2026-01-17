@@ -4,7 +4,11 @@ import "./globals.css";
 import Footer from "./components/layout/footer/Footer";
 import Header from "./components/layout/Header";
 
-const ParkinSans = Parkinsans({ variable: "--font-parkinsans-sans", subsets: ["latin"], display: "swap" });
+const ParkinSans = Parkinsans({ 
+  variable: "--font-parkinsans-sans",
+  subsets: ["latin"], 
+  display: "swap",
+  fallback: ["system-ui", "Arial"], });
 
 const FustatMono = Fustat({
   variable: "--font-fustat-mono",

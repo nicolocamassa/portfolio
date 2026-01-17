@@ -1,4 +1,4 @@
-import { text } from "stream/consumers";
+/* TODO: sostituire con Stack della libreria Material UI [https://mui.com/material-ui/react-stack/]*/
 
 type StackProps = React.PropsWithChildren<{
     className?: string;
