@@ -37,13 +37,13 @@ export default function HeroSection() {
 
                 <Stack gap="xs" direction="flex-col"
                   className="sm:flex-row sm:gap-2 justify-center items-center">
-                    <Button color="black" size="md">
+                    {/* <Button color="black" size="md">
                       Vedi i progetti
                     </Button>
 
                     <Button color="white" size="md">
                       Contattami
-                    </Button>
+                    </Button> */}
                 </Stack>
               </Stack>
             
