@@ -4,15 +4,30 @@ import HeroBanner from "../ui/HeroBanner";
 import Container from "../layout/Container";
 import Section from "../layout/Section";
 import Stack from "../layout/Stack";
+import { BadgeProps } from "../ui/Badge";
 
-export default function HeroSection() {
+type HeroCta = { label: string; href: string; color?: "black" | "white"; size?: "md" | "lg" };
+
+export type HeroContent = {
+  badge: BadgeProps;
+  title: string;
+  description: string;
+  ctas?: HeroCta[];
+  heroBanner?: boolean;
+}
+
+export default function HeroSection({ content }: { content: HeroContent }) {
+  const { badge, title, description, ctas, heroBanner } = content;
+
   return (
     <Section>
       <Container>
         <Stack gap="sm" className="items-center text-center">
-          <Badge size="md" type="normal">Full-Stack Web Developer</Badge>
+          <Badge size={badge.size} type={badge.type}>
+            { badge.children }
+          </Badge>
 
-          <Stack gap="xs" className="items-center text-center">
+          <Stack gap="md" className="items-center text-center">
              <h1
               className="
                 w-full
@@ -22,7 +37,7 @@ export default function HeroSection() {
                 md:text-7xl md:leading-[1.05]
                 lg:text-8xl lg:leading-none
                 xl:text-9xl xl:leading-none">
-                  Gorem ipsum dolor sit amet, consectetur
+                  { title }
             </h1>
 
             <Stack gap="xl" className="items-center text-center">
@@ -31,22 +46,20 @@ export default function HeroSection() {
                   text-base sm:text-md md:text-xl
                   text-(--text-secondary)
                   text-pretty">
-                    Jorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-                    vulputate libero et velit interdum.
+                    { description }
                 </p>
 
-                <Stack gap="xs" direction="flex-col"
-                  className="sm:flex-row sm:gap-2 justify-center items-center">
-                    <Button color="black" size="md">
-                      Vedi i progetti
-                    </Button>
-
-                    <Button color="white" size="md">
-                      Contattami
-                    </Button>
-                </Stack>
+            {ctas?.length ? (
+              <Stack gap="xs" direction="flex-col" className="sm:flex-row sm:gap-2 justify-center items-center">
+                {ctas.map((cta) => (
+                  <Button key={cta.href} href={cta.href} color={cta.color} size={cta.size}>
+                    {cta.label}
+                  </Button>
+                ))}
               </Stack>
-            
+            ) : null}
+
+            </Stack>
           </Stack>
         </Stack>
       </Container>
@@ -56,7 +69,23 @@ export default function HeroSection() {
         style={{ backgroundImage: "url('/images/bg.png')" }}
       >
         <Container className="px-8 sm:px-6">
-          <HeroBanner></HeroBanner>
+              <div className="
+                  -translate-y-6 sm:-translate-y-10
+                  rounded-2xl bg-white
+                  flex flex-col md:flex-row
+                  divide-y md:divide-y-0 md:divide-x
+                  divide-(--border-default)
+                  shadow-[0_-8px_24px_-12px_rgba(0,0,0,0.15)]
+                  overflow-hidden"
+              >
+              {heroBanner?.valueOf ? (
+                <HeroBanner></HeroBanner> 
+              ) : 
+                <div>
+                  <img src="/images/Screenshot.png" alt="" />
+                </div>
+              }
+              </div>
         </Container>
       </div>
     </Section>

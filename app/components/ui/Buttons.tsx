@@ -1,4 +1,5 @@
 import { tv, type VariantProps } from "tailwind-variants";
+import Link from "next/link";
 
 const button = tv({
   base: "inline-flex items-center justify-center border border-[var(--border-default)] hover:cursor-pointer font-medium rounded-xl shadow-[0px_0px_4px_0px_rgba(0,_0,_0,_0.15)] duration-300",
@@ -27,14 +28,14 @@ const button = tv({
 type ButtonVariants = VariantProps<typeof button>;
 
 type ButtonProps = React.PropsWithChildren<{
-  href?: string;
   className?: string;
+  href: string;
 }> & ButtonVariants;
 
-export default function Button({ children, href, color, size, className }: ButtonProps) {
+export default function Button({ children, color, href, size, className }: ButtonProps) {
   return (
-    <a className={button({ color, size, className })} href={href} role="button">
+    <Link className={button({ color, size, className })} href={href} role="button">
       {children}
-    </a>
+    </Link>
   );
 }

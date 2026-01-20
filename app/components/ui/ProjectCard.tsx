@@ -3,6 +3,10 @@ import Badge from "./Badge";
 import Button from "./Buttons";
 import Stack from "../layout/Stack";
 
+const projects = [
+  { slug: "demo-app", title: "Demo App" },
+];
+
 
 export default function ProjectCard() {
   return (
@@ -35,9 +39,13 @@ export default function ProjectCard() {
                 musicali con la tua crew.
               </article>
 
-              <Button color="cta" size="sm">
-                Scopri gli aggiornamenti
-              </Button>
+              {projects.map((p) => (
+                  <Button key={p.slug} href={`/projects/${encodeURIComponent(p.slug)}`} color="cta" size="sm">
+                    Scopri gli aggiornamenti
+                  </Button>
+              ))}
+
+
             </Stack>
           </Stack>
         </Stack>

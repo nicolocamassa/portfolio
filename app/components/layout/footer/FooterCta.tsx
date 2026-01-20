@@ -26,10 +26,10 @@ export default function FooterCTA() {
           </Stack>
 
           {/* CTA */}
-          <Button color="whiteCta">
+          {/* <Button color="whiteCta">
             Contattami
             <SendHorizontal size={18} />
-          </Button>
+          </Button> */}
         </Stack>
       </Container>
     </div>

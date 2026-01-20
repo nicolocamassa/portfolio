@@ -26,7 +26,7 @@ const badge = tv({
   },
 });
 
-type BadgeProps = { children: React.ReactNode; className?: string } & VariantProps<typeof badge>;
+export type BadgeProps = { children: React.ReactNode; className?: string } & VariantProps<typeof badge>;
 
 export default function Badge({ children, size, type, className }: BadgeProps) {
   return <span className={badge({ size, type, className })}>{children}</span>;

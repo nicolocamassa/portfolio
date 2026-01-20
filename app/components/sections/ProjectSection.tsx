@@ -7,7 +7,7 @@ import Stack from "../layout/Stack";
 
 export default function ProjectSection() {
   return (
-    <Section>
+    <Section id="projects">
       <Container className="px-4 sm:px-6">
 
         {/* Heading */}
