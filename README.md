@@ -1,6 +1,6 @@
 # Personal Portfolio - Nicolò Camassa
 
-![Mockup Personal Portfolio](public/docs/Mockup.png)
+![Mockup Personal Portfolio](public/images/Screenshot.png)
 
 Portfolio personale sviluppato per presentare le mie competenze nello sviluppo frontend e full stack.
 Il design è stato progettato con particolare attenzione alla semplicità, alla gerarchia visiva e all’ordine del layout.

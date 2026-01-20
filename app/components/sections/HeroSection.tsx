@@ -82,7 +82,7 @@ export default function HeroSection({ content }: { content: HeroContent }) {
                 <HeroBanner></HeroBanner> 
               ) : 
                 <div>
-                  <img src="/images/Mockup.png" alt="" />
+                  <img src="/images/Screenshot.png" alt="" />
                 </div>
               }
               </div>
