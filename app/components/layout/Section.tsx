@@ -12,7 +12,7 @@ const sizes = {
 
 export default function Section({ children, id, className, size = "md" }: SectionProps){
     return (
-        <section className={`relative overflow-hidden ${className} ${sizes[size]}`} id={id}>
+        <section className={`relative ${className} ${sizes[size]}`} id={id}>
             { children }
         </section>
     )

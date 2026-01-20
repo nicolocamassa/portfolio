@@ -21,7 +21,7 @@ export default function Stack({
     direction = "flex-col", 
 }: StackProps){
     return (
-        <div className={[className, gaps[gap], direction, "flex w-full"].join(" ")}>
+        <div className={[className, gaps[gap], direction, "flex w-full visible!"].join(" ")}>
             { children }
         </div>
     )

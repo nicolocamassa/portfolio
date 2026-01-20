@@ -10,5 +10,5 @@ export const heroSection: HeroContent = {
         { label: "Vedi i progetti", href: "/projects", color: "black", size: "md" },
         { label: "Contattami", href: "mailto:camassa.nick@gmail.com", color: "white", size: "md" },
     ],
-    heroBanner: true,
+    heroBanner: true
 }

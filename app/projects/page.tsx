@@ -1,5 +1,5 @@
 import HeroSection from "@/app/components/sections/HeroSection";
-import { demoApp } from "@/app/content/demo-app";
+import { blogPages } from "@/app/content/blog-pages";
 
 export default function ProjectPage2({ params }: { params: { slug: string } }) {
   return (
