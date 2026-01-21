@@ -3,8 +3,10 @@ import Section from "@/app/components/layout/Section";
 import Stack from "@/app/components/layout/Stack";
 import HeroSection from "@/app/components/sections/HeroSection";
 import Badge from "@/app/components/ui/Badge";
+import NavItem from "@/app/components/ui/NavItem";
 import Toc from "@/app/components/ui/TableOfContents";
 import { blogPages } from "@/app/content/blog-pages";
+
 
 export default async function ProjectPage({
   params,
@@ -47,7 +49,16 @@ export default async function ProjectPage({
             </div>
 
             {/* TABLE OF CONTENT */}
-            <Toc className="order-1 lg:order-2" />
+            <Toc className="order-1 lg:order-2">
+              {blogPages[index].sections?.length ? (
+                <Stack gap="xs">
+                  {blogPages[index].sections.map((section) => (
+                    <NavItem href={`#${section.badge}`}>{ section.badge }</NavItem>
+                  ))}
+                </Stack>
+                
+              ) : null}
+            </Toc>
           </div>
         </Section>
       </Container>

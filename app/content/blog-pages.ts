@@ -38,7 +38,7 @@ export const blogPages: BlogPage[] = [
         id: "progettazione-design",
         title: "Progettazione Design",
         description: "Lorem ipsum dolor 2",
-      },
+      }
     ],
   },
 ];
