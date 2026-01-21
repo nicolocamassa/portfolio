@@ -81,8 +81,8 @@ export default function HeroSection({ content }: { content: HeroContent }) {
               {heroBanner?.valueOf ? (
                 <HeroBanner></HeroBanner> 
               ) : 
-                <div>
-                  <img src="/images/Screenshot.png" alt="" />
+                <div className="w-full h-full">
+                  <img src="/images/testa.png" className="h-full w-full object-cover" alt="" />
                 </div>
               }
               </div>

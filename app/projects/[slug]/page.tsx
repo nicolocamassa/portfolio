@@ -18,13 +18,12 @@ export default async function ProjectPage({ params }: { params: { slug: string }
       <HeroSection content={blogPages[index]}></HeroSection>
       <Container>
         <Section>
-          <div className="flex gap-40">
-            <div className="w-full">
+          <div className="flex flex-col gap-20 lg:flex-row xl:gap-40">
+            <div className="w-full order-2 lg:order-1">
               {/* CONTENUTO DEL MAIN */}
-              <div id="idee">
-            
-              </div>
-              <Stack className="items-start"> {/* TODO: Stack otrebbe essere item start di default? */}
+              {/* TODO: Rendere dinamici i contenuti */}
+              {/* TODO: Responsiveness tra TCO e Main */}
+              <Stack className="items-start"> {/* TODO: Stack potrebbe essere item start di default? */}
                 <Badge>Progetti</Badge>
                 <Stack gap="sm">
                   <h2>Idea e obiettivi del progetto</h2>
@@ -35,7 +34,7 @@ export default async function ProjectPage({ params }: { params: { slug: string }
             </div>
             
             {/* TABLE OF CONTENT */}
-            <Toc />
+            <Toc className="order-1 lg:order-2"/>
           </div>
         </Section>
       </Container>
