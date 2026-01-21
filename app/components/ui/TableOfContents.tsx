@@ -1,3 +1,4 @@
+import { blogPages } from "@/app/content/blog-pages";
 import NavItem from "./NavItem";
 
 type TocProps = {
