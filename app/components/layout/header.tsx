@@ -3,7 +3,7 @@ import Button from "../ui/Buttons";
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-50 w-full px-3 md:px-5 bg-white">
+    <header className="sticky top-0 z-50 w-full px-3 md:px-5 bg-white border-b border-b-gray-100">
       <div
         className="
           pointer-events-none absolute inset-0 h-[200%]

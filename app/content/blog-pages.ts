@@ -22,7 +22,7 @@ export type BlogPage = {
 
 export const blogPages: BlogPage[] = [
   {
-    slug: "demo-app",
+    slug: "demo-app2",
     hero: {
       badge: { children: "Case Study" },
       title: "Testing app title",
@@ -210,6 +210,230 @@ export const blogPages: BlogPage[] = [
             src: "/images/case-studies/aurora/final.png",
             alt: "Schermate finali di Aurora Habits",
             caption: "Output finale: un’esperienza mobile-first pulita, guidata e coerente.",
+          },
+        ],
+      },
+    ],
+  },
+
+
+
+
+
+
+
+  {
+    slug: "demo-app",
+    hero: {
+      badge: { children: "Case Study" },
+      title: "Pulse Budget",
+      description:
+        "Un’app fittizia che aiuta a gestire spese e obiettivi con regole semplici: pochi numeri, feedback chiari e un flusso quotidiano leggero. Dall’idea alla UI e alla struttura tecnica (demo).",
+      ctas: [
+        { label: "GitHub", href: "https://github.com/example/pulse-budget" },
+        { label: "Live Demo", href: "https://example.com/pulse-budget" },
+      ],
+    },
+
+    sections: [
+      {
+        badge: "Contesto",
+        id: "contesto",
+        blocks: [
+          {
+            type: "heading",
+            level: 1,
+            text: "Il problema",
+            id: "il-problema",
+          },
+          {
+            type: "paragraph",
+            text:
+              "Molte app di budgeting falliscono perché chiedono troppo subito: categorie, regole, grafici e importazioni bancarie prima ancora che l’utente capisca “cosa devo fare oggi?”.\n\n"
+              + "Pulse Budget nasce come esercizio di prodotto: trasformare il budgeting in una routine micro, quotidiana e sostenibile. L’obiettivo non è “fare contabilità”, ma creare un ritmo: registrare una spesa in 5 secondi, vedere un feedback comprensibile, e sapere se oggi sei in linea.",
+          },
+          {
+            type: "image",
+            src: "https://cdn-proxy.slickplan.com/wp-content/uploads/2025/01/Covers-900x300.jpg",
+            alt: "Cover placeholder per case study",
+            caption: "Hero visual: estetica pulita e focus sul flusso (placeholder).",
+          },
+          {
+            type: "heading",
+            level: 2,
+            text: "Obiettivi di progetto",
+            id: "obiettivi",
+          },
+          {
+            type: "paragraph",
+            text:
+              "Ho definito obiettivi misurabili per evitare feature creep e mantenere la UX minimal. Il principio: prima la chiarezza, poi la profondità.",
+          },
+          {
+            type: "list",
+            items: [
+              "Prima spesa registrata in < 30 secondi dall’apertura (cold start incluso)",
+              "Setup iniziale in 60–90 secondi (solo entrate + obiettivo mensile)",
+              "Progress giornaliero leggibile: “Oggi: ok / attenzione” senza grafici",
+              "Ridurre l’ansia: linguaggio non punitivo, niente rosso “aggressivo”",
+            ],
+          },
+        ],
+      },
+
+      {
+        badge: "Ricerca",
+        id: "ricerca",
+        blocks: [
+          { type: "heading", level: 1, text: "Ricerca e insight", id: "ricerca-insight" },
+          {
+            type: "paragraph",
+            text:
+              "Per il progetto fittizio ho simulato una ricerca leggera con due attività:\n"
+              + "• analisi comparativa di app note (budgeting + expense tracker)\n"
+              + "• revisione di recensioni/feedback tipici (pattern ricorrenti)\n\n"
+              + "Tre frizioni si ripetono spesso:\n"
+              + "1) Setup iniziale troppo lungo (categorie, conti, automazioni).\n"
+              + "2) Grafici e dashboard prima della “routine”.\n"
+              + "3) Linguaggio colpevolizzante (“hai sforato!”) invece di coaching.\n\n"
+              + "Da qui la scelta: Pulse Budget parte dal gesto minimo (aggiungi spesa) e introduce strumenti più avanzati solo quando l’utente ha già un’abitudine.",
+          },
+          {
+            type: "image",
+            src: "https://cdn-proxy.slickplan.com/wp-content/uploads/2025/01/wireflow-example.jpg",
+            alt: "Esempio di wireflow (benchmark/analisi)",
+            caption: "Riferimento visivo: esempi di flussi e schermate per ragionare su frizioni e step.",
+          },
+          { type: "heading", level: 2, text: "Persona (semplificate)", id: "personas" },
+          {
+            type: "list",
+            items: [
+              "Elena, 27: vuole capire “se oggi posso permettermelo”, non vuole grafici complessi.",
+              "Davide, 35: ha entrate stabili, vuole un sistema rapido per obiettivi e spese ricorrenti.",
+              "Marta, 30: prova molte app ma molla se l’onboarding è lungo o se si sente giudicata.",
+            ],
+          },
+        ],
+      },
+
+      {
+        badge: "UX",
+        id: "ux",
+        blocks: [
+          { type: "heading", level: 1, text: "User flow principale", id: "user-flow" },
+          {
+            type: "paragraph",
+            text:
+              "Il flusso è progettato intorno a un’unica domanda: “Cosa devo fare adesso?”.\n\n"
+              + "La home mostra:\n"
+              + "• un riepilogo giornaliero (stato: ok/attenzione)\n"
+              + "• un’azione primaria: aggiungi spesa\n"
+              + "• un micro-progress verso l’obiettivo (senza grafici complessi)\n\n"
+              + "Il setup iniziale chiede solo due informazioni: entrata mensile e obiettivo (risparmio o limite). Le categorie sono suggerite ma opzionali: puoi aggiungerle dopo.",
+          },
+          {
+            type: "image",
+            src: "https://cdn-proxy.slickplan.com/wp-content/uploads/2025/01/travel-app-wireflow.jpg",
+            alt: "Wireflow (placeholder) per visualizzare il flusso",
+            caption: "Wireflow: esempio di mappa schermate/connessioni per ragionare su percorsi e scorciatoie.",
+          },
+          { type: "heading", level: 2, text: "Scelte UX chiave", id: "scelte-ux" },
+          {
+            type: "list",
+            items: [
+              "Una CTA primaria per schermata (riduce decision fatigue)",
+              "Inserimento spesa in un tap (importo → categoria opzionale → salva)",
+              "Undo breve dopo salvataggio (evita ansia da errore)",
+              "Progress “umano”: oggi/questa settimana prima dei trend mensili",
+            ],
+          },
+        ],
+      },
+
+      {
+        badge: "UI",
+        id: "ui",
+        blocks: [
+          { type: "heading", level: 1, text: "Design system leggero", id: "design-system" },
+          {
+            type: "paragraph",
+            text:
+              "La UI deve comunicare calma e controllo. Ho impostato:\n"
+              + "• gerarchie tipografiche nette (titoli forti, testo secondario soft)\n"
+              + "• spazi generosi e componenti ripetibili\n"
+              + "• feedback micro (toast, badge, micro-animazioni) non invadenti\n\n"
+              + "I componenti chiave: Button, Card, Badge, AmountInput, CategoryPill, ProgressRing e BottomSheet per l’inserimento rapido.",
+          },
+          {
+            type: "image",
+            src: "https://www.creativefabrica.com/wp-content/uploads/2022/11/03/Habit-Tracker-Mobile-App-UI-Kit-Graphics-44540823-1-1-312x208.jpg",
+            alt: "UI kit (placeholder) con schermate mobile",
+            caption: "Riferimento UI kit: utile per ragionare su pattern di card, progress e composizione mobile.",
+          },
+          { type: "heading", level: 2, text: "Stati e accessibilità", id: "accessibilita" },
+          {
+            type: "paragraph",
+            text:
+              "Gli stati interattivi sono coerenti (hover/focus/disabled). Il focus è sempre visibile e i messaggi usano un tono neutro: “sei oltre la soglia di oggi” invece di “hai fallito”.\n\n"
+              + "La palette evita contrasti “punitivi”: lo stato attenzione è espresso con testo + icona + badge, non solo con colore. Le animazioni sono brevi (200–300ms) e non bloccanti.",
+          },
+        ],
+      },
+
+      {
+        badge: "Test",
+        id: "test",
+        blocks: [
+          { type: "heading", level: 1, text: "Struttura tecnica (demo)", id: "struttura-tecnica" },
+          {
+            type: "paragraph",
+            text:
+              "Essendo un progetto demo, l’obiettivo è una struttura front-end pulita e scalabile:\n\n"
+              + "• data model: transactions, budgets, goals\n"
+              + "• UI: componenti presentazionali (Card, Badge, Inputs)\n"
+              + "• logica: hooks (useTransactions, useBudget), servizi (storage)\n\n"
+              + "Persistenza iniziale via localStorage, con la possibilità di evolvere su API/DB senza riscrivere la UI.",
+          },
+          {
+            type: "image",
+            src: "https://www.clickittech.com/wp-content/uploads/2024/04/Web-Application-Architecture-Layers-986x1024.png",
+            alt: "Diagramma architettura (placeholder)",
+            caption: "Schema di architettura a livelli: utile come riferimento concettuale per separazione responsabilità.",
+          },
+          { type: "heading", level: 2, text: "Feature MVP", id: "mvp" },
+          {
+            type: "list",
+            items: [
+              "Aggiunta spesa rapida + undo",
+              "Budget giornaliero/settimanale con stato (ok/attenzione)",
+              "Obiettivi (risparmio o limite) con progress semplice",
+              "Categorie opzionali + ricerca recente",
+              "Esportazione dati (demo) e reset controllato",
+            ],
+          },
+        ],
+      },
+
+      {
+        badge: "Risultati",
+        id: "risultati",
+        blocks: [
+          { type: "heading", level: 1, text: "Risultato finale e next step", id: "risultato-finale" },
+          {
+            type: "paragraph",
+            text:
+              "Pulse Budget dimostra l’idea chiave: prima costruisci la routine, poi aggiungi profondità. Un flusso semplice (aggiungi → feedback → progress) è spesso più efficace di una dashboard perfetta.\n\n"
+              + "Prossimi step interessanti:\n"
+              + "• insight gentili (giorni “costosi”, categorie ricorrenti)\n"
+              + "• regole automatiche leggere (spese ricorrenti, arrotondamenti)\n"
+              + "• sync cloud + multi-device\n"
+              + "• modalità “low pressure” (settimane difficili senza colpa).",
+          },
+          {
+            type: "image",
+            src: "https://cdn-proxy.slickplan.com/wp-content/uploads/2025/01/low-fidelity-wireflow-example.jpg",
+            alt: "Wireflow low-fidelity (placeholder) come output finale",
+            caption: "Output finale (placeholder): rappresentazione semplice del journey e dei punti chiave della UX.",
           },
         ],
       },

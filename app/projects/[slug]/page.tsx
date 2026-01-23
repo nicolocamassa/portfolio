@@ -1,10 +1,8 @@
 import Container from "@/app/components/layout/Container";
 import Section from "@/app/components/layout/Section";
-import Stack from "@/app/components/layout/Stack";
 import HeroSection from "@/app/components/sections/HeroSection";
 import Badge from "@/app/components/ui/Badge";
-import NavItem from "@/app/components/ui/NavItem";
-import Toc from "@/app/components/ui/TableOfContents";
+import TocClient from "@/app/components/ui/TocClient";
 import { blogPages } from "@/app/content/blog-pages";
 import type { ContentBlock } from "@/app/content/blog-pages";
 
@@ -13,11 +11,13 @@ export default async function ProjectPage({
 }: {
   params: { slug: string };
 }) {
-  /* Contenuto in base allo slug */
   const { slug } = await params;
   const index = blogPages.findIndex((p) => p.slug === slug);
 
-  console.log(blogPages[index]);
+  const sectionsForToc = blogPages[index].sections?.map((s) => ({
+      id: s.id,
+      label: s.badge ?? s.id,
+    })) ?? [];
 
   return (
     <>
@@ -25,39 +25,37 @@ export default async function ProjectPage({
 
       <Container>
         <Section>
-          <div className="flex flex-col gap-(--space-blog) lg:flex-row xl:gap-(--space-blog)">
-            <div className="w-full order-2 lg:order-1">
-              {/* RENDERING DEI BLOCCHI */}
+          <div className="flex flex-col gap-10 xl:flex-row lg:gap-(--space-blog) relative">
+            <div className="w-full min-w-0 order-2 xl:order-1">
               {blogPages[index].sections?.map((s) => (
                 <section
+                  id={s.id}
                   key={s.id}
-                  className="mb-[var(--space-xl)] lg:grid grid-cols-[140px_minmax(0,1fr)] gap-(--space-blog) lg:flex-row xl:gap-(--space-blog)"
+                  className="mb-(--section-sm) flex flex-col gap-2 lg:grid lg:grid-cols-[140px_minmax(0,1fr)] lg:gap-(--space-blog)"
                 >
-                  {/* COLONNA SINISTRA */}
-                  <div className="pt-2 text-right sticky top-3 z-100 pb-30 md:top-3 md:z-100 py-2 self-start">
+
+                  <div
+                    className="
+                    text-left mb-2 
+                    lg:text-right lg:mb-0 lg:pt-2 lg:sticky lg:top-24 lg:self-start
+                  "
+                  >
                     {s.badge ? <Badge size="md">{s.badge}</Badge> : null}
                   </div>
 
-                  {/* COLONNA DESTRA */}
-                  <div className="max-w-full">
+                  {/* COLONNA CONTENUTO */}
+                  <div className="max-w-full border-b border-b-gray-100 pb-8 lg:pb-3">
                     <RenderBlocks blocks={s.blocks} />
                   </div>
                 </section>
               ))}
             </div>
 
-            {/* TABLE OF CONTENT */}
-            <Toc className="order-1 lg:order-2">
-              {blogPages[index].sections?.length ? (
-                <Stack gap="xs">
-                  {blogPages[index].sections.map((section) => (
-                    <NavItem href={`#${section.badge}`}>
-                      {section.badge}
-                    </NavItem>
-                  ))}
-                </Stack>
-              ) : null}
-            </Toc>
+            <div className="order-1 xl:order-2 w-64 shrink-0">
+              <div className="sticky top-24">
+                <TocClient sections={sectionsForToc} />
+              </div>
+            </div>
           </div>
         </Section>
       </Container>
@@ -65,7 +63,6 @@ export default async function ProjectPage({
   );
 }
 
-/* TODO: Meglio lavorare con i margini sul top (?) */
 function RenderBlocks({ blocks }: { blocks: ContentBlock[] }) {
   return (
     <>
@@ -74,34 +71,69 @@ function RenderBlocks({ blocks }: { blocks: ContentBlock[] }) {
           case "heading":
             return b.level === 2 ? (
               <h3
-                className="text-2xl font-bold mb-(--space-xs)"
+                className="text-xl md:text-2xl font-bold mb-(--space-xs) mt-2"
                 key={i}
                 id={b.id}
               >
                 {b.text}
               </h3>
             ) : (
-              <h2 className="mb-(--space-xs) text-5xl!" key={i} id={b.id}>
+              // Responsive font size: text-3xl su mobile, text-5xl su desktop
+              <h2
+                className="mb-(--space-xs) text-3xl md:text-5xl font-bold leading-tight"
+                key={i}
+                id={b.id}
+              >
                 {b.text}
               </h2>
             );
 
           case "paragraph":
-            return <p className="mb-(--space-lg) text-(--text-secondary)">{b.text}</p>;
+            return (
+              <p
+                key={i}
+                className="mb-(--space-lg) text-(--text-secondary) leading-relaxed"
+              >
+                {b.text}
+              </p>
+            );
 
           case "image":
-            return <figure className="mb-(--space-md)">
-                      <img className="rounded rounded-md border border-gray-100" src={b.src} alt={b.alt} />
-                      <figcaption className="text-sm text-(--text-secondary) mt-2">{b.caption}</figcaption>
-                   </figure>
+            return (
+              <figure key={i} className="mb-(--space-md)">
+                <img
+                  className="w-full h-auto rounded-md border border-gray-100"
+                  src={b.src}
+                  alt={b.alt}
+                />
+                {b.caption && (
+                  <figcaption className="text-sm text-(--text-secondary) mt-2 italic">
+                    {b.caption}
+                  </figcaption>
+                )}
+              </figure>
+            );
 
           case "list":
-            return <>
-              {b.items.map((item, idx) => (
-                <Badge className="mb-(--space-xs) mr-(--space-xs) max-w-2/3 text-(--text-secondary)" type="list" key={idx}>{item}</Badge>
-              ))}
-            </>
-            
+            return (
+              <div
+                key={i}
+                className="flex flex-wrap gap-2 mb-(--space-lg)"
+              >
+                {b.items.map((item, idx) => (
+                  <Badge
+                    key={idx}
+                    type="list"
+                    className="max-w-full truncate text-(--text-secondary)"
+                  >
+                    {item}
+                  </Badge>
+                ))}
+              </div>
+            );
+
+          default:
+            return null;
         }
       })}
     </>
