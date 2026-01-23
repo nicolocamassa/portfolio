@@ -3,6 +3,7 @@ import type { HeroContent } from "../components/sections/HeroSection";
 export type ContentBlock = 
   | { type: "image"; src: string; alt?: string; caption?: string }
   | { type: "paragraph"; text: string }
+  /* TODO: SE IL TESTO DEI BADGE È TROPPO LUNGO DISALLINEA LA SEZIONE */
   | { type: "badge"; text: string }
   | { type: "heading"; level: 1 | 2; text: string; id?: string }
   | { type: "list"; items: string[] }
@@ -24,7 +25,7 @@ export const blogPages: BlogPage[] = [
     slug: "demo-app",
     hero: {
       badge: { children: "Case Study" },
-      title: "Aurora Habits: un’app fittizia per costruire abitudini senza stress",
+      title: "Testing app title",
       description:
         "Case study completo: dall’idea alla UI finale. Obiettivo: aiutare le persone a costruire abitudini con micro-obiettivi, feedback chiari e un’esperienza mobile-first semplice ma curata.",
       ctas: [
@@ -51,6 +52,7 @@ export const blogPages: BlogPage[] = [
             caption: "Home: focus su oggi. Una sola azione principale e progress chiaro.",
           },
           { type: "heading", level: 2, text: "Obiettivi di progetto", id: "obiettivi" },
+          { type: "paragraph", text: "lorem test lorem test lorem test lorem test lorem test lorem test lorem test lorem test lorem test lorem test" }, 
           {
             type: "list",
             items: [
