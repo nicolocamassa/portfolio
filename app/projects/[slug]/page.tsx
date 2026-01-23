@@ -35,12 +35,25 @@ export default async function ProjectPage({
                     {blogPages[index].sections.map((section) => (
 
                         <Stack className="items-start">
-                          <Badge>{ section.badge }</Badge>
+                          <div className="sticky bg-white top-15 md:top-3 md:z-100 py-2 w-full h-full">
+                            <Badge className="bg-[#EBF3FF]">{ section.badge }</Badge>
+                          </div>
+                          
                         
                           <Stack gap="sm">
                             <h2 className="md:max-w-full!">{ section.title }</h2> {/* TODO: Style titolo blog section diverso da titolo home section (w-full in blog) */}
-                          <p>{ section.description }</p>
+                            <p>{ section.description }</p>
                           </Stack>
+
+                          <Stack gap="xs" className="items-start">
+                              <h3 className="text-3xl font-bold">Obiettivi misurabili</h3>
+                              <Badge type="list" size="sm">Creazione sessione in meno di 20 secondi (utente non loggato incluso)</Badge>
+                            </Stack>
+                            
+                            <Stack gap="xs">
+                              <h3 className="text-3xl font-bold">Obiettivi misurabili</h3>
+                              <p>{ section.description }</p>
+                            </Stack>
                         </Stack>
                     ))}
                   </Stack>

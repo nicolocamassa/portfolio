@@ -3,12 +3,10 @@ import Button from "../ui/Buttons";
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-50 w-full px-3 md:px-5">
+    <header className="sticky top-0 z-50 w-full px-3 md:px-5 bg-white">
       <div
         className="
           pointer-events-none absolute inset-0 h-[200%]
-          backdrop-blur-lg
-          mask-[linear-gradient(to_bottom,black_0%_50%,transparent_50%_100%)]
         "
       />
 
