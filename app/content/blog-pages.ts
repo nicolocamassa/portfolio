@@ -1,11 +1,17 @@
 import type { HeroContent } from "../components/sections/HeroSection";
 
+export type ContentBlock = 
+  | { type: "image"; src: string; alt?: string; caption?: string }
+  | { type: "paragraph"; text: string }
+  /* TODO: SE IL TESTO DEI BADGE È TROPPO LUNGO DISALLINEA LA SEZIONE */
+  | { type: "badge"; text: string }
+  | { type: "heading"; level: 1 | 2; text: string; id?: string }
+  | { type: "list"; items: string[] }
+
 type Section = {
   badge?: string;
   id: string;
-  title: string;
-  description?: string;
-  image?: { src: string; alt?: string };
+  blocks: ContentBlock[];
 };
 
 export type BlogPage = {
@@ -18,93 +24,194 @@ export const blogPages: BlogPage[] = [
   {
     slug: "demo-app",
     hero: {
-      badge: { children: "Blog" },
-      title: "Demo App",
+      badge: { children: "Case Study" },
+      title: "Testing app title",
       description:
-        "Una guida pratica per impostare componenti, regole e token senza finire in un progetto infinito. Dalle decisioni fondamentali ai dettagli che fanno davvero la differenza in produzione.",
+        "Case study completo: dall’idea alla UI finale. Obiettivo: aiutare le persone a costruire abitudini con micro-obiettivi, feedback chiari e un’esperienza mobile-first semplice ma curata.",
       ctas: [
-        { label: "Repository", href: "https://github.com/example/design-system-minimale" },
-        { label: "Template", href: "https://example.com/template" },
+        { label: "GitHub", href: "https://github.com/example/aurora-habits" },
+        { label: "Live Demo", href: "https://example.com/aurora-habits" },
       ],
     },
     sections: [
       {
-        badge: "Introduzione",
-        id: "introduzione",
-        title: "Perché “minimale” non significa “scarno”",
-        description:
-          "Quando si parla di design system, spesso si pensa subito a un pacchetto enorme: decine di componenti, documentazione infinita, regole rigidissime. Il risultato? Un progetto che parte con entusiasmo e poi si blocca perché mantenere tutto diventa più costoso che costruire feature.\n\n"
-          + "Un design system minimale non è un design system “povero”. È un sistema che sceglie con cura cosa standardizzare e cosa lasciare flessibile. Standardizzi ciò che si ripete e genera incoerenza (spaziature, tipografia, bottoni, input, card, stati di focus), e lasci libertà dove serve (layout specifici, micro-varianti, composizioni).\n\n"
-          + "L’obiettivo non è avere una libreria perfetta: è rendere più veloce il lavoro quotidiano, ridurre bug UI e mantenere un’identità visiva coerente. Se ogni nuova pagina richiede decisioni da zero — “che font size uso?”, “quanto padding?”, “che colore per l’errore?” — stai pagando un costo invisibile in ogni sprint.\n\n"
-          + "In questo articolo ti porto in un percorso concreto: partire da token semplici, definire 6–10 componenti core, impostare stati accessibili, e creare un modo sostenibile per aggiungere varianti senza creare caos.",
-        image: {
-          src: "/images/blog/design-system/cover.png",
-          alt: "Copertina articolo: design system minimale",
-        },
+        badge: "Contesto",
+        id: "contesto",
+        blocks: [
+          { type: "heading", level: 1, text: "Il problema", id: "il-problema" },
+          {
+            type: "paragraph",
+            text:
+              "Le app di habit tracking spesso falliscono per due motivi: richiedono troppa disciplina fin dal primo giorno e mostrano troppi numeri prima che l’utente abbia capito cosa fare. Aurora Habits nasce come esercizio di prodotto: progettare un’esperienza che renda semplice iniziare e gratificante continuare.\n\n"
+              + "L’idea guida è ridurre la frizione iniziale: pochi step, scelte guidate, e un primo risultato visibile in meno di un minuto. Poi, man mano che l’utente prende confidenza, l’app sblocca funzionalità più avanzate (statistiche, insight, routine).",
+          },
+          {
+            type: "image",
+            src: "/images/testa.png",
+            alt: "Overview della home di Aurora Habits",
+            caption: "Home: focus su oggi. Una sola azione principale e progress chiaro.",
+          },
+          { type: "heading", level: 2, text: "Obiettivi di progetto", id: "obiettivi" },
+          { type: "paragraph", text: "lorem test lorem test lorem test lorem test lorem test lorem test lorem test lorem test lorem test lorem test" }, 
+          {
+            type: "list",
+            items: [
+              "Onboarding completabile in < 60 secondi",
+              "Creazione abitudine guidata (nome, frequenza, reminder) senza form lunghi",
+              "Feedback immediato dopo ogni check-in (micro-animazione + messaggio)",
+              "Progress chiaro: “oggi / questa settimana” prima delle statistiche avanzate",
+            ],
+          },
+        ],
       },
+
       {
-        badge: "Fondamenta",
-        id: "fondamenta",
-        title: "Token: la parte noiosa che ti salva la vita",
-        description:
-          "I token sono il punto di contatto tra design e codice. Sono variabili (o costanti) che rappresentano decisioni: colori, spazi, raggi, ombre, font-size. La tentazione iniziale è “poi ci penso”. Ma è proprio lì che nasce l’incoerenza.\n\n"
-          + "Parti con pochi token, davvero pochi. Esempio: una scala di spacing (2, 4, 8, 12, 16, 24, 32, 48), una scala tipografica (sm, base, lg, xl, 2xl), e una palette con ruoli (background, surface, text, muted, primary, danger). Evita di iniziare con 40 colori: spesso ti bastano 8–12 ruoli.\n\n"
-          + "La regola d’oro: token per ruolo, non per colore. Non vuoi scrivere “text-gray-700” ovunque. Vuoi “text-foreground”. Così, quando cambi tema o aggiorni brand, tocchi una volta sola. Lo stesso per border e shadow: “border-subtle”, “shadow-md”, “radius-lg”.\n\n"
-          + "Se usi Tailwind, puoi mappare i token via CSS variables e sfruttare le classi in modo coerente. Anche senza implementazione sofisticata, ti basta decidere un set ristretto e rispettarlo: la coerenza nasce dalla disciplina.",
+        badge: "Ricerca",
+        id: "ricerca",
+        blocks: [
+          { type: "heading", level: 1, text: "Ricerca e insight", id: "ricerca-insight" },
+          {
+            type: "paragraph",
+            text:
+              "Per un progetto fittizio ho simulato una ricerca leggera: analisi comparativa di app note (habit tracker e task manager) e una lista di “pain point” ricorrenti.\n\n"
+              + "Tre pattern emergono quasi sempre:\n"
+              + "1) Troppe scelte all’inizio (template, categorie, obiettivi, metriche).\n"
+              + "2) Progress poco interpretabile (grafici complessi senza contesto).\n"
+              + "3) Reminder invadenti o poco personalizzabili.\n\n"
+              + "Da qui la decisione: Aurora Habits deve guidare l’utente con scelte minime e lasciare personalizzazione in un secondo momento.",
+          },
+          {
+            type: "image",
+            src: "/images/case-studies/aurora/competitive.png",
+            alt: "Analisi comparativa di app simili",
+            caption: "Benchmark: ho estratto pattern UI e punti deboli ricorrenti.",
+          },
+          { type: "heading", level: 2, text: "Personas (semplificate)", id: "personas" },
+          {
+            type: "list",
+            items: [
+              "Giulia, 24: vuole iniziare a leggere 10 minuti al giorno, ma perde motivazione se l’app è troppo “seria”.",
+              "Marco, 32: vuole una routine palestra semplice, odia i grafici complicati e vuole solo sapere se sta andando bene.",
+              "Sara, 28: ama personalizzare, ma solo dopo aver capito il flusso base.",
+            ],
+          },
+        ],
       },
+
       {
-        badge: "Componenti core",
-        id: "componenti-core",
-        title: "I 10 componenti che coprono l’80% del lavoro",
-        description:
-          "Se devi scegliere da dove iniziare, non partire da componenti rari. Parti da quelli che userai ovunque. Un set “minimale ma potente” spesso include:\n\n"
-          + "• Button (con 2–3 varianti) e IconButton\n"
-          + "• Input, Textarea, Select (anche basic) + stati error\n"
-          + "• Card (layout base) + CardHeader/CardContent\n"
-          + "• Badge/Tag (per label e status)\n"
-          + "• Modal/Sheet (una sola, ben fatta)\n"
-          + "• Tabs (semplici)\n"
-          + "• Toast/Alert\n"
-          + "• Table (minima) o ListRow (se l’app è list-centric)\n\n"
-          + "Il trucco è definire un’API coerente. Ad esempio, per Button: `variant`, `size`, `disabled`, `loading`. Non creare 12 varianti: creane poche e componi il resto.\n\n"
-          + "Una pratica utile: ogni componente deve avere una “base” neutra e una manciata di varianti. Se ti accorgi che la variante “marketing-glow-super” esiste solo in una pagina, probabilmente non è una variante: è una customizzazione locale.\n\n"
-          + "Infine: cura i micro-dettagli. Stati hover e focus, spacing del testo, allineamento delle icone. Sono quelle cose che non noti quando sono fatte bene, ma che rendono tutto più ‘professionale’ quando sono consistenti.",
+        badge: "UX",
+        id: "ux",
+        blocks: [
+          { type: "heading", level: 1, text: "User flow e struttura dell’app", id: "user-flow" },
+          {
+            type: "paragraph",
+            text:
+              "Ho progettato il flusso principale attorno a una domanda: “cosa deve fare l’utente oggi?”. La home mostra un elenco ridotto di abitudini con un’azione chiara: check-in.\n\n"
+              + "L’onboarding crea 1–2 abitudini con un wizard (3 step). Non chiede nulla di avanzato. Le statistiche vengono introdotte dopo 7 giorni, quando hanno un minimo di senso.",
+          },
+          {
+            type: "image",
+            src: "/images/case-studies/aurora/flow.png",
+            alt: "Diagramma user flow di Aurora Habits",
+            caption: "Flow principale: onboarding → home → check-in → feedback → progress settimanale.",
+          },
+          { type: "heading", level: 2, text: "Scelte UX chiave", id: "scelte-ux" },
+          {
+            type: "list",
+            items: [
+              "Una CTA primaria per schermata (riduce indecisione)",
+              "Check-in in un tap + undo breve (evita errori frustranti)",
+              "Reminder configurabili con tono (gentile vs diretto) e fascia oraria",
+              "Progress ‘leggibile’: streak + obiettivo settimanale, niente grafici subito",
+            ],
+          },
+        ],
       },
+
       {
-        badge: "Accessibilità",
-        id: "accessibilita",
-        title: "Focus, aria e contrasti: non sono “extra”",
-        description:
-          "L’accessibilità non è un check finale, è una proprietà del sistema. Se i tuoi componenti base sono accessibili, tutto il prodotto migliora senza sforzo.\n\n"
-          + "Inizia dallo stato di focus: deve essere sempre visibile e coerente. Non affidarti solo a un cambio colore leggero. Usa un outline o ring netto. Poi cura i contrasti: testo su surface, testo su primary, placeholder, e soprattutto error state.\n\n"
-          + "Per componenti come Modal, Dropdown, Tabs: attenzione a focus trapping, gestione ESC, aria-label, aria-expanded e ruoli corretti. Se stai usando librerie come Radix (o shadcn/ui), sfruttale: sono pensate proprio per evitare problemi tipici.\n\n"
-          + "Una regola pratica: se la UI si usa bene da tastiera, spesso è già a buon punto. Prova: Tab, Shift+Tab, Enter, Esc. Se ti incastri, anche l’utente si incastrerà.\n\n"
-          + "Il vantaggio di fare questo nel design system è che risolvi una volta sola. Non vuoi inseguire bug di focus in 20 pagine diverse.",
+        badge: "UI",
+        id: "ui",
+        blocks: [
+          { type: "heading", level: 1, text: "Design & componenti", id: "design-componenti" },
+          {
+            type: "paragraph",
+            text:
+              "Per la UI ho scelto uno stile soft e luminoso, con gerarchie tipografiche nette e componenti ripetibili. L’idea è far sentire l’app “leggera”: spazi generosi, card con ombra delicata, e micro-feedback.\n\n"
+              + "Ho definito un set piccolo di componenti: Button, Card, Badge, ProgressRing, HabitRow e Modal. Tutto il resto è composizione di questi blocchi.",
+          },
+          {
+            type: "image",
+            src: "/images/case-studies/aurora/ui-kit.png",
+            alt: "UI kit di Aurora Habits",
+            caption: "UI Kit essenziale: pochi componenti, molte combinazioni possibili.",
+          },
+          { type: "heading", level: 2, text: "Stati e accessibilità", id: "stati-accessibilita" },
+          {
+            type: "paragraph",
+            text:
+              "Ogni elemento interattivo ha stati hover/focus/disabled coerenti. Il focus è sempre visibile (ring) e i contrasti sono pensati per non dipendere solo dal colore.\n\n"
+              + "Le animazioni sono brevi (200–300ms) e non bloccanti: il feedback deve dare soddisfazione senza rallentare l’azione principale.",
+          },
+        ],
       },
+
       {
-        badge: "Scalabilità",
-        id: "scalabilita",
-        title: "Come evitare l’esplosione delle varianti",
-        description:
-          "Il problema numero uno dei design system che crescono è l’esplosione delle varianti: Button con 9 colori, 7 size, 4 shape, 5 shadow. Diventa ingestibile.\n\n"
-          + "Il modo più semplice per evitarlo è separare: (1) varianti “di ruolo” (primary, secondary, ghost) e (2) combinazioni “di contesto” (es. su sfondo scuro) che devono vivere a livello di layout, non dentro il componente.\n\n"
-          + "In pratica: se vuoi un Button “inverted”, chiediti se è una variante globale o solo un caso in una hero. Spesso basta cambiare il container (background + text tokens) e il Button si adatta.\n\n"
-          + "Quando una nuova richiesta arriva, fai una domanda: ‘questa scelta si ripeterà almeno 3 volte?’ Se no, probabilmente è un caso locale.\n\n"
-          + "E documenta le decisioni: non serve un sito enorme. Bastano esempi e note nel repo: “questo è primary, questo è secondary, ecco quando usare ghost”.",
+        badge: "Implementazione",
+        id: "implementazione",
+        blocks: [
+          { type: "heading", level: 1, text: "Struttura tecnica (demo)", id: "struttura-tecnica" },
+          {
+            type: "paragraph",
+            text:
+              "Essendo un progetto demo, l’obiettivo non è la complessità backend ma una struttura front-end pulita. L’app è pensata per Next.js + TypeScript, con persistenza iniziale via localStorage e possibilità di evolvere su API/DB.\n\n"
+              + "La cosa più importante è mantenere una separazione chiara:\n"
+              + "• data model (habits, check-ins)\n"
+              + "• UI (componenti presentazionali)\n"
+              + "• logica (hooks/servizi)\n\n"
+              + "Così aggiungere nuove feature (es. categorie o routine) non rompe il resto.",
+          },
+          {
+            type: "image",
+            src: "/images/case-studies/aurora/architecture.png",
+            alt: "Schema architettura front-end",
+            caption: "Architettura demo: servizi + hooks + UI riutilizzabile.",
+          },
+          { type: "heading", level: 2, text: "Feature implementate (MVP)", id: "mvp" },
+          {
+            type: "list",
+            items: [
+              "Creazione abitudine con wizard",
+              "Check-in giornaliero con undo",
+              "Streak e obiettivo settimanale",
+              "Reminder base e preferenze",
+              "Vista dettagli con storico",
+            ],
+          },
+        ],
       },
+
       {
-        badge: "Conclusione",
-        id: "conclusione",
-        title: "Un sistema leggero, ma con regole chiare",
-        description:
-          "Un buon design system minimale ha una qualità speciale: non lo senti. Le scelte sono già lì, quindi tu puoi concentrarti sul prodotto.\n\n"
-          + "Se dovessi riassumere in 5 punti:\n"
-          + "1) Definisci token per ruolo e una scala di spacing/typo.\n"
-          + "2) Costruisci pochi componenti core, super curati.\n"
-          + "3) Accessibilità come default: focus, keyboard, aria.\n"
-          + "4) Poche varianti globali, il resto è composizione.\n"
-          + "5) Aggiungi solo ciò che si ripete davvero.\n\n"
-          + "Il risultato è (quasi sempre) meno codice, meno decision fatigue e una UI più coerente. E soprattutto: una base che cresce con te invece di rallentarti.",
+        badge: "Risultati",
+        id: "risultati",
+        blocks: [
+          { type: "heading", level: 1, text: "Risultato finale e prossimi step", id: "risultato-finale" },
+          {
+            type: "paragraph",
+            text:
+              "Aurora Habits, come case study, dimostra che puoi ottenere una UX piacevole con poche scelte ben fatte. Il cuore è un flusso lineare: creare → fare check-in → vedere progress → continuare.\n\n"
+              + "I prossimi step più interessanti sarebbero:\n"
+              + "• insight “gentili” (es. giorni migliori)\n"
+              + "• template di routine (mattina/sera)\n"
+              + "• sync cloud e multi-device\n"
+              + "• modalità ‘low pressure’ (saltare un giorno senza perdere tutto).",
+          },
+          {
+            type: "image",
+            src: "/images/case-studies/aurora/final.png",
+            alt: "Schermate finali di Aurora Habits",
+            caption: "Output finale: un’esperienza mobile-first pulita, guidata e coerente.",
+          },
+        ],
       },
     ],
   },

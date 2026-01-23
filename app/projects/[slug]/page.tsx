@@ -6,7 +6,7 @@ import Badge from "@/app/components/ui/Badge";
 import NavItem from "@/app/components/ui/NavItem";
 import Toc from "@/app/components/ui/TableOfContents";
 import { blogPages } from "@/app/content/blog-pages";
-
+import type { ContentBlock } from "@/app/content/blog-pages";
 
 export default async function ProjectPage({
   params,
@@ -22,43 +22,28 @@ export default async function ProjectPage({
   return (
     <>
       <HeroSection content={blogPages[index].hero}></HeroSection>
+
       <Container>
         <Section>
-          <div className="flex flex-col gap-20 lg:flex-row xl:gap-40">
+          <div className="flex flex-col gap-(--space-blog) lg:flex-row xl:gap-(--space-blog)">
             <div className="w-full order-2 lg:order-1">
-              {/* CONTENUTO DEL MAIN */}
-              <Stack className="items-start">
-                
-                {/* TODO: Stack potrebbe essere item start di default? */}
-                {blogPages[index].sections?.length ? (
-                  <Stack gap="xl">
-                    {blogPages[index].sections.map((section) => (
+              {/* RENDERING DEI BLOCCHI */}
+              {blogPages[index].sections?.map((s) => (
+                <section
+                  key={s.id}
+                  className="mb-[var(--space-xl)] lg:grid grid-cols-[140px_minmax(0,1fr)] gap-(--space-blog) lg:flex-row xl:gap-(--space-blog)"
+                >
+                  {/* COLONNA SINISTRA */}
+                  <div className="pt-2 text-right sticky top-3 z-100 pb-30 md:top-3 md:z-100 py-2 self-start">
+                    {s.badge ? <Badge size="md">{s.badge}</Badge> : null}
+                  </div>
 
-                        <Stack className="items-start">
-                          <div className="sticky bg-white top-15 md:top-3 md:z-100 py-2 w-full h-full">
-                            <Badge className="bg-[#EBF3FF]">{ section.badge }</Badge>
-                          </div>
-                          
-                        
-                          <Stack gap="sm">
-                            <h2 className="md:max-w-full!">{ section.title }</h2> {/* TODO: Style titolo blog section diverso da titolo home section (w-full in blog) */}
-                            <p>{ section.description }</p>
-                          </Stack>
-
-                          <Stack gap="xs" className="items-start">
-                              <h3 className="text-3xl font-bold">Obiettivi misurabili</h3>
-                              <Badge type="list" size="sm">Creazione sessione in meno di 20 secondi (utente non loggato incluso)</Badge>
-                            </Stack>
-                            
-                            <Stack gap="xs">
-                              <h3 className="text-3xl font-bold">Obiettivi misurabili</h3>
-                              <p>{ section.description }</p>
-                            </Stack>
-                        </Stack>
-                    ))}
-                  </Stack>
-                ) : null}
-              </Stack>
+                  {/* COLONNA DESTRA */}
+                  <div className="max-w-full">
+                    <RenderBlocks blocks={s.blocks} />
+                  </div>
+                </section>
+              ))}
             </div>
 
             {/* TABLE OF CONTENT */}
@@ -66,15 +51,59 @@ export default async function ProjectPage({
               {blogPages[index].sections?.length ? (
                 <Stack gap="xs">
                   {blogPages[index].sections.map((section) => (
-                    <NavItem href={`#${section.badge}`}>{ section.badge }</NavItem>
+                    <NavItem href={`#${section.badge}`}>
+                      {section.badge}
+                    </NavItem>
                   ))}
                 </Stack>
-                
               ) : null}
             </Toc>
           </div>
         </Section>
       </Container>
+    </>
+  );
+}
+
+/* TODO: Meglio lavorare con i margini sul top (?) */
+function RenderBlocks({ blocks }: { blocks: ContentBlock[] }) {
+  return (
+    <>
+      {blocks.map((b, i) => {
+        switch (b.type) {
+          case "heading":
+            return b.level === 2 ? (
+              <h3
+                className="text-2xl font-bold mb-(--space-xs)"
+                key={i}
+                id={b.id}
+              >
+                {b.text}
+              </h3>
+            ) : (
+              <h2 className="mb-(--space-xs) text-5xl!" key={i} id={b.id}>
+                {b.text}
+              </h2>
+            );
+
+          case "paragraph":
+            return <p className="mb-(--space-lg) text-(--text-secondary)">{b.text}</p>;
+
+          case "image":
+            return <figure className="mb-(--space-md)">
+                      <img className="rounded rounded-md border border-gray-100" src={b.src} alt={b.alt} />
+                      <figcaption className="text-sm text-(--text-secondary) mt-2">{b.caption}</figcaption>
+                   </figure>
+
+          case "list":
+            return <>
+              {b.items.map((item, idx) => (
+                <Badge className="mb-(--space-xs) mr-(--space-xs) max-w-2/3 text-(--text-secondary)" type="list" key={idx}>{item}</Badge>
+              ))}
+            </>
+            
+        }
+      })}
     </>
   );
 }
