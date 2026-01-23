@@ -27,55 +27,23 @@ export default async function ProjectPage({
         <Section>
           <div className="flex flex-col gap-20 lg:flex-row xl:gap-40">
             <div className="w-full order-2 lg:order-1">
-
               {/* RENDERING DEI BLOCCHI */}
               {blogPages[index].sections?.map((s) => (
-                <>
-                  {s.badge ? <Badge>{s.badge}</Badge> : null}
-                  <RenderBlocks blocks={s.blocks} />
-                </>
+                <section
+                  key={s.id}
+                  className="mb-[var(--space-xl)] grid grid-cols-[140px_minmax(0,1fr)] gap-[var(--space-xl)]"
+                >
+                  {/* COLONNA SINISTRA */}
+                  <div className="pt-2 text-right sticky top-3 z-100 pb-30 md:top-3 md:z-100 py-2 self-start">
+                    {s.badge ? <Badge size="md">{s.badge}</Badge> : null}
+                  </div>
+
+                  {/* COLONNA DESTRA */}
+                  <div className="max-w-3xl">
+                    <RenderBlocks blocks={s.blocks} />
+                  </div>
+                </section>
               ))}
-
-              {/* CONTENUTO DEL MAIN */}
-              <Stack className="items-start">
-                {/* TODO: Stack potrebbe essere item start di default? */}
-                {blogPages[index].sections?.length ? (
-                  <Stack gap="xl">
-                    {blogPages[index].sections.map((section) => (
-                      <Stack className="items-start">
-                        <div className="sticky bg-white top-15 md:top-3 md:z-100 py-2 w-full h-full">
-                          <Badge className="bg-[#EBF3FF]">
-                            {section.badge}
-                          </Badge>
-                        </div>
-
-                        <Stack gap="sm">
-                          <h2 className="md:max-w-full!">{section.title}</h2>{" "}
-                          {/* TODO: Style titolo blog section diverso da titolo home section (w-full in blog) */}
-                          <p>{section.description}</p>
-                        </Stack>
-
-                        <Stack gap="xs" className="items-start">
-                          <h3 className="text-3xl font-bold">
-                            Obiettivi misurabili
-                          </h3>
-                          <Badge type="list" size="sm">
-                            Creazione sessione in meno di 20 secondi (utente non
-                            loggato incluso)
-                          </Badge>
-                        </Stack>
-
-                        <Stack gap="xs">
-                          <h3 className="text-3xl font-bold">
-                            Obiettivi misurabili
-                          </h3>
-                          <p>{section.description}</p>
-                        </Stack>
-                      </Stack>
-                    ))}
-                  </Stack>
-                ) : null}
-              </Stack>
             </div>
 
             {/* TABLE OF CONTENT */}
@@ -104,17 +72,21 @@ function RenderBlocks({ blocks }: { blocks: ContentBlock[] }) {
         switch (b.type) {
           case "heading":
             return b.level === 2 ? (
-              <h3 className="text-red-500 mb-(--space-xs)" key={i} id={b.id}>
+              <h3
+                className="text-2xl font-bold mb-(--space-xs)"
+                key={i}
+                id={b.id}
+              >
                 {b.text}
               </h3>
             ) : (
-              <h2 className="text-blue-500" key={i} id={b.id}>
+              <h2 className="mb-(--space-xs) text-5xl!" key={i} id={b.id}>
                 {b.text}
               </h2>
             );
 
           case "paragraph":
-            return <p>{b.text}</p>;
+            return <p className="mb-(--space-md) text-(--text-secondary)">{b.text}</p>;
         }
       })}
     </>
