@@ -1,6 +1,6 @@
 import type { HeroContent } from "../components/sections/HeroSection";
 
-type ContentBlock = 
+export type ContentBlock = 
   | { type: "image"; src: string; alt?: string; caption?: string }
   | { type: "paragraph"; text: string }
   | { type: "badge"; text: string }
@@ -49,8 +49,23 @@ export const blogPages: BlogPage[] = [
         blocks: [
           { type: "paragraph", text: "1" },
           { type: "image", src: "/path.png", alt: "Cover" },
-          { type: "heading", level: 2, text: "3"},
+          { type: "heading", level: 1, text: "3"},
           { type: "paragraph", text: "2" },
+        ],
+      },
+            {
+        badge: "Terzooo",
+        id: "terzo",
+        blocks: [
+          { type: "paragraph", text: "1" },
+          { type: "image", src: "/path.png", alt: "Cover" },
+          { type: "heading", level: 1, text: "3"},
+          { type: "paragraph", text: "2" },
+          { type: "paragraph", text: "1" },
+          { type: "paragraph", text: "1" },
+          { type: "paragraph", text: "2" },
+          { type: "heading", level: 2, text: "2"},
+          { type: "heading", level: 1, text: "3"},
         ],
       },
     ],
