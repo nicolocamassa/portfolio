@@ -86,7 +86,16 @@ function RenderBlocks({ blocks }: { blocks: ContentBlock[] }) {
             );
 
           case "paragraph":
-            return <p className="mb-(--space-md) text-(--text-secondary)">{b.text}</p>;
+            return <p className="mb-(--space-lg) text-(--text-secondary)">{b.text}</p>;
+
+          case "image":
+            return <figure className="mb-(--space-md)">
+                      <img className="rounded rounded-md" src={b.src} alt={b.alt} />
+                      <figcaption className="text-sm text-(--text-secondary) mt-2">{b.caption}</figcaption>
+                   </figure>
+
+          case "list":
+            return <ul></ul>
         }
       })}
     </>

@@ -46,7 +46,7 @@ export const blogPages: BlogPage[] = [
           },
           {
             type: "image",
-            src: "/images/case-studies/aurora/overview.png",
+            src: "/images/testa.png",
             alt: "Overview della home di Aurora Habits",
             caption: "Home: focus su oggi. Una sola azione principale e progress chiaro.",
           },
