@@ -6,59 +6,67 @@ import Callout from "@/app/components/ui/Callout";
 import CodeSnippet from "@/app/components/ui/CodeSnippet";
 import ReadingInfoBanner from "@/app/components/ui/ReadingInfoBanner";
 import TocClient from "@/app/components/ui/TocClient";
-import { blogPages } from "@/app/content/blog-pages";
-import type { ContentBlock } from "@/app/content/blog-pages";
+import { type ContentBlock } from "@/app/content/blogPages";
 import Markdown from 'react-markdown';
+import dynamic from "next/dynamic";
+import CodeBlock from "@/app/components/ui/CodeBlock.client";
 
+type BlogSection = {
+  id: string;
+  badge?: string;
+  blocks: ContentBlock[];
+};
 
-export default async function ProjectPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
+type BlogContent = {
+  slug: string;
+  hero: any;
+  sections?: BlogSection[];
+};
+
+export default async function ProjectPage({ params }: { params: { slug: string } }) {
   const { slug } = await params;
-  /* TODO: Scollegare il content dallo slug in modo da gestire le pagine di dettaglio in file separati */
-  const index = blogPages.findIndex((p) => p.slug === slug);
+  let pageData = (await import(`@/app/content/blog/${slug}`)) as { blogContent: BlogContent };
+
+  try {
+    pageData = await import(`@/app/content/blog/${slug}`);
+  } catch {
+    return <div>Articolo non trovato</div>;
+  }
+  
+  const { blogContent } = pageData;
 
   const sectionsForToc =
-    blogPages[index].sections?.map((s) => ({
+    blogContent.sections?.map((s) => ({
       id: s.id,
       label: s.badge ?? s.id,
     })) ?? [];
 
   return (
     <>
-      <HeroSection content={blogPages[index].hero}></HeroSection>
-      
+      <HeroSection content={blogContent.hero} />
       <Container>
-        <ReadingInfoBanner></ReadingInfoBanner>
-        <Callout type="danger" icon="danger"> Questa sezione di blogging è ancora in fase di sviluppo. Alcuni testi potrebbero essere incompleti, non aggiornati o contenere imprecisioni. Se noti qualcosa di strano, consideralo “work in progress”.</Callout>
+        <ReadingInfoBanner content={blogContent.info} />
+        <Callout type="danger" icon="danger">
+          Questa sezione di blogging è ancora in fase di sviluppo...
+        </Callout>
         <Section>
           <div className="flex flex-col gap-10 xl:flex-row lg:gap-(--space-blog) relative">
             <div className="w-full min-w-0 order-2 xl:order-1">
-              {blogPages[index].sections?.map((s) => (
+              {blogContent.sections?.map((s) => (
                 <section
                   id={s.id}
                   key={s.id}
                   className="mb-(--section-sm) -mt-[100px] pt-[80px] flex flex-col gap-2 lg:grid lg:grid-cols-[140px_minmax(0,1fr)] lg:gap-(--space-blog)"
                 >
-                  <div
-                    className="
-                    text-left mb-2 
-                    lg:text-right lg:mb-0 lg:pt-2 lg:sticky lg:top-24 lg:self-start
-                  "
-                  >
+                  <div className="text-left mb-2 lg:text-right lg:mb-0 lg:pt-2 lg:sticky lg:top-24 lg:self-start">
                     {s.badge ? <Badge size="md">{s.badge}</Badge> : null}
                   </div>
-
-                  {/* COLONNA CONTENUTO */}
                   <div className="max-w-full border-b border-b-gray-100 pb-(--space-sm) lg:pb-(--space-md)">
                     <RenderBlocks blocks={s.blocks} />
                   </div>
                 </section>
               ))}
             </div>
-
             <div className="order-1 xl:order-2 w-64 shrink-0">
               <div className="sticky top-24">
                 <TocClient sections={sectionsForToc} />
@@ -117,10 +125,8 @@ function RenderBlocks({ blocks }: { blocks: ContentBlock[] }) {
               <p
                 key={i}
                 className="mt-(--space-xs) text-(--text-secondary) leading-relaxed [&_code]:text-red-600"
-              > <Markdown>
+              > 
                 {b.text}
-              </Markdown>
-                
               </p>
             );
 
@@ -148,7 +154,7 @@ function RenderBlocks({ blocks }: { blocks: ContentBlock[] }) {
                   className="list-disc pl-8 mt-(--space-md) space-y-3 text-(--text-secondary)"
                 >
                   {b.items.map((item, idx) => (
-                    <li key={idx}><Markdown>{item}</Markdown></li>
+                    <li key={idx}>{item}</li>
                   ))}
                 </ul>
               );
@@ -161,7 +167,7 @@ function RenderBlocks({ blocks }: { blocks: ContentBlock[] }) {
                   className="list-decimal pl-12 mt-(--space-md) space-y-3 text-(--text-secondary)"
                 >
                   {b.items.map((item, idx) => (
-                    <li key={idx}><Markdown>{item}</Markdown></li>
+                    <li key={idx}>{item}</li>
                   ))}
                 </ol>
               );
@@ -176,7 +182,7 @@ function RenderBlocks({ blocks }: { blocks: ContentBlock[] }) {
                     size="listBase"
                     className="max-w-full truncate text-(--text-secondary)"
                   >
-                    <Markdown>{item}</Markdown>
+                    {item}
                   </Badge>
                 ))}
               </div>
@@ -184,15 +190,11 @@ function RenderBlocks({ blocks }: { blocks: ContentBlock[] }) {
           }
 
           case "code": 
-            return(
-              <div className="mt-(--space-sm)">
-                <CodeSnippet text={b.text} language={b.language} />
-              </div>
-            )
+            return <CodeBlock key={i} text={b.text} language={b.language} />;
 
           case "callout": {
               return (
-                <Callout icon={b.variant} type={b.variant} title={b.title}><Markdown>{ b.text }</Markdown></Callout>
+                <Callout key={b.title} icon={b.variant} type={b.variant} title={b.title}>{ b.text }</Callout>
               )
             
           }

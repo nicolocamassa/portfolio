@@ -45,7 +45,6 @@ export default function ProjectCard() {
                   </Button>
               ))}
 
-
             </Stack>
           </Stack>
         </Stack>

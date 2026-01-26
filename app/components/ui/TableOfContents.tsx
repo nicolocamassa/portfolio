@@ -1,4 +1,4 @@
-import { blogPages } from "@/app/content/blog-pages";
+import { blogPages } from "@/app/content/blogPages";
 import NavItem from "./NavItem";
 
 type TocProps = React.PropsWithChildren<{
