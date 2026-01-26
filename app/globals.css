@@ -39,6 +39,12 @@
   --brand-hover: #94c2ff;
   --brand-soft: rgba(119, 178, 255, 0.15);
 
+  /* *BADGES */
+  --default-badge: var(--brand);
+  --draft-badge: rgb(38, 50, 63);
+  --progress-badge: #faa536;
+  --completed-badge: #22c55e;
+
   /* *PULSANTI */
   --btn-primary-bg: var(--foreground);
   --btn-primary-text: var(--text-inverse);

@@ -48,7 +48,7 @@ const {
       <div className="text-center flex flex-col gap-1">
         <h5 className="text-md text-(--text-secondary)">Stato</h5>
         <span className="text-2xl">
-          <Badge color={status === "completed" ? "completed" : "draft"}>
+          <Badge color={status === "completed" ? "completed" : "progress"}>
             {status}
           </Badge>
         </span>

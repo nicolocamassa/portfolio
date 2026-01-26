@@ -8,7 +8,7 @@ export const blogContent: BlogPage = {
     time: "",
     tech: [ "nextjs2", "react", "tailwindcss"],
     date: "23.9.2092",
-    status: "completed"
+    status: "progress"
   },
   hero: {
     title: "Come funziona JavaScript: Sotto il cofano del web",
