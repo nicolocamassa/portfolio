@@ -21,7 +21,7 @@ export default function HeroSection({ content }: { content: HeroContent }) {
 
   return (
     <Section>
-      <Container>
+      <Container >
         <Stack gap="sm" className="items-center text-center">
           <Badge size={badge.size} type={badge.type}>
             { badge.children }
@@ -65,7 +65,7 @@ export default function HeroSection({ content }: { content: HeroContent }) {
       </Container>
 
       <div
-        className="relative mt-20 sm:mt-24 lg:mt-35 w-full bg-cover bg-center bg-amber-400 pb-2"
+        className="relative mt-20 sm:mt-24 lg:mt-35 w-full bg-cover bg-center pb-2"
         style={{ backgroundImage: "url('/images/bg.png')" }}
       >
         <Container className="px-8 sm:px-6">

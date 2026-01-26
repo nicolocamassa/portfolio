@@ -1,7 +1,7 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
 const badge = tv({
-  base: "inline-flex flex-none items-center justify-center rounded-full",
+  base: "inline-flex flex-none items-center justify-center rounded-full text-wrap",
   variants: {
     type: {
       normal: "bg-[var(--text-highlight-15)] text-[var(--text-highlight)]",
@@ -14,11 +14,11 @@ const badge = tv({
       md: "text-xs md:text-sm px-5 py-2",
       lg: "text-sm px-5.5 py-2.5",
       xl: "text-sm px-6 py-3",
+      listBase: "text-sm px-5 py-2"
     },
   },
   compoundVariants: [
     { type: "svg", class: "rounded-2xl" },
-
   ],
   defaultVariants: {
     type: "normal",

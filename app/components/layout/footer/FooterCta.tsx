@@ -9,7 +9,6 @@ export default function FooterCTA() {
       <Container>
         {/* Gap icona top */}
         <Stack gap="lg" className="mx-auto text-center items-center justify-center">
-          <Signature className="bg-white text-(--text-primary) w-10 h-10 p-2 rounded-xl" />
 
           {/* Blocco testo (titolo + paragrafo) */}
           <Stack gap="sm" className="items-center">
@@ -25,11 +24,10 @@ export default function FooterCTA() {
             </p>
           </Stack>
 
-          {/* CTA */}
-          {/* <Button color="whiteCta">
+          <Button href="mailto:camassanicolo03@gmail.com" color="whiteCta">
             Contattami
             <SendHorizontal size={18} />
-          </Button> */}
+          </Button> 
         </Stack>
       </Container>
     </div>

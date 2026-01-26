@@ -1,5 +1,7 @@
 import { LogoText } from "../ui/Logo";
 import Button from "../ui/Buttons";
+import NavItem from "../ui/NavItem";
+import { Download } from "lucide-react";
 
 export default function Header() {
   return (
@@ -15,19 +17,18 @@ export default function Header() {
           <LogoText />
         </div>
 
-        <nav className="text-xs md:text-sm flex items-center gap-2">
-          <Button
-            href="#"
-            color="textOnly"
-            size="sm"
-            className="hidden md:block"
-          >
-            Contattami
-          </Button>
+        <nav>
+          <ul className="text-xs md:text-sm flex items-center justify-center gap-xs">
+            <NavItem href="mailto:camassanicolo03@gmail.com" className="hidden md:block">Contattami</NavItem>
 
-          <Button href="#test" color="black" size="sm">
-            Scarica CV
-          </Button>
+            <li>
+              <Button href="#test" color="black" size="xs" className="gap-2">
+                <Download size={17}></Download>Scarica CV
+              </Button>
+            </li>
+          </ul>
+
+          
         </nav>
       </div>
     </header>

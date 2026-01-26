@@ -1,3 +1,4 @@
+import { text } from "stream/consumers";
 import type { HeroContent } from "../components/sections/HeroSection";
 
 export type ContentBlock = 
@@ -5,8 +6,10 @@ export type ContentBlock =
   | { type: "paragraph"; text: string }
   /* TODO: SE IL TESTO DEI BADGE È TROPPO LUNGO DISALLINEA LA SEZIONE */
   | { type: "badge"; text: string }
-  | { type: "heading"; level: 1 | 2; text: string; id?: string }
-  | { type: "list"; items: string[] }
+  | { type: "heading"; level: 1 | 2 | 3; text: string; id?: string }
+  | { type: "list"; listType: "badge" | "bullet" | "numbered"; items: string[] }
+  | { type: "code"; text: string; language: string }
+  | { type: "callout"; variant: "info" | "warning" | "danger" | "tip"; title?: string; text: string }
 
 type Section = {
   badge?: string;
@@ -20,423 +23,341 @@ export type BlogPage = {
   sections?: Section[];
 };
 
-export const blogPages: BlogPage[] = [
-  {
-    slug: "demo-app2",
-    hero: {
-      badge: { children: "Case Study" },
-      title: "Testing app title",
-      description:
-        "Case study completo: dall’idea alla UI finale. Obiettivo: aiutare le persone a costruire abitudini con micro-obiettivi, feedback chiari e un’esperienza mobile-first semplice ma curata.",
-      ctas: [
-        { label: "GitHub", href: "https://github.com/example/aurora-habits" },
-        { label: "Live Demo", href: "https://example.com/aurora-habits" },
-      ],
-    },
-    sections: [
-      {
-        badge: "Contesto",
-        id: "contesto",
-        blocks: [
-          { type: "heading", level: 1, text: "Il problema", id: "il-problema" },
-          {
-            type: "paragraph",
-            text:
-              "Le app di habit tracking spesso falliscono per due motivi: richiedono troppa disciplina fin dal primo giorno e mostrano troppi numeri prima che l’utente abbia capito cosa fare. Aurora Habits nasce come esercizio di prodotto: progettare un’esperienza che renda semplice iniziare e gratificante continuare.\n\n"
-              + "L’idea guida è ridurre la frizione iniziale: pochi step, scelte guidate, e un primo risultato visibile in meno di un minuto. Poi, man mano che l’utente prende confidenza, l’app sblocca funzionalità più avanzate (statistiche, insight, routine).",
-          },
-          {
-            type: "image",
-            src: "/images/testa.png",
-            alt: "Overview della home di Aurora Habits",
-            caption: "Home: focus su oggi. Una sola azione principale e progress chiaro.",
-          },
-          { type: "heading", level: 2, text: "Obiettivi di progetto", id: "obiettivi" },
-          { type: "paragraph", text: "lorem test lorem test lorem test lorem test lorem test lorem test lorem test lorem test lorem test lorem test" }, 
-          {
-            type: "list",
-            items: [
-              "Onboarding completabile in < 60 secondi",
-              "Creazione abitudine guidata (nome, frequenza, reminder) senza form lunghi",
-              "Feedback immediato dopo ogni check-in (micro-animazione + messaggio)",
-              "Progress chiaro: “oggi / questa settimana” prima delle statistiche avanzate",
-            ],
-          },
-        ],
-      },
-
-      {
-        badge: "Ricerca",
-        id: "ricerca",
-        blocks: [
-          { type: "heading", level: 1, text: "Ricerca e insight", id: "ricerca-insight" },
-          {
-            type: "paragraph",
-            text:
-              "Per un progetto fittizio ho simulato una ricerca leggera: analisi comparativa di app note (habit tracker e task manager) e una lista di “pain point” ricorrenti.\n\n"
-              + "Tre pattern emergono quasi sempre:\n"
-              + "1) Troppe scelte all’inizio (template, categorie, obiettivi, metriche).\n"
-              + "2) Progress poco interpretabile (grafici complessi senza contesto).\n"
-              + "3) Reminder invadenti o poco personalizzabili.\n\n"
-              + "Da qui la decisione: Aurora Habits deve guidare l’utente con scelte minime e lasciare personalizzazione in un secondo momento.",
-          },
-          {
-            type: "image",
-            src: "/images/case-studies/aurora/competitive.png",
-            alt: "Analisi comparativa di app simili",
-            caption: "Benchmark: ho estratto pattern UI e punti deboli ricorrenti.",
-          },
-          { type: "heading", level: 2, text: "Personas (semplificate)", id: "personas" },
-          {
-            type: "list",
-            items: [
-              "Giulia, 24: vuole iniziare a leggere 10 minuti al giorno, ma perde motivazione se l’app è troppo “seria”.",
-              "Marco, 32: vuole una routine palestra semplice, odia i grafici complicati e vuole solo sapere se sta andando bene.",
-              "Sara, 28: ama personalizzare, ma solo dopo aver capito il flusso base.",
-            ],
-          },
-        ],
-      },
-
-      {
-        badge: "UX",
-        id: "ux",
-        blocks: [
-          { type: "heading", level: 1, text: "User flow e struttura dell’app", id: "user-flow" },
-          {
-            type: "paragraph",
-            text:
-              "Ho progettato il flusso principale attorno a una domanda: “cosa deve fare l’utente oggi?”. La home mostra un elenco ridotto di abitudini con un’azione chiara: check-in.\n\n"
-              + "L’onboarding crea 1–2 abitudini con un wizard (3 step). Non chiede nulla di avanzato. Le statistiche vengono introdotte dopo 7 giorni, quando hanno un minimo di senso.",
-          },
-          {
-            type: "image",
-            src: "/images/case-studies/aurora/flow.png",
-            alt: "Diagramma user flow di Aurora Habits",
-            caption: "Flow principale: onboarding → home → check-in → feedback → progress settimanale.",
-          },
-          { type: "heading", level: 2, text: "Scelte UX chiave", id: "scelte-ux" },
-          {
-            type: "list",
-            items: [
-              "Una CTA primaria per schermata (riduce indecisione)",
-              "Check-in in un tap + undo breve (evita errori frustranti)",
-              "Reminder configurabili con tono (gentile vs diretto) e fascia oraria",
-              "Progress ‘leggibile’: streak + obiettivo settimanale, niente grafici subito",
-            ],
-          },
-        ],
-      },
-
-      {
-        badge: "UI",
-        id: "ui",
-        blocks: [
-          { type: "heading", level: 1, text: "Design & componenti", id: "design-componenti" },
-          {
-            type: "paragraph",
-            text:
-              "Per la UI ho scelto uno stile soft e luminoso, con gerarchie tipografiche nette e componenti ripetibili. L’idea è far sentire l’app “leggera”: spazi generosi, card con ombra delicata, e micro-feedback.\n\n"
-              + "Ho definito un set piccolo di componenti: Button, Card, Badge, ProgressRing, HabitRow e Modal. Tutto il resto è composizione di questi blocchi.",
-          },
-          {
-            type: "image",
-            src: "/images/case-studies/aurora/ui-kit.png",
-            alt: "UI kit di Aurora Habits",
-            caption: "UI Kit essenziale: pochi componenti, molte combinazioni possibili.",
-          },
-          { type: "heading", level: 2, text: "Stati e accessibilità", id: "stati-accessibilita" },
-          {
-            type: "paragraph",
-            text:
-              "Ogni elemento interattivo ha stati hover/focus/disabled coerenti. Il focus è sempre visibile (ring) e i contrasti sono pensati per non dipendere solo dal colore.\n\n"
-              + "Le animazioni sono brevi (200–300ms) e non bloccanti: il feedback deve dare soddisfazione senza rallentare l’azione principale.",
-          },
-        ],
-      },
-
-      {
-        badge: "Implementazione",
-        id: "implementazione",
-        blocks: [
-          { type: "heading", level: 1, text: "Struttura tecnica (demo)", id: "struttura-tecnica" },
-          {
-            type: "paragraph",
-            text:
-              "Essendo un progetto demo, l’obiettivo non è la complessità backend ma una struttura front-end pulita. L’app è pensata per Next.js + TypeScript, con persistenza iniziale via localStorage e possibilità di evolvere su API/DB.\n\n"
-              + "La cosa più importante è mantenere una separazione chiara:\n"
-              + "• data model (habits, check-ins)\n"
-              + "• UI (componenti presentazionali)\n"
-              + "• logica (hooks/servizi)\n\n"
-              + "Così aggiungere nuove feature (es. categorie o routine) non rompe il resto.",
-          },
-          {
-            type: "image",
-            src: "/images/case-studies/aurora/architecture.png",
-            alt: "Schema architettura front-end",
-            caption: "Architettura demo: servizi + hooks + UI riutilizzabile.",
-          },
-          { type: "heading", level: 2, text: "Feature implementate (MVP)", id: "mvp" },
-          {
-            type: "list",
-            items: [
-              "Creazione abitudine con wizard",
-              "Check-in giornaliero con undo",
-              "Streak e obiettivo settimanale",
-              "Reminder base e preferenze",
-              "Vista dettagli con storico",
-            ],
-          },
-        ],
-      },
-
-      {
-        badge: "Risultati",
-        id: "risultati",
-        blocks: [
-          { type: "heading", level: 1, text: "Risultato finale e prossimi step", id: "risultato-finale" },
-          {
-            type: "paragraph",
-            text:
-              "Aurora Habits, come case study, dimostra che puoi ottenere una UX piacevole con poche scelte ben fatte. Il cuore è un flusso lineare: creare → fare check-in → vedere progress → continuare.\n\n"
-              + "I prossimi step più interessanti sarebbero:\n"
-              + "• insight “gentili” (es. giorni migliori)\n"
-              + "• template di routine (mattina/sera)\n"
-              + "• sync cloud e multi-device\n"
-              + "• modalità ‘low pressure’ (saltare un giorno senza perdere tutto).",
-          },
-          {
-            type: "image",
-            src: "/images/case-studies/aurora/final.png",
-            alt: "Schermate finali di Aurora Habits",
-            caption: "Output finale: un’esperienza mobile-first pulita, guidata e coerente.",
-          },
-        ],
-      },
+export const blogPages: BlogPage[] = [{
+  slug: "demo-app",
+  hero: {
+    badge: { children: "JavaScript Architecture" },
+    title: "Closures e Gestione dello Stato",
+    description:
+      "Le Closures non sono solo una curiosità di JavaScript; sono il fondamento per architetture complesse, incapsulamento dello stato e Dependency Injection. Scopri come costruire sistemi scalabili senza librerie esterne.",
+    ctas: [
+      { label: "Design Patterns JS", href: "https://www.addyosmani.com/resources/essentialjsdesignpatterns/book/" },
+      { label: "Articolo approfondito", href: "#" },
     ],
   },
-
-
-
-
-
-
-
-  {
-    slug: "demo-app",
-    hero: {
-      badge: { children: "Case Study" },
-      title: "Pulse Budget",
-      description:
-        "Un’app fittizia che aiuta a gestire spese e obiettivi con regole semplici: pochi numeri, feedback chiari e un flusso quotidiano leggero. Dall’idea alla UI e alla struttura tecnica (demo).",
-      ctas: [
-        { label: "GitHub", href: "https://github.com/example/pulse-budget" },
-        { label: "Live Demo", href: "https://example.com/pulse-budget" },
+  sections: [
+    {
+      badge: "Introduzione",
+      id: "intro-robust-systems",
+      blocks: [
+        {
+          type: "heading",
+          level: 1,
+          text: "Oltre il Contatore: Costruire Architetture Robuste",
+          id: "intro-architecture",
+        },
+        {
+          type: "paragraph",
+          text:
+            "Nelle lezioni precedenti, abbiamo visto come le closures permettano a una funzione di 'ricordare' il suo ambiente lessicale. Questo è il primo passo. Oggi, esploreremo come questo principio apparentemente semplice sia la chiave per tecniche avanzate come l'incapsulamento dello stato, il **Module Pattern** e la **Dependency Injection**, fondamentali per scrivere codice JavaScript pulito, manutenibile e scalabile.",
+        },
+        {
+          type: "image",
+          src: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2070&auto=format&fit=crop",
+          alt: "Diagramma di una complessa architettura software",
+          caption: "La complessità del software moderno richiede pattern di design robusti.",
+        },
+        {
+          type: "callout",
+          variant: "info",
+          title: "Perché è importante?",
+          text:
+            "Senza un'adeguata gestione dello stato e delle dipendenze, le applicazioni JavaScript diventano rapidamente 'spaghetti code', difficili da testare, debuggare e far evolvere. Le closures offrono un meccanismo nativo e potente per superare queste sfide.",
+        },
       ],
     },
+    {
+      badge: "Fondamenta",
+      id: "review-closures",
+      blocks: [
+        {
+          type: "heading",
+          level: 2,
+          text: "Breve Ripasso: Il Potere Ricordante delle Closures",
+          id: "closure-recap",
+        },
+        {
+          type: "paragraph",
+          text:
+            "Ricordiamo il concetto fondamentale: una closure si verifica quando una funzione interna mantiene un riferimento alle variabili del suo scope esterno, anche dopo che la funzione esterna ha terminato la sua esecuzione. Questo crea un 'sacchetto' di variabili private accessibili solo dalla funzione interna.",
+        },
+        {
+          type: "code",
+          language: "javascript",
+          text: `function outerFunction(outerVar) {
+  let privateCounter = 0; // Questa è la variabile che verrà 'chiusa'
 
-    sections: [
-      {
-        badge: "Contesto",
-        id: "contesto",
-        blocks: [
-          {
-            type: "heading",
-            level: 1,
-            text: "Il problema",
-            id: "il-problema",
-          },
-          {
-            type: "paragraph",
-            text:
-              "Molte app di budgeting falliscono perché chiedono troppo subito: categorie, regole, grafici e importazioni bancarie prima ancora che l’utente capisca “cosa devo fare oggi?”.\n\n"
-              + "Pulse Budget nasce come esercizio di prodotto: trasformare il budgeting in una routine micro, quotidiana e sostenibile. L’obiettivo non è “fare contabilità”, ma creare un ritmo: registrare una spesa in 5 secondi, vedere un feedback comprensibile, e sapere se oggi sei in linea.",
-          },
-          {
-            type: "image",
-            src: "https://cdn-proxy.slickplan.com/wp-content/uploads/2025/01/Covers-900x300.jpg",
-            alt: "Cover placeholder per case study",
-            caption: "Hero visual: estetica pulita e focus sul flusso (placeholder).",
-          },
-          {
-            type: "heading",
-            level: 2,
-            text: "Obiettivi di progetto",
-            id: "obiettivi",
-          },
-          {
-            type: "paragraph",
-            text:
-              "Ho definito obiettivi misurabili per evitare feature creep e mantenere la UX minimal. Il principio: prima la chiarezza, poi la profondità.",
-          },
-          {
-            type: "list",
-            items: [
-              "Prima spesa registrata in < 30 secondi dall’apertura (cold start incluso)",
-              "Setup iniziale in 60–90 secondi (solo entrate + obiettivo mensile)",
-              "Progress giornaliero leggibile: “Oggi: ok / attenzione” senza grafici",
-              "Ridurre l’ansia: linguaggio non punitivo, niente rosso “aggressivo”",
-            ],
-          },
-        ],
-      },
+  function innerFunction(innerVar) {
+    privateCounter++; // innerFunction ha accesso a privateCounter
+    console.log(\`Outer: \${outerVar}, Inner: \${innerVar}, Counter: \${privateCounter}\`);
+  }
+  return innerFunction;
+}
 
-      {
-        badge: "Ricerca",
-        id: "ricerca",
-        blocks: [
-          { type: "heading", level: 1, text: "Ricerca e insight", id: "ricerca-insight" },
-          {
-            type: "paragraph",
-            text:
-              "Per il progetto fittizio ho simulato una ricerca leggera con due attività:\n"
-              + "• analisi comparativa di app note (budgeting + expense tracker)\n"
-              + "• revisione di recensioni/feedback tipici (pattern ricorrenti)\n\n"
-              + "Tre frizioni si ripetono spesso:\n"
-              + "1) Setup iniziale troppo lungo (categorie, conti, automazioni).\n"
-              + "2) Grafici e dashboard prima della “routine”.\n"
-              + "3) Linguaggio colpevolizzante (“hai sforato!”) invece di coaching.\n\n"
-              + "Da qui la scelta: Pulse Budget parte dal gesto minimo (aggiungi spesa) e introduce strumenti più avanzati solo quando l’utente ha già un’abitudine.",
-          },
-          {
-            type: "image",
-            src: "https://cdn-proxy.slickplan.com/wp-content/uploads/2025/01/wireflow-example.jpg",
-            alt: "Esempio di wireflow (benchmark/analisi)",
-            caption: "Riferimento visivo: esempi di flussi e schermate per ragionare su frizioni e step.",
-          },
-          { type: "heading", level: 2, text: "Persona (semplificate)", id: "personas" },
-          {
-            type: "list",
-            items: [
-              "Elena, 27: vuole capire “se oggi posso permettermelo”, non vuole grafici complessi.",
-              "Davide, 35: ha entrate stabili, vuole un sistema rapido per obiettivi e spese ricorrenti.",
-              "Marta, 30: prova molte app ma molla se l’onboarding è lungo o se si sente giudicata.",
-            ],
-          },
-        ],
-      },
+const myClosure = outerFunction("Hello");
+myClosure("World"); // Output: Outer: Hello, Inner: World, Counter: 1
+myClosure("JS");    // Output: Outer: Hello, Inner: JS, Counter: 2
+// privateCounter non è accessibile direttamente qui.`
+        },
+        {
+          type: "paragraph",
+          text: "Notate come `privateCounter` venga incrementato ad ogni chiamata di `myClosure`, dimostrando che il suo stato viene mantenuto."
+        }
+      ],
+    },
+    {
+      badge: "Pattern",
+      id: "module-pattern",
+      blocks: [
+        {
+          type: "heading",
+          level: 1,
+          text: "Il Module Pattern: Incapsulamento Reale",
+          id: "module-pattern-heading",
+        },
+        {
+          type: "paragraph",
+          text:
+            "Il Module Pattern è uno dei pattern di design più potenti in JavaScript, e si basa interamente sulle closures. Il suo scopo è incapsulare 'privatamente' un pezzo di codice, esponendo solo un'interfaccia pubblica. Questo previene la contaminazione dello scope globale e facilita la gestione dei dettagli implementativi.",
+        },
+        {
+          type: "image",
+          src: "https://i.pinimg.com/736x/32/31/ed/3231ed24b6f53497f9dac606676eb826.jpg",
+          alt: "Ingranaggi interconnessi che simboleggiano un sistema modulare",
+          caption: "Ogni modulo è un ingranaggio isolato, ma collaborante.",
+        },
+        {
+          type: "callout",
+          variant: "tip",
+          title: "La Magia dell'IIFE (Immediately Invoked Function Expression)",
+          text:
+            "Spesso il Module Pattern è implementato con una IIFE, una funzione che viene definita ed eseguita immediatamente. Questo crea uno scope privato per il modulo, impedendo alle variabili interne di fuoriuscire.",
+        },
+        {
+          type: "heading",
+          level: 2,
+          text: "Esempio: Un Gestore di Utenti",
+          id: "user-manager-example",
+        },
+        {
+          type: "paragraph",
+          text:
+            "Immaginiamo di voler gestire una lista di utenti. Con il Module Pattern, possiamo incapsulare la lista `users` e i metodi per manipolarla, esponendo solo ciò che è necessario.",
+        },
+        {
+          type: "code",
+          language: "javascript",
+          text: `const UserManager = (function() {
+  let users = []; // Stato privato, accessibile solo qui dentro
 
-      {
-        badge: "UX",
-        id: "ux",
-        blocks: [
-          { type: "heading", level: 1, text: "User flow principale", id: "user-flow" },
-          {
-            type: "paragraph",
-            text:
-              "Il flusso è progettato intorno a un’unica domanda: “Cosa devo fare adesso?”.\n\n"
-              + "La home mostra:\n"
-              + "• un riepilogo giornaliero (stato: ok/attenzione)\n"
-              + "• un’azione primaria: aggiungi spesa\n"
-              + "• un micro-progress verso l’obiettivo (senza grafici complessi)\n\n"
-              + "Il setup iniziale chiede solo due informazioni: entrata mensile e obiettivo (risparmio o limite). Le categorie sono suggerite ma opzionali: puoi aggiungerle dopo.",
-          },
-          {
-            type: "image",
-            src: "https://cdn-proxy.slickplan.com/wp-content/uploads/2025/01/travel-app-wireflow.jpg",
-            alt: "Wireflow (placeholder) per visualizzare il flusso",
-            caption: "Wireflow: esempio di mappa schermate/connessioni per ragionare su percorsi e scorciatoie.",
-          },
-          { type: "heading", level: 2, text: "Scelte UX chiave", id: "scelte-ux" },
-          {
-            type: "list",
-            items: [
-              "Una CTA primaria per schermata (riduce decision fatigue)",
-              "Inserimento spesa in un tap (importo → categoria opzionale → salva)",
-              "Undo breve dopo salvataggio (evita ansia da errore)",
-              "Progress “umano”: oggi/questa settimana prima dei trend mensili",
-            ],
-          },
-        ],
-      },
+  function _validateUser(user) { // Funzione privata
+    return user && typeof user.name === 'string';
+  }
 
-      {
-        badge: "UI",
-        id: "ui",
-        blocks: [
-          { type: "heading", level: 1, text: "Design system leggero", id: "design-system" },
-          {
-            type: "paragraph",
-            text:
-              "La UI deve comunicare calma e controllo. Ho impostato:\n"
-              + "• gerarchie tipografiche nette (titoli forti, testo secondario soft)\n"
-              + "• spazi generosi e componenti ripetibili\n"
-              + "• feedback micro (toast, badge, micro-animazioni) non invadenti\n\n"
-              + "I componenti chiave: Button, Card, Badge, AmountInput, CategoryPill, ProgressRing e BottomSheet per l’inserimento rapido.",
-          },
-          {
-            type: "image",
-            src: "https://www.creativefabrica.com/wp-content/uploads/2022/11/03/Habit-Tracker-Mobile-App-UI-Kit-Graphics-44540823-1-1-312x208.jpg",
-            alt: "UI kit (placeholder) con schermate mobile",
-            caption: "Riferimento UI kit: utile per ragionare su pattern di card, progress e composizione mobile.",
-          },
-          { type: "heading", level: 2, text: "Stati e accessibilità", id: "accessibilita" },
-          {
-            type: "paragraph",
-            text:
-              "Gli stati interattivi sono coerenti (hover/focus/disabled). Il focus è sempre visibile e i messaggi usano un tono neutro: “sei oltre la soglia di oggi” invece di “hai fallito”.\n\n"
-              + "La palette evita contrasti “punitivi”: lo stato attenzione è espresso con testo + icona + badge, non solo con colore. Le animazioni sono brevi (200–300ms) e non bloccanti.",
-          },
-        ],
-      },
+  return { // Interfaccia pubblica
+    addUser: function(user) {
+      if (_validateUser(user)) {
+        users.push(user);
+        console.log(\`User \${user.name} added.\`);
+      } else {
+        console.warn("Invalid user object.");
+      }
+    },
+    getUsers: function() {
+      // Ritorniamo una copia per evitare modifiche dirette allo stato interno
+      return [...users]; 
+    },
+    getUserCount: function() {
+      return users.length;
+    }
+  };
+})(); // L'IIFE esegue la funzione e assegna il suo ritorno a UserManager
 
-      {
-        badge: "Test",
-        id: "test",
-        blocks: [
-          { type: "heading", level: 1, text: "Struttura tecnica (demo)", id: "struttura-tecnica" },
-          {
-            type: "paragraph",
-            text:
-              "Essendo un progetto demo, l’obiettivo è una struttura front-end pulita e scalabile:\n\n"
-              + "• data model: transactions, budgets, goals\n"
-              + "• UI: componenti presentazionali (Card, Badge, Inputs)\n"
-              + "• logica: hooks (useTransactions, useBudget), servizi (storage)\n\n"
-              + "Persistenza iniziale via localStorage, con la possibilità di evolvere su API/DB senza riscrivere la UI.",
-          },
-          {
-            type: "image",
-            src: "https://www.clickittech.com/wp-content/uploads/2024/04/Web-Application-Architecture-Layers-986x1024.png",
-            alt: "Diagramma architettura (placeholder)",
-            caption: "Schema di architettura a livelli: utile come riferimento concettuale per separazione responsabilità.",
-          },
-          { type: "heading", level: 2, text: "Feature MVP", id: "mvp" },
-          {
-            type: "list",
-            items: [
-              "Aggiunta spesa rapida + undo",
-              "Budget giornaliero/settimanale con stato (ok/attenzione)",
-              "Obiettivi (risparmio o limite) con progress semplice",
-              "Categorie opzionali + ricerca recente",
-              "Esportazione dati (demo) e reset controllato",
-            ],
-          },
-        ],
-      },
+UserManager.addUser({ name: "Alice", id: 1 });
+UserManager.addUser({ name: "Bob", id: 2 });
+console.log(UserManager.getUsers());      // [{ name: "Alice", id: 1 }, { name: "Bob", id: 2 }]
+console.log(UserManager.getUserCount());  // 2
+// console.log(UserManager.users); // ❌ ERRORE: users è privato!
+// console.log(UserManager._validateUser()); // ❌ ERRORE: _validateUser è privato!`
+        },
+        {
+          type: "paragraph",
+          text: "Questo esempio dimostra un forte incapsulamento. `users` e `_validateUser` sono completamente isolati dal resto del codice, riducendo la possibilità di errori e rendendo il modulo auto-contenuto."
+        }
+      ],
+    },
+    {
+      badge: "Avanzato",
+      id: "dependency-injection",
+      blocks: [
+        {
+          type: "heading",
+          level: 1,
+          text: "Dependency Injection con Closures",
+          id: "di-with-closures",
+        },
+        {
+          type: "paragraph",
+          text:
+            "Man mano che le applicazioni crescono, i moduli devono interagire. La **Dependency Injection (DI)** è un pattern che permette di 'iniettare' le dipendenze (altri moduli, servizi, configurazioni) in un modulo, invece di farle creare o ricercare al modulo stesso. Questo rende il codice più flessibile, testabile e modulare.",
+        },
+        {
+          type: "image",
+          src: "https://i.pinimg.com/736x/ae/1e/57/ae1e573bff00f84ea320e75f1d1bc9ce.jpg",
+          alt: "Mani che si passano un oggetto, simboleggiando l'iniezione di dipendenze",
+          caption: "Le dipendenze vengono passate, non create internamente.",
+        },
+        {
+          type: "callout",
+          variant: "danger",
+          title: "Il problema del tightly coupled code",
+          text:
+            "Se un modulo crea direttamente le sue dipendenze, è 'strettamente accoppiato' ad esse. Questo rende impossibile testare il modulo in isolamento o sostituire una dipendenza senza modificare il codice interno del modulo.",
+        },
+        {
+          type: "heading",
+          level: 2,
+          text: "Esempio: Un Servizio di Notifiche",
+          id: "notification-service-example",
+        },
+        {
+          type: "paragraph",
+          text:
+            "Immaginiamo un modulo `NotificationService` che deve usare un `Logger` e un `ApiAdapter`. Invece di crearli al suo interno, li iniettiamo come argomenti.",
+        },
+        {
+          type: "code",
+          language: "javascript",
+          text: `// Dipendenza: Logger (un semplice modulo)
+const Logger = (function() {
+  return {
+    log: (message) => console.log(\`[LOG]: \${message}\`),
+    error: (message) => console.error(\`[ERROR]: \${message}\`)
+  };
+})();
 
-      {
-        badge: "Risultati",
-        id: "risultati",
-        blocks: [
-          { type: "heading", level: 1, text: "Risultato finale e next step", id: "risultato-finale" },
-          {
-            type: "paragraph",
-            text:
-              "Pulse Budget dimostra l’idea chiave: prima costruisci la routine, poi aggiungi profondità. Un flusso semplice (aggiungi → feedback → progress) è spesso più efficace di una dashboard perfetta.\n\n"
-              + "Prossimi step interessanti:\n"
-              + "• insight gentili (giorni “costosi”, categorie ricorrenti)\n"
-              + "• regole automatiche leggere (spese ricorrenti, arrotondamenti)\n"
-              + "• sync cloud + multi-device\n"
-              + "• modalità “low pressure” (settimane difficili senza colpa).",
-          },
-          {
-            type: "image",
-            src: "https://cdn-proxy.slickplan.com/wp-content/uploads/2025/01/low-fidelity-wireflow-example.jpg",
-            alt: "Wireflow low-fidelity (placeholder) come output finale",
-            caption: "Output finale (placeholder): rappresentazione semplice del journey e dei punti chiave della UX.",
-          },
-        ],
-      },
-    ],
-  },
+// Dipendenza: ApiAdapter (simulato)
+const ApiAdapter = (function() {
+  return {
+    sendData: (url, data) => {
+      console.log(\`Sending data to \${url}: \${JSON.stringify(data)}\`);
+      return Promise.resolve({ success: true, data });
+    }
+  };
+})();
+
+// Il nostro modulo principale, che accetta dipendenze
+const NotificationService = (function(logger, apiAdapter) { // <- DI qui!
+  return {
+    sendNotification: async function(userId, message) {
+      logger.log(\`Attempting to send notification to user \${userId}\`);
+      try {
+        const response = await apiAdapter.sendData('/api/notifications', { userId, message });
+        logger.log(\`Notification sent successfully to \${userId}: \${JSON.stringify(response)}\`);
+        return response;
+      } catch (error) {
+        logger.error(\`Failed to send notification to \${userId}: \${error.message}\`);
+        throw error;
+      }
+    }
+  };
+})(Logger, ApiAdapter); // <- Iniettiamo le dipendenze qui
+
+// Utilizzo
+NotificationService.sendNotification(101, "Il tuo ordine è in arrivo!");
+// Output:
+// [LOG]: Attempting to send notification to user 101
+// Sending data to /api/notifications: {"userId":101,"message":"Il tuo ordine è in arrivo!"}
+// [LOG]: Notification sent successfully to 101: {"success":true,"data":{"userId":101,"message":"Il tuo ordine è in arrivo!"}}`
+        },
+        {
+          type: "paragraph",
+          text: "In questo esempio, `NotificationService` ottiene le sue dipendenze (`logger`, `apiAdapter`) dall'esterno. Questo significa che possiamo facilmente:",
+        },
+        {
+          type: "list",
+          listType: "bullet",
+          items: [
+            "**Testare:** Durante i test, possiamo passare delle 'mock' o 'stub' di `Logger` e `ApiAdapter` che non fanno chiamate reali o log su console, ma registrano solo se i loro metodi sono stati chiamati.",
+            "**Flessibilità:** Possiamo facilmente cambiare l'implementazione del `Logger` (es. passare da console a un servizio di logging remoto) senza toccare `NotificationService`.",
+            "**Riusabilità:** `NotificationService` è ora più generico e può essere riutilizzato in contesti diversi con diverse implementazioni delle sue dipendenze."
+          ],
+        },
+      ],
+    },
+    {
+      badge: "Considerazioni",
+      id: "advanced-topics",
+      blocks: [
+        {
+          type: "heading",
+          level: 1,
+          text: "Limitazioni e Alternative",
+          id: "limitations",
+        },
+        {
+          type: "paragraph",
+          text:
+            "Sebbene il Module Pattern con closures sia potente, non è l'unica soluzione e non è sempre la migliore per ogni scenario. I moduli ES6 (`import`/`export`) hanno superato alcune delle sue complessità, ma il principio delle closures rimane il cuore del loro funzionamento interno.",
+        },
+        {
+          type: "list",
+          listType: "bullet",
+          items: [
+            "**Complessità:** Per moduli con molte dipendenze, il costruttore del modulo (la funzione esterna) può diventare ingombrante.",
+            "**Lazy Loading:** I moduli caricati tramite IIFE non possono essere caricati 'on demand' in modo nativo come i moduli ES6.",
+            "**Overhead:** Ogni istanza di un modulo creato con IIFE genera un nuovo scope con nuove closures, il che può avere un leggero impatto sulla memoria se si creano centinaia di istanze identiche.",
+          ],
+        },
+        {
+          type: "heading",
+          level: 2,
+          text: "Quando Usarlo Oggi?",
+          id: "when-to-use",
+        },
+        {
+          type: "list",
+          listType: "badge",
+          items: [
+            "**Legacy Code:** Per comprendere e manutenere vecchie codebase.",
+            "**Piccoli Utility Modules:** Per incapsulare piccole utility senza bisogno di un intero sistema di moduli ES6.",
+            "**Principi Fondamentali:** Per consolidare la comprensione di come lo scope e la memoria funzionano in JavaScript, essenziale per frameworks come React.",
+            "**Testabilità:** Il DI via closures è ancora un ottimo pattern per rendere i moduli facilmente testabili in isolamento."
+          ],
+        },
+      ],
+    },
+    {
+      badge: "Conclusione",
+      id: "final-thoughts",
+      blocks: [
+        {
+          type: "heading",
+          level: 1,
+          text: "Le Closures: Il Tuo Strumento Segreto per Architetture Solide",
+          id: "secret-weapon",
+        },
+        {
+          type: "paragraph",
+          text:
+            "Le closures non sono solo una caratteristica sintattica; sono un meccanismo fondamentale che abilita pattern di design avanzati. Comprendendole a fondo, non solo scriverai codice migliore, ma capirai anche le fondamenta di molti framework e librerie che usi ogni giorno.",
+        },
+        {
+          type: "list",
+          listType: "numbered",
+          items: [
+            "Usa le closures per **incapsulare lo stato privato** e prevenire effetti collaterali indesiderati.",
+            "Applica il **Module Pattern** per creare componenti software auto-contenuti e con interfacce chiare.",
+            "Adotta la **Dependency Injection** tramite closures per migliorare la testabilità e la flessibilità del tuo codice.",
+            "Ricorda che la comprensione dei concetti core di JavaScript è sempre più potente della semplice memorizzazione di API di framework."
+          ],
+        },
+        {
+          type: "paragraph",
+          text: "Ora mettiti alla prova: prendi un pezzo di codice che hai scritto di recente e prova a isolarne le dipendenze usando questi pattern. Il tuo codice ti ringrazierà!"
+        }
+      ],
+    },
+  ],
+}
 ];

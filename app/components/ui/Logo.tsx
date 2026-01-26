@@ -19,8 +19,8 @@ export function Logo() {
 
 export function LogoText() {
   return (
-    <a className="cursor-pointer flex items-center justify-center gap-2" href="/">
-      <div className="bg-foreground rounded-xl w-9 h-9 flex items-center justify-center">
+    <a className="cursor-pointer flex items-center justify-center gap-2  hover:[&_div]:shadow-[0px_0px_10px_0px_rgba(0,0,0,0.25)]" href="/">
+      <div className="bg-foreground rounded-xl w-9 h-9 flex items-center justify-center duration-100">
         <Logo></Logo>
       </div>
       <span className="md:text-lg text-md font-semibold font-sans">Portfolio</span>

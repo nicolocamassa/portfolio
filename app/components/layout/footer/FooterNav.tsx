@@ -20,7 +20,6 @@ export default function FooterNav() {
         <nav className="w-full lg:w-2/3" aria-label="Footer Navigation">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-md lg:gap-xs lg:justify-items-end">
             
-            {/* TODO: Separare la navigazione in un altro componente */}
             {/* Colonna 1: Link Utili */}
             <div className="flex flex-col gap-xs">
               <h4 className="font-bold text-(--text-primary) text-md font-sans">

@@ -2,9 +2,14 @@ import Container from "@/app/components/layout/Container";
 import Section from "@/app/components/layout/Section";
 import HeroSection from "@/app/components/sections/HeroSection";
 import Badge from "@/app/components/ui/Badge";
+import Callout from "@/app/components/ui/Callout";
+import CodeSnippet from "@/app/components/ui/CodeSnippet";
+import ReadingInfoBanner from "@/app/components/ui/ReadingInfoBanner";
 import TocClient from "@/app/components/ui/TocClient";
 import { blogPages } from "@/app/content/blog-pages";
 import type { ContentBlock } from "@/app/content/blog-pages";
+import Markdown from 'react-markdown';
+
 
 export default async function ProjectPage({
   params,
@@ -12,9 +17,11 @@ export default async function ProjectPage({
   params: { slug: string };
 }) {
   const { slug } = await params;
+  /* TODO: Scollegare il content dallo slug in modo da gestire le pagine di dettaglio in file separati */
   const index = blogPages.findIndex((p) => p.slug === slug);
 
-  const sectionsForToc = blogPages[index].sections?.map((s) => ({
+  const sectionsForToc =
+    blogPages[index].sections?.map((s) => ({
       id: s.id,
       label: s.badge ?? s.id,
     })) ?? [];
@@ -22,8 +29,10 @@ export default async function ProjectPage({
   return (
     <>
       <HeroSection content={blogPages[index].hero}></HeroSection>
-
+      
       <Container>
+        <ReadingInfoBanner></ReadingInfoBanner>
+        <Callout type="danger" icon="danger"> Questa sezione di blogging è ancora in fase di sviluppo. Alcuni testi potrebbero essere incompleti, non aggiornati o contenere imprecisioni. Se noti qualcosa di strano, consideralo “work in progress”.</Callout>
         <Section>
           <div className="flex flex-col gap-10 xl:flex-row lg:gap-(--space-blog) relative">
             <div className="w-full min-w-0 order-2 xl:order-1">
@@ -31,9 +40,8 @@ export default async function ProjectPage({
                 <section
                   id={s.id}
                   key={s.id}
-                  className="mb-(--section-sm) flex flex-col gap-2 lg:grid lg:grid-cols-[140px_minmax(0,1fr)] lg:gap-(--space-blog)"
+                  className="mb-(--section-sm) -mt-[100px] pt-[80px] flex flex-col gap-2 lg:grid lg:grid-cols-[140px_minmax(0,1fr)] lg:gap-(--space-blog)"
                 >
-
                   <div
                     className="
                     text-left mb-2 
@@ -44,7 +52,7 @@ export default async function ProjectPage({
                   </div>
 
                   {/* COLONNA CONTENUTO */}
-                  <div className="max-w-full border-b border-b-gray-100 pb-8 lg:pb-3">
+                  <div className="max-w-full border-b border-b-gray-100 pb-(--space-sm) lg:pb-(--space-md)">
                     <RenderBlocks blocks={s.blocks} />
                   </div>
                 </section>
@@ -68,39 +76,57 @@ function RenderBlocks({ blocks }: { blocks: ContentBlock[] }) {
     <>
       {blocks.map((b, i) => {
         switch (b.type) {
-          case "heading":
-            return b.level === 2 ? (
-              <h3
-                className="text-xl md:text-2xl font-bold mb-(--space-xs) mt-2"
-                key={i}
+          case "heading": {
+            if (b.level === 1) {
+              return (
+                <h2
+                  key={b.id ?? i}
+                  id={b.id}
+                  className="mt-(--space-xs) text-2xl md:text-4xl!"
+                >
+                  {b.text}
+                </h2>
+              );
+            }
+
+            if (b.level === 2) {
+              return (
+                <h3
+                  key={b.id ?? i}
+                  id={b.id}
+                  className="text-xl md:text-2xl font-bold mt-(--space-md) -mb-1"
+                >
+                  {b.text}
+                </h3>
+              );
+            }
+
+            return (
+              <h4
+                key={b.id ?? i}
                 id={b.id}
+                className="text-lg md:text-xl font-semibold mt-(--space-sm) -mb-2"
               >
                 {b.text}
-              </h3>
-            ) : (
-              // Responsive font size: text-3xl su mobile, text-5xl su desktop
-              <h2
-                className="mb-(--space-xs) text-3xl md:text-5xl font-bold leading-tight"
-                key={i}
-                id={b.id}
-              >
-                {b.text}
-              </h2>
+              </h4>
             );
+          }
 
           case "paragraph":
             return (
               <p
                 key={i}
-                className="mb-(--space-lg) text-(--text-secondary) leading-relaxed"
-              >
+                className="mt-(--space-xs) text-(--text-secondary) leading-relaxed [&_code]:text-red-600"
+              > <Markdown>
                 {b.text}
+              </Markdown>
+                
               </p>
             );
 
           case "image":
             return (
-              <figure key={i} className="mb-(--space-md)">
+              <figure key={i} className="mt-(--space-md)">
                 <img
                   className="w-full h-auto rounded-md border border-gray-100"
                   src={b.src}
@@ -114,24 +140,63 @@ function RenderBlocks({ blocks }: { blocks: ContentBlock[] }) {
               </figure>
             );
 
-          case "list":
+          case "list": {
+            if (b.listType === "bullet") {
+              return (
+                <ul
+                  key={i}
+                  className="list-disc pl-8 mt-(--space-md) space-y-3 text-(--text-secondary)"
+                >
+                  {b.items.map((item, idx) => (
+                    <li key={idx}><Markdown>{item}</Markdown></li>
+                  ))}
+                </ul>
+              );
+            }
+
+            if (b.listType === "numbered") {
+              return (
+                <ol
+                  key={i}
+                  className="list-decimal pl-12 mt-(--space-md) space-y-3 text-(--text-secondary)"
+                >
+                  {b.items.map((item, idx) => (
+                    <li key={idx}><Markdown>{item}</Markdown></li>
+                  ))}
+                </ol>
+              );
+            }
+
             return (
-              <div
-                key={i}
-                className="flex flex-wrap gap-2 mb-(--space-lg)"
-              >
+              <div key={i} className="flex flex-wrap gap-2 mt-(--space-xs)">
                 {b.items.map((item, idx) => (
                   <Badge
                     key={idx}
                     type="list"
+                    size="listBase"
                     className="max-w-full truncate text-(--text-secondary)"
                   >
-                    {item}
+                    <Markdown>{item}</Markdown>
                   </Badge>
                 ))}
               </div>
             );
+          }
 
+          case "code": 
+            return(
+              <div className="mt-(--space-sm)">
+                <CodeSnippet text={b.text} language={b.language} />
+              </div>
+            )
+
+          case "callout": {
+              return (
+                <Callout icon={b.variant} type={b.variant} title={b.title}><Markdown>{ b.text }</Markdown></Callout>
+              )
+            
+          }
+          
           default:
             return null;
         }

@@ -5,6 +5,7 @@ import Toc from "@/app/components/ui/TableOfContents";
 import NavItem from "@/app/components/ui/NavItem";
 import Stack from "@/app/components/layout/Stack";
 
+
 type TocSection = { id: string; label: string };
 
 export default function TocClient({ sections }: { sections: TocSection[] }) {
