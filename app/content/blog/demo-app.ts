@@ -1,5 +1,4 @@
 import type { ContentBlock } from "@/app/content/blogPages"; // Assicurati che il path sia corretto nel tuo progetto
-import { time } from "console";
 import type { BlogPage } from "../blogPages";
 import { calculateReadingTime } from "@/app/utils/readingTime";
 

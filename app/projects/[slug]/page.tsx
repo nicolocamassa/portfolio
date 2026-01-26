@@ -8,7 +8,6 @@ import ReadingInfoBanner from "@/app/components/ui/ReadingInfoBanner";
 import TocClient from "@/app/components/ui/TocClient";
 import { type ContentBlock } from "@/app/content/blogPages";
 import Markdown from 'react-markdown';
-import dynamic from "next/dynamic";
 import CodeBlock from "@/app/components/ui/CodeBlock.client";
 
 type BlogSection = {
@@ -44,10 +43,11 @@ export default async function ProjectPage({ params }: { params: { slug: string }
   return (
     <>
       <HeroSection content={blogContent.hero} />
+      
       <Container>
         <ReadingInfoBanner content={blogContent.info} />
         <Callout type="danger" icon="danger">
-          Questa sezione di blogging è ancora in fase di sviluppo...
+          Questa sezione di blogging è ancora in fase di sviluppo.
         </Callout>
         <Section>
           <div className="flex flex-col gap-10 xl:flex-row lg:gap-(--space-blog) relative">
@@ -56,7 +56,7 @@ export default async function ProjectPage({ params }: { params: { slug: string }
                 <section
                   id={s.id}
                   key={s.id}
-                  className="mb-(--section-sm) -mt-[100px] pt-[80px] flex flex-col gap-2 lg:grid lg:grid-cols-[140px_minmax(0,1fr)] lg:gap-(--space-blog)"
+                  className="mb-(--section-sm) -mt-25 pt-20 flex flex-col gap-2 lg:grid lg:grid-cols-[140px_minmax(0,1fr)] lg:gap-(--space-blog)"
                 >
                   <div className="text-left mb-2 lg:text-right lg:mb-0 lg:pt-2 lg:sticky lg:top-24 lg:self-start">
                     {s.badge ? <Badge size="md">{s.badge}</Badge> : null}
@@ -79,6 +79,7 @@ export default async function ProjectPage({ params }: { params: { slug: string }
   );
 }
 
+/* TODO: Aggiungere il <Markdown> a tutti i blocchi */
 function RenderBlocks({ blocks }: { blocks: ContentBlock[] }) {
   return (
     <>
@@ -122,12 +123,18 @@ function RenderBlocks({ blocks }: { blocks: ContentBlock[] }) {
 
           case "paragraph":
             return (
-              <p
-                key={i}
-                className="mt-(--space-xs) text-(--text-secondary) leading-relaxed [&_code]:text-red-600"
-              > 
+              <Markdown
+              key={i}
+                components={{
+                  p: ({ children }) => (
+                    <p className="mt-(--space-xs) text-(--text-secondary) leading-relaxed [&_code]:text-red-600">
+                      {children}
+                    </p>
+                  ),
+                }}
+              >
                 {b.text}
-              </p>
+              </Markdown>
             );
 
           case "image":
@@ -154,7 +161,18 @@ function RenderBlocks({ blocks }: { blocks: ContentBlock[] }) {
                   className="list-disc pl-8 mt-(--space-md) space-y-3 text-(--text-secondary)"
                 >
                   {b.items.map((item, idx) => (
-                    <li key={idx}>{item}</li>
+                    <Markdown
+                      key={idx}
+                        components={{
+                          li: ({ children }) => (
+                            <li>
+                              {children}
+                            </li>
+                          ),
+                        }}
+                      >
+                        {item}
+                      </Markdown>
                   ))}
                 </ul>
               );
