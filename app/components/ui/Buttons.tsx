@@ -2,14 +2,14 @@ import { tv, type VariantProps } from "tailwind-variants";
 import Link from "next/link";
 
 const button = tv({
-  base: "inline-flex items-center justify-center border border-[var(--border-default)]"+
-  " active:bg-blue-500 active:shadow-[0px_0px_0px_0px_rgba(0,0,0,0.5)] hover:cursor-pointer font-medium rounded-xl shadow-[0px_0px_4px_0px_rgba(0,_0,_0,_0.15)] duration-300 hover:shadow-[0px_0px_10px_0px_rgba(0,_0,_0,_0.25)]",
+  base: "inline-flex items-center justify-center border border-(--border-default)"+
+  " active:bg-(--brand-dark) active:shadow-[0px_0px_0px_0px_rgba(0,0,0,0.5)] hover:cursor-pointer font-medium rounded-xl shadow-[0px_0px_4px_0px_rgba(0,_0,_0,_0.15)] duration-300 hover:shadow-[0px_0px_10px_0px_rgba(0,_0,_0,_0.25)]",
   variants: {
     color: {
       textOnly: "shadow-none hover:text-black text-[var(--text-secondary)]",
-      black: "bg-[var(--btn-primary-bg)] text-[var(--text-inverse)] hover:bg-[var(--btn-secondary-bg-hover)]",
-      white: "bg-[var(--btn-secondary-bg)] text-[var(--text-primary)] hover:bg-[var(--btn-secondary-bg-hover)] hover:text-white",
-      cta: "bg-[var(--btn-cta-bg)] hover:bg-[var(--btn-cta-bg-hover)] text-[var(--text-inverse)] border-none",
+      black: "bg-(--btn-primary-bg) text-(--text-inverse) hover:bg-(--btn-secondary-bg-hover)",
+      white: "bg-(--btn-secondary-bg) text-(--text-primary) hover:bg-(--btn-secondary-bg-hover) hover:text-white",
+      cta: "bg-(--brand) hover:bg-(--brand)/75 text-white",
       whiteCta: "bg-[var(--background)] text-[var(--text-primary)] hover:bg-gray-400 underline rounded-full gap-2 font-bold"
     },
     size: {
