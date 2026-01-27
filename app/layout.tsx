@@ -17,7 +17,7 @@ const FustatMono = Fustat({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio - Nicolò Camassa",
+  title: "Portfolio",
   description: "Il mio portfolio personale dove mostro le mie competenze",
 };
 

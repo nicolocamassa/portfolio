@@ -22,9 +22,14 @@
   --background: #ffffff;
   --foreground: #171717;
 
+  --warning: #F59E0B;
+  --danger: #EF4444;
+  --info: #3B82F6;
+  --tip: #8B5CF6;
+
   /* *TESTI */
   --text-primary: rgba(0, 0, 0, 0.9);
-  --text-secondary: rgba(0, 0, 0, 0.6);
+  --text-secondary: rgba(0, 0, 0, 0.7);
   --text-highlight: #77b2ff;
   --text-highlight-15: rgba(119, 178, 255, 0.15);
 
@@ -67,7 +72,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #ffffff; /*  #0a0a0a*/
-    --foreground: #0a0a0a; /* #ededed */
+    --foreground: #000000; /* #ededed */
   }
 }
 

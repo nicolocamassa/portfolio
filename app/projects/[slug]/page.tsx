@@ -9,6 +9,10 @@ import TocClient from "@/app/components/ui/TocClient";
 import { type ContentBlock } from "@/app/content/blogPages";
 import Markdown from 'react-markdown';
 import CodeBlock from "@/app/components/ui/CodeBlock.client";
+import { readingInfo } from "@/app/content/blog/demo-app";
+import { heroSectionBlog } from "@/app/content/blog/demo-app";
+import { heroSection } from "@/app/content/home";
+
 
 type BlogSection = {
   id: string;
@@ -42,11 +46,11 @@ export default async function ProjectPage({ params }: { params: { slug: string }
 
   return (
     <>
-      <HeroSection content={blogContent.hero} />
+      <HeroSection content={heroSectionBlog} />
       
       <Container>
-        <ReadingInfoBanner content={blogContent.info} />
-        <Callout type="danger" icon="danger">
+        <ReadingInfoBanner content={readingInfo} />
+        <Callout type="danger">
           Questa sezione di blogging è ancora in fase di sviluppo.
         </Callout>
         <Section>
@@ -212,7 +216,7 @@ function RenderBlocks({ blocks }: { blocks: ContentBlock[] }) {
 
           case "callout": {
               return (
-                <Callout key={b.title} icon={b.variant} type={b.variant} title={b.title}>{ b.text }</Callout>
+                <Callout key={b.title} type={b.variant} title={b.title}>{ b.text }</Callout>
               )
             
           }
