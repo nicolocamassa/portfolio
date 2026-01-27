@@ -8,9 +8,11 @@ import ReadingInfoBanner from "@/app/components/ui/ReadingInfoBanner";
 import TocClient from "@/app/components/ui/TocClient";
 import Markdown from 'react-markdown';
 import CodeBlock from "@/app/components/ui/CodeBlock.client";
+import Changelog from "@/app/components/ui/Changelog";
 import { readingInfo } from "@/app/content/blog/demo-app";
 import { heroSectionBlog } from "@/app/content/blog/demo-app";
-
+import Button from "@/app/components/ui/Buttons";
+import { ArrowLeft, Github } from "lucide-react";
 
 type BlogSection = {
   id: string;
@@ -68,12 +70,18 @@ export default async function ProjectPage({ params }: { params: { slug: string }
                   </div>
                 </section>
               ))}
+              
             </div>
             <div className="order-1 xl:order-2 w-64 shrink-0">
               <div className="sticky top-24">
                 <TocClient sections={sectionsForToc} />
               </div>
             </div>
+          </div>
+          <Changelog></Changelog>
+          <div className="flex gap-2">
+            <Button className="mt-5 flex items-center gap-2" href=""><ArrowLeft size={20}/> Torna alla home</Button>
+            <Button className="mt-5 flex items-center gap-2" href="" color="white"><Github size={20}/>GitHub</Button>
           </div>
         </Section>
       </Container>
