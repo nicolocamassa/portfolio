@@ -1,6 +1,3 @@
-import type { HeroContent } from "../components/sections/HeroSection";
-import type { InfoBanner } from "../components/ui/ReadingInfoBanner";
-
 export type ContentBlock = 
   | { type: "image"; src: string; alt?: string; caption?: string }
   | { type: "paragraph"; text: string }
@@ -18,10 +15,8 @@ type Section = {
 };
 
 export type BlogPage = {
-  slug: string;
-  hero: HeroContent;
   sections?: Section[];
-  info: InfoBanner;
 };
 
 export const blogPages: BlogPage[] = [];
+

@@ -3,8 +3,6 @@ type NavProps = React.PropsWithChildren<{
     className?: string;
 }>
 
-/* TODO: Aggiungere NavItem attivo quando si avvicina al contenuto */
-
 export default function NavItem({ children, href, className }: NavProps){
     return (
         <li>

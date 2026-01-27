@@ -1,38 +1,56 @@
-import type { ContentBlock } from "@/app/content/blogPages"; // Assicurati che il path sia corretto nel tuo progetto
+import type { ContentBlock } from "@/app/content/blogPages";
 import type { BlogPage } from "../blogPages";
+import type { InfoBanner } from "@/app/components/ui/ReadingInfoBanner";
 import { calculateReadingTime } from "@/app/utils/readingTime";
+import { HeroContent} from "@/app/components/sections/HeroSection";
 
+
+/* SEZIONE HERO */
+/* TODO: Aggiungere immagine */
+export const heroSectionBlog: HeroContent = {
+  badge: { children: "JavaScript" },
+  title: "Come funziona JavaScript",
+  description: "Un viaggio approfondito nell'engine V8, nel Call Stack, nella gestione della memoria e nel misterioso Event Loop.",
+  ctas: [
+    { label: "Inizia a leggere", href: "#introduzione" },
+    { label: "Documentazione MDN", href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript", color: "white" }
+  ]
+}
+
+/* INFO PAGINA DETTAGLIO */
+export const readingInfo: InfoBanner = {
+  time: "",
+  tech: [ "nextjs2", "react", "tailwindcss"],
+  date: "23.9.2092",
+  status: "completed"
+}
+
+/* CONTENUTI PAGINA BLOG */
 export const blogContent: BlogPage = {
-  slug: "come-funziona-javascript-deep-dive",
-  info: {
-    time: "",
-    tech: [ "nextjs2", "react", "tailwindcss"],
-    date: "23.9.2092",
-    status: "completed"
-  },
-  hero: {
-    title: "Come funziona JavaScript: Sotto il cofano del web",
-    description: "Un viaggio approfondito nell'engine V8, nel Call Stack, nella gestione della memoria e nel misterioso Event Loop.",
-    badge: {
-      children: "Deep Dive Tech",
-    },
-    ctas: [
-      { label: "Inizia a leggere", href: "#introduzione" },
-      { label: "Documentazione MDN", href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript", color: "white" }
-    ]
-  },
   sections: [
     // SEZIONE 1: INTRODUZIONE
     {
       id: "introduzione",
       badge: "Le Basi",
       blocks: [
-        { type: "heading", level: 2, text: "Cos'è veramente JavaScript?" },
+        { type: "heading", level: 1, text: "Cos'è veramente JavaScript?" },
         { type: "paragraph", text: "Spesso definito come un linguaggio 'interpretato', la realtà di JavaScript moderno è molto più complessa e affascinante. È un linguaggio ad alto livello, single-threaded, con una gestione automatica della memoria (Garbage Collection) e basato su un paradigma guidato dagli eventi." },
         {
           type: "callout",
-          variant: "info",
+          variant: "warning",
           title: "Non solo nel browser",
+          text: "Sebbene sia nato per rendere le pagine web interattive, grazie ad ambienti come Node.js, oggi JavaScript gira anche sui server, dispositivi IoT e persino nello spazio."
+        },
+        {
+          type: "callout",
+          variant: "info",
+          title: "Non solo nel browsers",
+          text: "Sebbene sia nato per rendere le pagine web interattive, grazie ad ambienti come Node.js, oggi JavaScript gira anche sui server, dispositivi IoT e persino nello spazio."
+        },
+                {
+          type: "callout",
+          variant: "tip",
+          title: "Non solo nel browserss",
           text: "Sebbene sia nato per rendere le pagine web interattive, grazie ad ambienti come Node.js, oggi JavaScript gira anche sui server, dispositivi IoT e persino nello spazio."
         },
         { type: "paragraph", text: "Ma cosa succede esattamente quando scrivi `console.log('Ciao Mondo')` e premi invio? Per capirlo, dobbiamo analizzare i componenti principali che permettono l'esecuzione del codice." },
@@ -168,4 +186,4 @@ console.log("3");
   ],
 };
 
-blogContent.info.time = calculateReadingTime(blogContent);
+readingInfo.time = calculateReadingTime(blogContent);

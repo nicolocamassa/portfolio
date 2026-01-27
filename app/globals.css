@@ -1,56 +1,67 @@
 @import "tailwindcss";
 
 :root {
-  /* *CONTAINER WIDTH */
+  /*?============================= */
+  /*? LAYOUT                       */
+  /*?============================= */
   --container-layout: 1750px;
   --container-main: 1300px;
 
-  /* *SECTIONS MARGIN Y*/
+  /* Section margin */
   --section-sm: 40px;
   --section-md: 80px;
   --section-lg: 100px;
 
-  /* *STACK GAP */
-  --space-xs: 10px;
-  --space-sm: 16px;
-  --space-md: 24px;
-  --space-lg: 32px;
-  --space-xl: 46px;
+  /* Spaces (Gap, Margini, ecc) */
+  --space-xs:   10px;
+  --space-sm:   16px;
+  --space-md:   24px;
+  --space-lg:   32px;
+  --space-xl:   46px;
   --space-blog: 50px;
 
-  /* *SUPERFICI */
+  /*?============================= */
+  /*? SUPERFICI                    */
+  /*?============================= */
   --background: #ffffff;
   --foreground: #171717;
 
-  /* *TESTI */
-  --text-primary: rgba(0, 0, 0, 0.9);
-  --text-secondary: rgba(0, 0, 0, 0.6);
-  --text-highlight: #77b2ff;
+  /* Brand */
+  --brand:      rgb(119, 178, 255);
+  --brand-dark: rgb(85, 125, 179);
+
+  /* Status */
+  --warning: #F59E0B;
+  --danger:  #EF4444;
+  --info:    #3B82F6;
+  --tip:     #8B5CF6;
+
+  /* Divisori */
+  --border-default: rgba(0, 0, 0, 0.15);
+
+  /* Badges */
+  --default-badge:  var(--brand);
+  --draft-badge:    rgb(38, 50, 63);
+  --progress-badge: #faa536;
+  --completed-badge:#22c55e;
+
+  /* Pulsanti */
+  --btn-primary-bg: var(--foreground);
+  --btn-primary-text: var(--text-inverse);
+  --btn-secondary-bg: var(--background);
+  --btn-secondary-bg-hover: var(--brand);
+  --btn-cta-bg: var(--brand);
+
+  /*?============================= */
+  /*? TESTI                        */
+  /*?============================= */
+  --text-primary:      rgba(0, 0, 0, 0.8);
+  --text-secondary:    rgba(0, 0, 0, 0.7);
+  --text-highlight:    #77b2ff;
   --text-highlight-15: rgba(119, 178, 255, 0.15);
 
   --text-secondary-dark: rgba(255, 255, 255, 0.603);
   --text-inverse: #fff;
-
-  /* *BORDERS E DIVISORI */
-  --border-default: rgba(0, 0, 0, 0.15);
-
-  /* *COLORI IDENTIFICATIVI */
-  --brand: #77b2ff;
-  --brand-hover: #94c2ff;
-  --brand-soft: rgba(119, 178, 255, 0.15);
-
-  /* *PULSANTI */
-  --btn-primary-bg: var(--foreground);
-  --btn-primary-text: var(--text-inverse);
-  --btn-primary-bg-hover: #262626;
-
-  /* * CTA buttons */
-  --btn-cta-bg: var(--brand);
-  --btn-cta-bg-hover: var(--brand-hover);
-
-  /* * White button */
-  --btn-secondary-bg: white;
-  --btn-secondary-bg-hover: var(--brand);
 }
 
 @theme inline {
@@ -58,19 +69,24 @@
   --color-foreground: var(--foreground);
   --text-medium: var(--medium-emphasis);
 
-
   --font-sans: var(--font-parkinsans-sans);
   --font-mono: var(--font-fustat-mono);
 }
 
-/* * Modalità Dark */
+/*?============================= */
+/*? DARK MODE                    */
+/*?============================= */
 @media (prefers-color-scheme: dark) {
+  /* TODO: Aggiungere la darkmode */
   :root {
     --background: #ffffff; /*  #0a0a0a*/
-    --foreground: #0a0a0a; /* #ededed */
+    --foreground: #000000; /* #ededed */
   }
 }
 
+/*?============================= */
+/*? STILI BASE                   */
+/*?============================= */
 body {
   background: var(--background);
   color: var(--foreground);
@@ -80,16 +96,21 @@ html{
   scroll-behavior: smooth;
 }
 
+/*?============================= */
+/*? LAYOUT + RESPONSIVE          */
+/*?============================= */
 footer{
   margin-top: 60px;
 }
 
+/* Mobile */
 @media (min-width: 640px) {
   footer{
     margin-top: 70px;
   }
 }
 
+/* Tablet */
 @media (min-width: 1024px) {
   footer{
     margin-top: 90px;
@@ -105,6 +126,9 @@ footer{
   }
 }
 
+/*?============================= */
+/*? COMPONENT STYLING            */
+/*?============================= */
 /* Section component padding */
 .section-sm { padding-block: var(--section-sm); }
 .section-md { padding-block: var(--section-md); }
