@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { Parkinsans, Fustat } from "next/font/google";
 import "./globals.css";
+import { Parkinsans, Fustat } from "next/font/google";
 import Footer from "./components/layout/footer/Footer";
 import Header from "./components/layout/Header";
 

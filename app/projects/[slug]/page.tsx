@@ -1,17 +1,15 @@
+import type { ContentBlock } from "@/app/content/blogPages";
 import Container from "@/app/components/layout/Container";
 import Section from "@/app/components/layout/Section";
 import HeroSection from "@/app/components/sections/HeroSection";
 import Badge from "@/app/components/ui/Badge";
 import Callout from "@/app/components/ui/Callout";
-import CodeSnippet from "@/app/components/ui/CodeSnippet";
 import ReadingInfoBanner from "@/app/components/ui/ReadingInfoBanner";
 import TocClient from "@/app/components/ui/TocClient";
-import { type ContentBlock } from "@/app/content/blogPages";
 import Markdown from 'react-markdown';
 import CodeBlock from "@/app/components/ui/CodeBlock.client";
 import { readingInfo } from "@/app/content/blog/demo-app";
 import { heroSectionBlog } from "@/app/content/blog/demo-app";
-import { heroSection } from "@/app/content/home";
 
 
 type BlogSection = {
