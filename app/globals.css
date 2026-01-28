@@ -28,7 +28,7 @@
 
   /* Brand */
   --brand:      rgb(119, 178, 255);
-  --brand-dark: rgb(85, 125, 179);
+  --brand-dark: rgb(100, 150, 216);
 
   /* Status */
   --warning: #F59E0B;
@@ -56,7 +56,7 @@
   /*? TESTI                        */
   /*?============================= */
   --text-primary:      rgba(0, 0, 0, 0.8);
-  --text-secondary:    rgba(0, 0, 0, 0.7);
+  --text-secondary:    rgba(0, 0, 0, 0.6);
   --text-highlight:    #77b2ff;
   --text-highlight-15: rgba(119, 178, 255, 0.15);
 
