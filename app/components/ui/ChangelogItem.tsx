@@ -3,23 +3,24 @@ import Badge from "./Badge";
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 
-export default function ChangelogItem() {
-    const [openId, setOpenId] = useState<number | null>(null);
+type Props = {
+  items: typeof changelog.items;
+  openId: number | null;
+  toggleItem: (id: number) => void;
+}
 
-    const toggleItem = (id: number) => {
-        setOpenId(openId === id ? null : id);
-    };
+export default function ChangelogItem({ items, openId, toggleItem }: Props) {
 
     return (
         <>
-        {changelog.items.map((item, idx) => {
+        {items.map((item, idx) => {
             const Icon = item.icon;
             const isOpen = openId === item.id;
 
             return (
             <li
                 className={`border-b border-b-(--border-default) last:border-b-0 
-                        transition-colors duration-200 cursor-pointer hover:bg-gray-50 ${isOpen ? "" : ""}`}
+                            transition-colors duration-200 cursor-pointer hover:bg-gray-50 ${isOpen ? "" : ""}`}
                 key={idx}
                 onClick={() => toggleItem(item.id)}
             >
@@ -81,7 +82,7 @@ export default function ChangelogItem() {
                 {item.updates.length ? 
                 <div className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
                     <ul className="overflow-hidden">
-                        <div className="px-5 pb-5 pl-[88px]"> 
+                        <div className="px-5 pb-5 pl-22"> 
                             <div className="w-full pt-2 border-l border-dashed border-l-(--border-default) text-(--text-secondary) font-normal flex flex-col items-start gap-4 font-bold opacity-90 pl-3">
                                 {item.updates.map((update, idx) => {
                                     return (

@@ -6,7 +6,6 @@ import { useState } from "react";
 import { changelog } from "@/app/content/blog/demo-app";
 import ChangelogItem from "./ChangelogItem";
 
-// Dati simulati per rendere il componente pulito
 const updates = [
   {
     id: 1,
@@ -42,12 +41,13 @@ const updates = [
 ];
 
 export default function RocketChangelog() {
-  // Stato per gestire l'indice dell'elemento aperto (null = tutti chiusi)
   const [openId, setOpenId] = useState<number | null>(null);
+  const [showAll, setShowAll] = useState(false);
 
-  const toggleItem = (id: number) => {
-    setOpenId(openId === id ? null : id);
-  };
+  const toggleItem = (id: number) => setOpenId(openId === id ? null : id);
+  const toggleShowAll = () => setShowAll(!showAll);
+
+  const visibleItems = showAll ? changelog.items : changelog.items.slice(0, 3);
 
   return (
     <div className="border border-(--border-default) rounded-xl mt-20 bg-white">
@@ -56,13 +56,24 @@ export default function RocketChangelog() {
       </div>
 
       <ul className="flex flex-col">
-        <ChangelogItem></ChangelogItem>
+        <ChangelogItem 
+          items={visibleItems} 
+          openId={openId} 
+          toggleItem={toggleItem} 
+        />
       </ul>
 
-      <div className="py-3 border-(--border-default) border-t px-5 flex justify-center gap-1 items-center bg-gray-50 rounded-b-xl text-(--text-secondary) hover:bg-(--brand) hover:text-white hover:cursor-pointer transition duration-200">
-        <h3 className="text-center font-semibold text-sm">Mostra tutto</h3>
-        <ChevronDown size={16} />
-      </div>
+      {changelog.items.length > 3 && (
+        <div
+          className="py-3 border-(--border-default) border-t px-5 flex justify-center gap-1 items-center bg-gray-50 rounded-b-xl text-(--text-secondary) hover:bg-(--brand) hover:text-white hover:cursor-pointer transition duration-200"
+          onClick={toggleShowAll}
+        >
+          <h3 className="text-center font-semibold text-sm">
+            {showAll ? "Mostra meno" : "Mostra tutto"}
+          </h3>
+          <ChevronDown size={16} className={`${showAll ? "rotate-180" : ""} transition-all`} />
+        </div>
+      )}
     </div>
   );
 }

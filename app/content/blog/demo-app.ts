@@ -3,7 +3,7 @@ import type { BlogPage } from "../blogPages";
 import type { InfoBanner } from "@/app/components/ui/ReadingInfoBanner";
 import { calculateReadingTime } from "@/app/utils/readingTime";
 import { HeroContent} from "@/app/components/sections/HeroSection";
-import { Bug, BugIcon, Github, RocketIcon, type LucideIcon } from "lucide-react";
+import { Bug, Rocket, GitBranch, BugIcon, Github, RocketIcon, type LucideIcon } from "lucide-react";
 
 type MetaChangelog = {
   numActivity: number,
@@ -54,48 +54,72 @@ export const changelog: Changelog = {
     {
       id: 1,
       title: "Launch prep automation",
-      icon: Github,
-      badges: [
-        "Automation",
-        "Backend"
-      ],
+      icon: Rocket,
+      badges: ["Automation", "Backend"],
       description: "Implementati script di deployment automatico per accelerare i lanci delle missioni senza errori manuali.",
-      meta: {numActivity: 2, date: "22 Gen 2026"},
+      meta: { numActivity: 5, date: "22 Gen 2026" },
       updates: [
-        {label: "ui", text: "aggiornamento 1"},
-        {label: "ui", text: "aggiornamento 1"},
-        {label: "ui", text: "aggiornamento 1"},
-        {label: "ui", text: "aggiornamento 1"},
-        {label: "ui", text: "aggiornamento 1"}
+        { label: "UI", text: "Aggiornata dashboard con nuovi indicatori" },
+        { label: "Backend", text: "Automazione deploy missioni" },
+        { label: "Docs", text: "Documentazione aggiornata per DevOps" },
+        { label: "Tests", text: "Aggiunti test end-to-end per i lanci" },
+        { label: "CI/CD", text: "Pipeline ottimizzata per ridurre errori" }
       ]
     },
     {
       id: 2,
       title: "Feature branching strategy",
-      icon: Github,
-      badges: [
-        "Devops"
-      ],
+      icon: GitBranch,
+      badges: ["DevOps"],
       description: "Introdotta strategia di branching avanzata per migliorare il workflow di sviluppo e ridurre conflitti.",
-      meta: {numActivity: 0, date: "25 Gen 2026"},
-            updates: [
-        {label: "ui", text: "aggiornamento 1"},
-        {label: "ui", text: "aggiornamento 1"},
+      meta: { numActivity: 3, date: "25 Gen 2026" },
+      updates: [
+        { label: "Git", text: "Definiti naming convention per i branch" },
+        { label: "Docs", text: "Aggiornata guida per i developer" },
+        { label: "CI/CD", text: "Pipeline aggiornata per supportare feature branch" }
       ]
     },
     {
       id: 3,
       title: "Critical bug fixes",
       icon: Bug,
-      badges: [
-        "Bugfix"
-      ],
+      badges: ["Bugfix"],
       description: "Risolti bug critici nel modulo di navigazione della navicella, prevenendo crash durante le simulazioni di lancio.",
-      meta: {numActivity: 7, date: "23 Gen 2026"},
-      updates: []
+      meta: { numActivity: 4, date: "23 Gen 2026" },
+      updates: [
+        { label: "Backend", text: "Fix crash in calcolo traiettoria" },
+        { label: "UI", text: "Risolto bug indicatori missione" },
+        { label: "Tests", text: "Aggiunti test per scenario edge case" },
+        { label: "Monitoring", text: "Alert configurati per errori critici" }
+      ]
+    },
+    {
+      id: 4,
+      title: "Rocket engine upgrade",
+      icon: Rocket,
+      badges: ["Engineering", "Performance"],
+      description: "Aggiornamento del motore per incrementare la spinta del 15% e ottimizzare il consumo di carburante.",
+      meta: { numActivity: 2, date: "26 Gen 2026" },
+      updates: [
+        { label: "Engineering", text: "Revisionato design camera di combustione" },
+        { label: "Performance", text: "Test di spinta completati con successo" }
+      ]
+    },
+    {
+      id: 5,
+      title: "New telemetry system",
+      icon: Github,
+      badges: ["Telemetry", "UI"],
+      description: "Implementato un nuovo sistema di telemetria per monitorare in tempo reale lo stato dei razzi.",
+      meta: { numActivity: 3, date: "28 Gen 2026" },
+      updates: [
+        { label: "Backend", text: "Nuovo endpoint API per dati telemetria" },
+        { label: "UI", text: "Dashboard aggiornata con grafici in tempo reale" },
+        { label: "Docs", text: "Manuale utente aggiornato per il nuovo sistema" }
+      ]
     }
   ]
-}
+};
 
 /* CONTENUTI PAGINA BLOG */
 export const blogContent: BlogPage = {
