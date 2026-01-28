@@ -21,7 +21,7 @@ export default function HeroSection({ content }: { content: HeroContent }) {
 
   return (
     <Section>
-      <Container >
+      <Container>
         <Stack gap="sm" className="items-center text-center">
           <Badge size={badge.size} type={badge.type}>
             { badge.children }

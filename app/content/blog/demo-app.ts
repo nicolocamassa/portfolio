@@ -3,7 +3,25 @@ import type { BlogPage } from "../blogPages";
 import type { InfoBanner } from "@/app/components/ui/ReadingInfoBanner";
 import { calculateReadingTime } from "@/app/utils/readingTime";
 import { HeroContent} from "@/app/components/sections/HeroSection";
+import { Bug, BugIcon, Github, RocketIcon, type LucideIcon } from "lucide-react";
 
+type MetaChangelog = {
+  numActivity: number,
+  date: string
+}
+
+type ChangelogItems = {
+  id: number,
+  icon: LucideIcon,
+  title: string,
+  description: string,
+  badges: string[],
+  meta: MetaChangelog,
+}
+
+type Changelog = {
+  items: ChangelogItems[]
+}
 
 /* SEZIONE HERO */
 /* TODO: Aggiungere immagine */
@@ -25,6 +43,42 @@ export const readingInfo: InfoBanner = {
   status: "completed"
 }
 
+export const changelog: Changelog = {
+  items: [
+    {
+      id: 1,
+      title: "Launch prep automation",
+      icon: Github,
+      badges: [
+        "Automation",
+        "Backend"
+      ],
+      description: "Implementati script di deployment automatico per accelerare i lanci delle missioni senza errori manuali.",
+      meta: {numActivity: 2, date: "22 Gen 2026"}
+    },
+    {
+      id: 2,
+      title: "Feature branching strategy",
+      icon: Github,
+      badges: [
+        "Devops"
+      ],
+      description: "Introdotta strategia di branching avanzata per migliorare il workflow di sviluppo e ridurre conflitti.",
+      meta: {numActivity: 0, date: "25 Gen 2026"}
+    },
+    {
+      id: 3,
+      title: "Critical bug fixes",
+      icon: Bug,
+      badges: [
+        "Bugfix"
+      ],
+      description: "Risolti bug critici nel modulo di navigazione della navicella, prevenendo crash durante le simulazioni di lancio.",
+      meta: {numActivity: 7, date: "23 Gen 2026"},
+    }
+  ]
+}
+
 /* CONTENUTI PAGINA BLOG */
 export const blogContent: BlogPage = {
   sections: [
@@ -37,20 +91,8 @@ export const blogContent: BlogPage = {
         { type: "paragraph", text: "Spesso definito come un linguaggio 'interpretato', la realtà di JavaScript moderno è molto più complessa e affascinante. È un linguaggio ad alto livello, single-threaded, con una gestione automatica della memoria (Garbage Collection) e basato su un paradigma guidato dagli eventi." },
         {
           type: "callout",
-          variant: "warning",
-          title: "Non solo nel browser",
-          text: "Sebbene sia nato per rendere le pagine web interattive, grazie ad ambienti come Node.js, oggi JavaScript gira anche sui server, dispositivi IoT e persino nello spazio."
-        },
-        {
-          type: "callout",
           variant: "info",
-          title: "Non solo nel browsers",
-          text: "Sebbene sia nato per rendere le pagine web interattive, grazie ad ambienti come Node.js, oggi JavaScript gira anche sui server, dispositivi IoT e persino nello spazio."
-        },
-                {
-          type: "callout",
-          variant: "tip",
-          title: "Non solo nel browserss",
+          title: "Non solo nel browser",
           text: "Sebbene sia nato per rendere le pagine web interattive, grazie ad ambienti come Node.js, oggi JavaScript gira anche sui server, dispositivi IoT e persino nello spazio."
         },
         { type: "paragraph", text: "Ma cosa succede esattamente quando scrivi `console.log('Ciao Mondo')` e premi invio? Per capirlo, dobbiamo analizzare i componenti principali che permettono l'esecuzione del codice." },

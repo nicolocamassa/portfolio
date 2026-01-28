@@ -10,7 +10,7 @@ const badge = tv({
       svg: "border border-(--border-default) [&_svg]:block",
     },
     size: {
-      xs: "text-[10px] px-4 py-1",
+      xs: "text-[10px] px-4 py-1.5",
       sm: "text-xs px-4.5 py-1.5",
       md: "text-xs md:text-sm px-5 py-2",
       lg: "text-sm px-5.5 py-2.5",
