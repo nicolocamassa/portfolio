@@ -78,7 +78,10 @@ export const changelog: Changelog = {
       ],
       description: "Introdotta strategia di branching avanzata per migliorare il workflow di sviluppo e ridurre conflitti.",
       meta: {numActivity: 0, date: "25 Gen 2026"},
-      updates: []
+            updates: [
+        {label: "ui", text: "aggiornamento 1"},
+        {label: "ui", text: "aggiornamento 1"},
+      ]
     },
     {
       id: 3,
