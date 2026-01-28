@@ -11,47 +11,81 @@ export default function ChangelogItem() {
         return (
           <li
             className="border-b border-b-(--border-default) last:border-b-0 
-                                    transition-colors duration-200 cursor-pointer"
+                      transition-colors duration-200 cursor-pointer hover:bg-gray-50"
             key={idx}
           >
+            {/* Riga intera */}
             <div className="p-5 flex justify-between items-start gap-4">
-              <div className="flex items-start gap-4 flex-1">
-                <div className="p-4 [&_svg]:text-(--brand) border border-(--border-default) rounded-full bg-white">
-                  <Icon size={19} />
-                </div>
 
-                <div className="leading-tight flex-1">
-                  <div className="flex gap-2 items-center flex-wrap mb-1">
-                    <h4 className="font-semibold text-lg">{item.title}</h4>
-                    <div className="flex gap-1">
-                      {item.badges.map((badge, idx) => (
-                        <Badge key={idx} size="xs">
-                          {badge}
-                        </Badge>
-                      ))}
+                {/* ? ===================================== */}
+                {/* ? COLONNA SINISTRA                      */}
+                {/* ? ===================================== */}
+                <div className="flex items-end gap-4 flex-1">
+                    {/* Icona */}
+                    <div className="p-4 [&_svg]:text-(--brand) border border-(--border-default) rounded-full bg-white">
+                        <Icon size={19} />
                     </div>
-                  </div>
-                  <p className="text-(--text-secondary) w-3/4 text-sm leading-relaxed">
-                    {item.description}
-                  </p>
-                </div>
-              </div>
 
-              <div className="flex flex-col items-end justify-between self-stretch gap-4">
-                <div className="text-(--text-secondary)/50 text-xs font-medium whitespace-nowrap flex gap-1">
-                  <span>{item.meta.numActivity} attività</span>
-                  <span>•</span>
-                  <span>{item.meta.date}</span>
+                    {/* Titolo, descrizione, badges */}
+                    <div className="leading-tight flex-1">
+                        <div className="flex gap-2 items-center flex-wrap mb-1">
+                            <h4 className="font-semibold text-lg">{item.title}</h4>
+
+                            <div className="flex gap-1">
+                            {item.badges.map((badge, idx) => (
+                                <Badge key={idx} size="xs">
+                                {badge}
+                                </Badge>
+                            ))}
+                            </div>
+                        </div>
+
+                        <p className="text-(--text-secondary) w-3/4 text-sm leading-relaxed">
+                            {item.description}
+                        </p>
+                    </div>
                 </div>
 
-                <div className={`p-1 border border-(--border-default)/50 rounded-lg `}>
-                  <ChevronDown
-                    className={`text-(--text-secondary)/80 transition-all duration-300`}
-                    size={20}
-                  />
-                  {/* ${isOpen ? "rotate-180" : "bg-transparent"} */}
-                </div>
-              </div>
+                {/* ? ===================================== */}
+                {/* ? COLONNA DESTRA                        */}
+                {/* ? ===================================== */}
+                <div className="flex flex-col items-end justify-between self-stretch gap-4">
+                    <div className="text-(--text-secondary)/50 text-xs font-medium whitespace-nowrap flex gap-1">
+                        <span>{item.updates.length} attività</span>
+                        <span>•</span>
+                        <span>{item.meta.date}</span>
+                    </div>
+
+                    <div className={`p-1 border border-(--border-default)/50 rounded-lg `}>
+                        <ChevronDown
+                            className={`text-(--text-secondary)/80 transition-all duration-300`}
+                            size={20}
+                        />
+                        {/* ${isOpen ? "rotate-180" : "bg-transparent"} */}
+                    </div>
+              </div>      
+            </div>
+
+            {/* ? ===================================== */}
+            {/* ? CONTENUTO ITEM                        */}
+            {/* ? ===================================== */}
+            <div className={`grid transition-[grid-template-rows] duration-300 ease-in-out grid-rows-[1fr]`}>
+                <ul className="overflow-hidden">
+                    {/* Padding container interno per dare aria al contenuto */}
+                    <div className="px-5 pb-5 pl-[88px]"> 
+                        {/* Qui c'è il tuo div rosso richiesto */}
+                        <div className="w-full pt-2 border-l border-dashed border-l-(--border-default) text-(--text-secondary) font-normal flex flex-col items-start gap-4 font-bold opacity-90 pl-3">
+                            {item.updates.map((update, idx) => {
+                                return (
+                                    <li key={idx} className="flex gap-2 items-center">
+                                        <Badge size="xs">{update.label}</Badge>
+                                        <p className="text-sm">{update.text}</p>
+                                    </li>
+                                )
+                            })}
+                        </div>
+                    </div>
+                </ul>
             </div>
           </li>
         );

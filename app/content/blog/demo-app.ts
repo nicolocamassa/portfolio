@@ -10,6 +10,11 @@ type MetaChangelog = {
   date: string
 }
 
+type UpdatesList = {
+  label: string,
+  text: string
+}
+
 type ChangelogItems = {
   id: number,
   icon: LucideIcon,
@@ -17,6 +22,7 @@ type ChangelogItems = {
   description: string,
   badges: string[],
   meta: MetaChangelog,
+  updates: UpdatesList[],
 }
 
 type Changelog = {
@@ -54,7 +60,14 @@ export const changelog: Changelog = {
         "Backend"
       ],
       description: "Implementati script di deployment automatico per accelerare i lanci delle missioni senza errori manuali.",
-      meta: {numActivity: 2, date: "22 Gen 2026"}
+      meta: {numActivity: 2, date: "22 Gen 2026"},
+      updates: [
+        {label: "ui", text: "aggiornamento 1"},
+        {label: "ui", text: "aggiornamento 1"},
+        {label: "ui", text: "aggiornamento 1"},
+        {label: "ui", text: "aggiornamento 1"},
+        {label: "ui", text: "aggiornamento 1"}
+      ]
     },
     {
       id: 2,
@@ -64,7 +77,8 @@ export const changelog: Changelog = {
         "Devops"
       ],
       description: "Introdotta strategia di branching avanzata per migliorare il workflow di sviluppo e ridurre conflitti.",
-      meta: {numActivity: 0, date: "25 Gen 2026"}
+      meta: {numActivity: 0, date: "25 Gen 2026"},
+      updates: []
     },
     {
       id: 3,
@@ -75,6 +89,7 @@ export const changelog: Changelog = {
       ],
       description: "Risolti bug critici nel modulo di navigazione della navicella, prevenendo crash durante le simulazioni di lancio.",
       meta: {numActivity: 7, date: "23 Gen 2026"},
+      updates: []
     }
   ]
 }

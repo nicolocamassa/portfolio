@@ -78,7 +78,6 @@ export default async function ProjectPage({ params }: { params: { slug: string }
               </div>
             </div>
           </div>
-          <ChangelogItem></ChangelogItem>
           <Changelog></Changelog>
           <div className="flex gap-2">
             <Button className="mt-5 flex items-center gap-2" href=""><ArrowLeft size={20}/> Torna alla home</Button>
