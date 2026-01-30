@@ -1,64 +1,104 @@
-import StackIcon from "tech-stack-icons"
-import Badge from "./Badge"
+import StackIcon from "tech-stack-icons";
+import Badge from "./Badge";
 
 export type InfoBanner = {
   time?: string | number;
   tech?: string[];
   date?: string;
   status?: string;
-}
+};
+
+/* * 1. SCOMPOSIZIONE COMPONENTE
+ * Estraiamo la logica di visualizzazione del singolo blocco
+ * per pulire il componente principale.
+ */
+const InfoBlock = ({ label, children, className }: { label: string, children: React.ReactNode, className?: string }) => (
+  <div className={`flex flex-col gap-1 items-center text-center ${className}`}>
+    <h5 className="text-sm font-medium text-(--text-secondary) uppercase tracking-wide text-[0.8rem]">
+      {label}
+    </h5>
+    <div className="flex items-center justify-center mt-1">
+      {children}
+    </div>
+  </div>
+);
+
+/* * Componente Divisore (Visibile solo su Desktop)
+ */
+const VerticalDivider = () => (
+  <div className="hidden md:block w-px h-10 bg-(--border-default) opacity-60"></div>
+);
 
 export default function ReadingInfoBanner({ content }: { content?: InfoBanner }) {
-const {
-  time = "n/a",
-  tech = [""],
-  date = new Date().toLocaleDateString(),
-  status = "draft"
-} = content ?? {};
+  const {
+    time = "n/a",
+    tech = [],
+    date = new Date().toLocaleDateString(),
+    status = "draft",
+  } = content ?? {};
 
-/* ClassName dello status Badge */
-const badgeCn = content?.status === "completed"
-  ? "completed"
-  : content?.status === "progress"
-    ? "progress"
-    : "draft";
-    
-  /* TODO: Rendere responsive mobile e scomporre in altri componenti (?)*/
+  /* Mappa colori status ottimizzata */
+  const getBadgeColor = (status: string) => {
+    switch (status) {
+      case "completed": return "completed";
+      case "progress": return "progress";
+      default: return "draft";
+    }
+  };
+
   return (
-    <div className="flex items-center justify-between pb-20">
-      <div className="text-center flex flex-col gap-1">
-        <h5 className="text-md text-(--text-secondary)">Tempo di lettura</h5>
-        <span className="font-sans font-bold text-2xl">{time}</span>
-      </div>
+    /* * STRATEGIA RESPONSIVE:
+     * - Mobile: Grid a 2 colonne (grid-cols-2) con gap verticale.
+     * - Desktop (md): Flexbox row (flex-row) con justify-between.
+     */
+    <div className="w-full py-8 md:pb-20">
+      <div className="grid grid-cols-2 gap-y-8 gap-x-4 md:flex md:items-center md:justify-between">
+        
+        {/* Blocco 1: Tempo */}
+        <InfoBlock label="Tempo di lettura">
+          <span className="font-sans font-bold text-xl md:text-2xl">{time}</span>
+        </InfoBlock>
 
-      <div className="w-px h-12 bg-(--border-default)"></div> 
+        <VerticalDivider />
 
-      <div className="text-center flex flex-col gap-1">
-        <h5 className="text-md text-(--text-secondary)">Tech Stack</h5>
-        <div className="flex justify-center gap-2 mt-1">
-          {tech.map((t) => (
-            <StackIcon key={t} name={t} className="h-6 w-6 overflow-visible" />
-          ))}
-        </div>
-      </div>
+        {/* Blocco 2: Tech Stack */}
+        <InfoBlock label="Tech Stack">
+          <div className="flex -space-x-2 hover:space-x-1 transition-all duration-200">
+            {tech.length > 0 ? (
+              tech.map((t) => (
+                <StackIcon 
+                  key={t} 
+                  name={t} 
+                  className="h-6 w-6 md:h-7 md:w-7 rounded-full bg-white shadow-sm ring-1 ring-gray-100" 
+                />
+              ))
+            ) : (
+              <span className="text-gray-400 text-sm">-</span>
+            )}
+          </div>
+        </InfoBlock>
 
-      <div className="w-px h-12 bg-(--border-default)"></div> 
+        <VerticalDivider />
 
-      <div className="text-center flex flex-col gap-1">
-        <h5 className="text-md text-(--text-secondary)">Data di inizio</h5>
-        <Badge className="font-semibold">{date}</Badge>
-      </div>
+        {/* Blocco 3: Data */}
+        <InfoBlock label="Data di inizio">
+           {/* Usa flex per centrare verticalmente se il badge ha dimensioni fisse */}
+          <Badge className="font-semibold">{date}</Badge>
+        </InfoBlock>
 
-      <div className="w-px h-12 bg-(--border-default)"></div> 
+        <VerticalDivider />
 
-      <div className="text-center flex flex-col gap-1">
-        <h5 className="text-md text-(--text-secondary)">Stato</h5>
-        <span className="text-2xl">
-          <Badge color={badgeCn}>
+        {/* Blocco 4: Stato */}
+        <InfoBlock label="Stato">
+          <Badge color={getBadgeColor(status)}>
             {status}
           </Badge>
-        </span>
+        </InfoBlock>
+
       </div>
+      
+      {/* Opzionale: Linea orizzontale sotto su mobile se serve separazione */}
+      <div className="md:hidden mt-8 w-full h-px bg-(--border-default) opacity-50"></div>
     </div>
   );
 }

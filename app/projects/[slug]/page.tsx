@@ -1,4 +1,4 @@
-import type { ContentBlock } from "@/app/content/blogPages";
+import type { BlogPage, ContentBlock, SectionType } from "@/app/content/blogPages";
 import Container from "@/app/components/layout/Container";
 import Section from "@/app/components/layout/Section";
 import HeroSection from "@/app/components/sections/HeroSection";
@@ -26,7 +26,7 @@ export default async function ProjectPage({ params }: { params: { slug: string }
   const { heroSectionBlog, readingInfo, blogContent, changelog } = pageData;
 
   const sectionsForToc =
-    blogContent.sections?.map((s) => ({
+    blogContent.sections?.map((s: SectionType) => ({
       id: s.id,
       label: s.badge ?? s.id,
     })) ?? [];
@@ -42,7 +42,7 @@ export default async function ProjectPage({ params }: { params: { slug: string }
         <Section>
           <div className="flex flex-col gap-10 xl:flex-row lg:gap-(--space-blog) relative">
             <div className="w-full min-w-0 order-2 xl:order-1">
-              {blogContent.sections?.map((s) => (
+              {blogContent.sections?.map((s: SectionType) => (
                 <section
                   id={s.id}
                   key={s.id}
@@ -156,19 +156,11 @@ function RenderBlocks({ blocks }: { blocks: ContentBlock[] }) {
                   className="list-disc pl-8 mt-(--space-md) space-y-3 text-(--text-secondary)"
                 >
                   {b.items.map((item, idx) => (
-                    <Markdown
-                      key={idx}
-                        components={{
-                          li: ({ children }) => (
-                            <li>
-                              {children}
-                            </li>
-                          ),
-                        }}
-                      >
-                        {item}
-                      </Markdown>
+                    <li key={idx}>
+                      <Markdown>{ item }</Markdown>
+                    </li>
                   ))}
+                  
                 </ul>
               );
             }
@@ -180,7 +172,9 @@ function RenderBlocks({ blocks }: { blocks: ContentBlock[] }) {
                   className="list-decimal pl-12 mt-(--space-md) space-y-3 text-(--text-secondary)"
                 >
                   {b.items.map((item, idx) => (
-                    <li key={idx}>{item}</li>
+                    <li key={idx}> 
+                      <Markdown>{item}</Markdown> 
+                    </li>
                   ))}
                 </ol>
               );
@@ -195,7 +189,7 @@ function RenderBlocks({ blocks }: { blocks: ContentBlock[] }) {
                     size="listBase"
                     className="max-w-full truncate text-(--text-secondary)"
                   >
-                    {item}
+                    <Markdown>{item}</Markdown>
                   </Badge>
                 ))}
               </div>

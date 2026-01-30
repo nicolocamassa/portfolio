@@ -8,14 +8,14 @@ export type ContentBlock =
   | { type: "code"; text: string; language: string }
   | { type: "callout"; variant: "info" | "warning" | "danger" | "tip"; title?: string; text: string }
 
-type Section = {
+export type SectionType = {
   badge?: string;
   id: string;
   blocks: ContentBlock[];
 };
 
 export type BlogPage = {
-  sections?: Section[];
+  sections?: SectionType[];
 };
 
 export const blogPages: BlogPage[] = [];
