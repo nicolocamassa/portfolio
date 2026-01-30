@@ -31,7 +31,7 @@ export default function TocClient({ sections }: { sections: TocSection[] }) {
         if (best?.target?.id) setActiveId(best.target.id);
       },
        
-      { rootMargin: "-10% 0px -80% 0px" } 
+      { rootMargin: "-10% 0px -90% 0px" } 
     );
 
     els.forEach((el) => observer.observe(el));

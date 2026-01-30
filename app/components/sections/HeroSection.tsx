@@ -1,3 +1,4 @@
+
 import Badge from "../ui/Badge";
 import Button from "../ui/Buttons";
 import HeroBanner from "../ui/HeroBanner";
@@ -5,6 +6,8 @@ import Container from "../layout/Container";
 import Section from "../layout/Section";
 import Stack from "../layout/Stack";
 import { BadgeProps } from "../ui/Badge";
+import BlogImage from "../ui/BlogImage";
+
 
 type HeroCta = { label: string; href: string; color?: "black" | "white"; size?: "md" | "lg" };
 
@@ -14,9 +17,21 @@ export type HeroContent = {
   description: string;
   ctas?: HeroCta[];
   heroBanner?: boolean;
+  image?: HeroImage;
 }
 
-export default function HeroSection({ content }: { content: HeroContent }) {
+type HeroImage = {
+  src: string,
+  alt: string
+}
+
+export default async function HeroSection({
+  slug,
+  content,
+}: {
+  slug: string,
+  content: HeroContent;
+}) {
   const { badge, title, description, ctas, heroBanner } = content;
 
   return (
@@ -81,9 +96,7 @@ export default function HeroSection({ content }: { content: HeroContent }) {
               {heroBanner?.valueOf ? (
                 <HeroBanner></HeroBanner> 
               ) : 
-                <div className="w-full h-full">
-                  <img src="/images/testa.png" className="h-full w-full object-cover" alt="" />
-                </div>
+                <BlogImage slug={slug}></BlogImage>
               }
               </div>
         </Container>

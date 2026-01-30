@@ -2,7 +2,7 @@ import type { ContentBlock } from "@/app/content/blogPages";
 import type { BlogPage } from "../blogPages";
 import type { InfoBanner } from "@/app/components/ui/ReadingInfoBanner";
 import { calculateReadingTime } from "@/app/utils/readingTime";
-import { HeroContent} from "@/app/components/sections/HeroSection";
+import { HeroContent } from "@/app/components/sections/HeroSection";
 
 type MetaChangelog = {
   numActivity: number,
@@ -36,7 +36,11 @@ export const heroSectionBlog: HeroContent = {
   ctas: [
     { label: "Inizia il viaggio", href: "#introduzione" },
     { label: "Pattern & Best Practices", href: "https://microservices.io/patterns/", color: "white" }
-  ]
+  ],
+  image: {
+    src: "/images/testa.png",
+    alt: "immagine"
+  }
 }
 
 /* INFO PAGINA DETTAGLIO */
@@ -151,7 +155,7 @@ export const blogContent: BlogPage = {
         { type: "paragraph", text: "Immagina di costruire la prossima Netflix. Un singolo server potrebbe gestire 100 utenti simultanei, ma cosa succede quando hai 200 milioni di abbonati che vogliono guardare Stranger Things nello stesso istante?" },
         { 
           type: "image", 
-          src: "",
+          src: "https://hazelcast.com/wp-content/uploads/2021/12/18_DataPartitioning-1.png",
           alt: "Confronto tra architettura monolitica e distribuita",
           caption: "L'evoluzione da un sistema monolitico a un'architettura distribuita scalabile."
         },

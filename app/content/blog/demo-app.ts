@@ -3,7 +3,6 @@ import type { BlogPage } from "../blogPages";
 import type { InfoBanner } from "@/app/components/ui/ReadingInfoBanner";
 import { calculateReadingTime } from "@/app/utils/readingTime";
 import { HeroContent} from "@/app/components/sections/HeroSection";
-import { Bug, Rocket, GitBranch, BugIcon, Github, RocketIcon, type LucideIcon } from "lucide-react";
 
 type MetaChangelog = {
   numActivity: number,
@@ -38,7 +37,11 @@ export const heroSectionBlog: HeroContent = {
   ctas: [
     { label: "Inizia a leggere", href: "#introduzione" },
     { label: "Documentazione MDN", href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript", color: "white" }
-  ]
+  ],
+  image: {
+    src: "/images/Screenshot.png",
+    alt: ""
+  }
 }
 
 /* INFO PAGINA DETTAGLIO */

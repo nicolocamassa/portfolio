@@ -33,7 +33,7 @@ export default async function ProjectPage({ params }: { params: { slug: string }
 
   return (
     <>
-      <HeroSection content={heroSectionBlog} />
+      <HeroSection content={heroSectionBlog} slug={slug} />
       <Container>
         <ReadingInfoBanner content={readingInfo} />
         <Callout type="danger">
