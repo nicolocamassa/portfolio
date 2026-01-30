@@ -8,10 +8,6 @@ export type InfoBanner = {
   status?: string;
 };
 
-/* * 1. SCOMPOSIZIONE COMPONENTE
- * Estraiamo la logica di visualizzazione del singolo blocco
- * per pulire il componente principale.
- */
 const InfoBlock = ({ label, children, className }: { label: string, children: React.ReactNode, className?: string }) => (
   <div className={`flex flex-col gap-1 items-center text-center ${className}`}>
     <h5 className="text-sm font-medium text-(--text-secondary) uppercase tracking-wide text-[0.8rem]">
@@ -23,8 +19,6 @@ const InfoBlock = ({ label, children, className }: { label: string, children: Re
   </div>
 );
 
-/* * Componente Divisore (Visibile solo su Desktop)
- */
 const VerticalDivider = () => (
   <div className="hidden md:block w-px h-10 bg-(--border-default) opacity-60"></div>
 );
@@ -37,7 +31,7 @@ export default function ReadingInfoBanner({ content }: { content?: InfoBanner })
     status = "draft",
   } = content ?? {};
 
-  /* Mappa colori status ottimizzata */
+  /* Mappa colori status */
   const getBadgeColor = (status: string) => {
     switch (status) {
       case "completed": return "completed";
@@ -47,21 +41,16 @@ export default function ReadingInfoBanner({ content }: { content?: InfoBanner })
   };
 
   return (
-    /* * STRATEGIA RESPONSIVE:
-     * - Mobile: Grid a 2 colonne (grid-cols-2) con gap verticale.
-     * - Desktop (md): Flexbox row (flex-row) con justify-between.
-     */
     <div className="w-full py-8 md:pb-20">
       <div className="grid grid-cols-2 gap-y-8 gap-x-4 md:flex md:items-center md:justify-between">
         
-        {/* Blocco 1: Tempo */}
         <InfoBlock label="Tempo di lettura">
           <span className="font-sans font-bold text-xl md:text-2xl">{time}</span>
         </InfoBlock>
 
         <VerticalDivider />
 
-        {/* Blocco 2: Tech Stack */}
+        {/* Tech Stack */}
         <InfoBlock label="Tech Stack">
           <div className="flex -space-x-2 hover:space-x-1 transition-all duration-200">
             {tech.length > 0 ? (
@@ -80,15 +69,14 @@ export default function ReadingInfoBanner({ content }: { content?: InfoBanner })
 
         <VerticalDivider />
 
-        {/* Blocco 3: Data */}
+        {/* Data */}
         <InfoBlock label="Data di inizio">
-           {/* Usa flex per centrare verticalmente se il badge ha dimensioni fisse */}
           <Badge className="font-semibold">{date}</Badge>
         </InfoBlock>
 
         <VerticalDivider />
 
-        {/* Blocco 4: Stato */}
+        {/* Stato */}
         <InfoBlock label="Stato">
           <Badge color={getBadgeColor(status)}>
             {status}
@@ -97,7 +85,6 @@ export default function ReadingInfoBanner({ content }: { content?: InfoBanner })
 
       </div>
       
-      {/* Opzionale: Linea orizzontale sotto su mobile se serve separazione */}
       <div className="md:hidden mt-8 w-full h-px bg-(--border-default) opacity-50"></div>
     </div>
   );

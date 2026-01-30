@@ -23,7 +23,6 @@ export default function Callout({ children, type, title }: CalloutProps){
     return (
         <Stack direction="flex-row" gap="xs" className={`${CalloutVariant({ type })} items-start`}>
 
-            {/* TODO: Riaggiungere il titolo forse (?) */}
             {/* Scelta dell'icona all'interno del Callout */}
             <div className={CalloutVariant({ type })}>
                 {type === "info" && <Info size={22} />}
@@ -32,8 +31,12 @@ export default function Callout({ children, type, title }: CalloutProps){
                 {type === "tip" && <Lightbulb size={22} />}
             </div>
             
-            {/* Contenuto Callout */}
-            <p>{ children }</p>
+            {/* * Contenuto Callout */}
+            <div>
+                {title ? <h3 className="font-bold">{title}</h3> : null}
+                <p>{ children }</p>
+            </div>
+
         </Stack>
        
     )

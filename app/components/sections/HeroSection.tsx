@@ -8,7 +8,7 @@ import Stack from "../layout/Stack";
 import { BadgeProps } from "../ui/Badge";
 import BlogImage from "../ui/BlogImage";
 
-
+/* TODO: Rimuovere  */
 type HeroCta = { label: string; href: string; color?: "black" | "white"; size?: "md" | "lg" };
 
 export type HeroContent = {
