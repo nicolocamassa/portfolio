@@ -3,7 +3,7 @@ import type { BlogPage } from "@/app/content/blogPages";
 export function getFullText(blog: BlogPage): string {
   let text = "";
 
-  blog.sections?.forEach(section => {
+  blog?.sections?.forEach(section => {
     section.blocks.forEach(block => {
       switch (block.type) {
         case "heading":
@@ -32,4 +32,5 @@ export function calculateReadingTime(
   const words = getFullText(blog).split(/\s+/).length;
   const minutes = Math.max(1, Math.ceil(words / wpm));
   return `${minutes} min`;
+    
 }

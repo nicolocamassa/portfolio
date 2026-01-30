@@ -18,20 +18,20 @@ export default function TocClient({ sections }: { sections: TocSection[] }) {
       .filter(Boolean) as HTMLElement[];
 
     const observer = new IntersectionObserver(
+
+      
       (entries) => {
-        /* TODO: Fix observer */
-        /* ! In alcune situazioni imposta isIntersecting su false */
-        console.log(entries);
-        
+
         /* Recupera il valore migliore da visualizzare */
         const best = entries
           .filter((e) => e.isIntersecting)
-          .sort((a, b) => (b.intersectionRatio ?? 0) - (a.intersectionRatio ?? 0))[0];
+          .sort((a, b) => (b.intersectionRatio ?? 0) - (a.intersectionRatio ?? 0))[0]; /* Imposta il valore più visibile come primo nell'array */
 
-        /* Id dell'elemento da evidenziare */
-        if (best?.target!.id) setActiveId(best.target.id);
+        if (best?.target?.id)   console.log(best)
+        if (best?.target?.id) setActiveId(best.target.id);
       },
-      { rootMargin: "-25% 0px -60% 0px", threshold: [0.1, 0.2, 0.3] }
+       
+      { rootMargin: "-10% 0px -80% 0px" } 
     );
 
     els.forEach((el) => observer.observe(el));
