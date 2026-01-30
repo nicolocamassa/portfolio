@@ -1,9 +1,25 @@
-import { changelog } from "@/app/content/blog/demo-app";
+"use client"
 import Badge from "./Badge";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, type LucideIcon } from "lucide-react";
+
+type ChangelogItemType = {
+  id: number;
+  icon: LucideIcon; 
+  title: string;
+  description: string;
+  badges: string[];
+  meta: { 
+    numActivity: number; 
+    date: string;
+  };
+  updates: Array<{ 
+    label: string; 
+    text: string;
+  }>;
+};
 
 type Props = {
-  items: typeof changelog.items;
+  items: ChangelogItemType[];
   openId: number | null;
   toggleItem: (id: number) => void;
 }
@@ -28,7 +44,7 @@ export default function ChangelogItem({ items, openId, toggleItem }: Props) {
                 <div className="flex items-start gap-3 md:gap-4 flex-1 w-full">
                     {/* Icona */}
                     <div className="p-3 md:p-4 [&_svg]:text-(--brand) border border-(--border-default) rounded-full bg-white shrink-0">
-                    <Icon size={18} className="md:w-5 md:h-5" />
+                        <Icon size={18} className="md:w-5 md:h-5" />
                     </div>
 
                     {/* Titolo, descrizione, badges */}
@@ -71,6 +87,7 @@ export default function ChangelogItem({ items, openId, toggleItem }: Props) {
             </div>
 
             {/* Contenuto espandibile */}
+            {/* ? Da potrebbe spostare in un altro componente */}
             {item.updates.length ? (
               <div className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
                 <div className="overflow-hidden">

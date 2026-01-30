@@ -17,7 +17,7 @@ type UpdatesList = {
 
 type ChangelogItems = {
   id: number,
-  icon: LucideIcon,
+  icon: string,
   title: string,
   description: string,
   badges: string[],
@@ -54,7 +54,7 @@ export const changelog: Changelog = {
     {
       id: 1,
       title: "Launch prep automation",
-      icon: Rocket,
+      icon: "Rocket",
       badges: ["Automation", "Backend"],
       description: "Implementati script di deployment automatico per accelerare i lanci delle missioni senza errori manuali.",
       meta: { numActivity: 5, date: "22 Gen 2026" },
@@ -69,7 +69,7 @@ export const changelog: Changelog = {
     {
       id: 2,
       title: "Feature branching strategy",
-      icon: GitBranch,
+      icon: "Cloud",
       badges: ["DevOps"],
       description: "Introdotta strategia di branching avanzata per migliorare il workflow di sviluppo e ridurre conflitti.",
       meta: { numActivity: 3, date: "25 Gen 2026" },
@@ -82,7 +82,7 @@ export const changelog: Changelog = {
     {
       id: 3,
       title: "Critical bug fixes",
-      icon: Bug,
+      icon: "Bug",
       badges: ["Bugfix"],
       description: "Risolti bug critici nel modulo di navigazione della navicella, prevenendo crash durante le simulazioni di lancio.",
       meta: { numActivity: 4, date: "23 Gen 2026" },
@@ -96,7 +96,7 @@ export const changelog: Changelog = {
     {
       id: 4,
       title: "Rocket engine upgrade",
-      icon: Rocket,
+      icon: "Server",
       badges: ["Engineering", "Performance"],
       description: "Aggiornamento del motore per incrementare la spinta del 15% e ottimizzare il consumo di carburante.",
       meta: { numActivity: 2, date: "26 Gen 2026" },
@@ -108,7 +108,7 @@ export const changelog: Changelog = {
     {
       id: 5,
       title: "New telemetry system",
-      icon: Github,
+      icon: "Github",
       badges: ["Telemetry", "UI"],
       description: "Implementato un nuovo sistema di telemetria per monitorare in tempo reale lo stato dei razzi.",
       meta: { numActivity: 3, date: "28 Gen 2026" },

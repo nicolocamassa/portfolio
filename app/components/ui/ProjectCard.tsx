@@ -5,6 +5,7 @@ import Stack from "../layout/Stack";
 
 const projects = [
   { slug: "demo-app", title: "Demo App" },
+  { slug: "reading-app", title: "Demo App" },
 ];
 
 

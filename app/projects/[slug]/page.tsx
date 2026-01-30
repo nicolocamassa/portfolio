@@ -9,28 +9,13 @@ import TocClient from "@/app/components/ui/TocClient";
 import Markdown from 'react-markdown';
 import CodeBlock from "@/app/components/ui/CodeBlock.client";
 import Changelog from "@/app/components/ui/Changelog";
-import { readingInfo } from "@/app/content/blog/demo-app";
-import { heroSectionBlog } from "@/app/content/blog/demo-app";
 import Button from "@/app/components/ui/Buttons";
 import { ArrowLeft, Github } from "lucide-react";
-import ChangelogItem from "@/app/components/ui/ChangelogItem";
-
-
-type BlogSection = {
-  id: string;
-  badge?: string;
-  blocks: ContentBlock[];
-};
-
-type BlogContent = {
-  slug: string;
-  hero: any;
-  sections?: BlogSection[];
-};
 
 export default async function ProjectPage({ params }: { params: { slug: string } }) {
   const { slug } = await params;
-  let pageData = (await import(`@/app/content/blog/${slug}`)) as { blogContent: BlogContent };
+
+  let pageData;
 
   try {
     pageData = await import(`@/app/content/blog/${slug}`);
@@ -38,7 +23,7 @@ export default async function ProjectPage({ params }: { params: { slug: string }
     return <div>Articolo non trovato</div>;
   }
   
-  const { blogContent } = pageData;
+  const { heroSectionBlog, readingInfo, blogContent, changelog } = pageData;
 
   const sectionsForToc =
     blogContent.sections?.map((s) => ({
@@ -78,7 +63,7 @@ export default async function ProjectPage({ params }: { params: { slug: string }
               </div>
             </div>
           </div>
-          <Changelog></Changelog>
+          <Changelog changelog={changelog} />
           <div className="flex gap-2">
             <Button className="mt-5 flex items-center gap-2" href=""><ArrowLeft size={20}/> Torna alla home</Button>
             <Button className="mt-5 flex items-center gap-2" href="" color="white"><Github size={20}/>Vedi su GitHub</Button>
