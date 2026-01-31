@@ -1,14 +1,17 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Toc from "@/app/components/_ui/TableOfContents";
-import NavItem from "@/app/components/_ui/NavItem";
-import Stack from "@/app/components/layout/Stack";
+
+import Toc from "./TableOfContents";
+import { NavItem } from "@/_components/ui";
+import { Stack } from "@/_components/layout";
+
+
 
 
 type TocSection = { id: string; label: string };
 
-export default function TocClient({ sections }: { sections: TocSection[] }) {
+export function TocClient({ sections }: { sections: TocSection[] }) {
   const [activeId, setActiveId] = useState(sections[0]?.id ?? "");
 
   /* Prende tutte l'id di tutte le sezioni esistenti */

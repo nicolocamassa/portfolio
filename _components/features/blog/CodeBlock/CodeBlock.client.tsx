@@ -8,7 +8,7 @@ const CodeSnippet = dynamic(
   { ssr: false }
 );
 
-export default function CodeBlock({ text, language }: { text: string; language: string; }) {
+export function CodeBlock({ text, language }: { text: string; language: string; }) {
   return (
     <div className="mt-(--space-sm)">
       <CodeSnippet text={text} language={language} />

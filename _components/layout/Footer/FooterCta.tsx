@@ -1,7 +1,7 @@
-import { Signature, SendHorizontal } from "lucide-react";
-import Button from "../../_ui/Buttons";
-import Stack from "../../layout/Stack";
-import Container from "../../layout/Container";
+import { SendHorizontal } from "lucide-react";
+
+import { Stack, Container } from "@/_components/layout";
+import { Button } from "@/_components/ui";
 
 export default function FooterCTA() {
   return (

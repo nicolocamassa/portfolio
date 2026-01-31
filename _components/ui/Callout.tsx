@@ -1,5 +1,5 @@
 import { tv } from "tailwind-variants"
-import Stack from "../layout/Stack";
+import { Stack } from "@/_components/layout";
 import { Info, TriangleAlert, OctagonAlert, Lightbulb } from "lucide-react";
 
 type CalloutProps = React.PropsWithChildren<{
@@ -19,7 +19,7 @@ const CalloutVariant = tv({
     }
 })
 
-export default function Callout({ children, type, title }: CalloutProps){
+export function Callout({ children, type, title }: CalloutProps){
     return (
         <Stack direction="flex-row" gap="xs" className={`${CalloutVariant({ type })} items-start`}>
 

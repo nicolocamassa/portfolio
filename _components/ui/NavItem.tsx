@@ -3,7 +3,7 @@ type NavProps = React.PropsWithChildren<{
     className?: string;
 }>
 
-export default function NavItem({ children, href, className }: NavProps){
+export function NavItem({ children, href, className }: NavProps){
     return (
         <li>
             <a 

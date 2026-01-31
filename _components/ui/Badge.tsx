@@ -34,7 +34,7 @@ const badge = tv({
 
 export type BadgeProps = { children: React.ReactNode; className?: string } & VariantProps<typeof badge>;
 
-export default function Badge({ children, size, type, className, color }: BadgeProps) {
+export function Badge({ children, size, type, className, color }: BadgeProps) {
   const renderIcon = () => {
     if (color === "draft"){
       return <CircleDashed size={17}/>

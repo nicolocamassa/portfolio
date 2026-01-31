@@ -1,4 +1,4 @@
-import { HeroContent } from "../components/sections/HeroSection"
+import { HeroContent } from "@/_components/sections/"
 
 export const heroSection: HeroContent = {
     badge: {

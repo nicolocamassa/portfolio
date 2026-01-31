@@ -33,7 +33,7 @@ type ButtonProps = React.PropsWithChildren<{
   href: string;
 }> & ButtonVariants;
 
-export default function Button({ children, color, href, size, className }: ButtonProps) {
+export function Button({ children, color, href, size, className }: ButtonProps) {
   return (
     <Link className={button({ color, size, className })} href={href} role="button">
       {children}

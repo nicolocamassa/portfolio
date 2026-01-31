@@ -1,13 +1,14 @@
-import Stack from "../layout/Stack";
-import Badge from "./Badge";
 import { ScanEye, Layers2, Code } from "lucide-react";
+
+import { Badge } from "../../ui/Badge";
+import { Stack } from "@/_components/layout";
 
 
 type Content = React.PropsWithChildren<{
   className?: string;
 }>;
 
-export default function HeroBanner() {
+export function HeroBanner() {
   return (
     <>
       <ContentBanner>

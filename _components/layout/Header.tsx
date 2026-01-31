@@ -1,9 +1,7 @@
-import { LogoText } from "../_ui/Logo";
-import Button from "../_ui/Buttons";
-import NavItem from "../_ui/NavItem";
+import { LogoText, Button, NavItem } from "../ui";
 import { Download } from "lucide-react";
 
-export default function Header() {
+export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full px-3 md:px-5 bg-white border-b border-b-gray-100">
       <div

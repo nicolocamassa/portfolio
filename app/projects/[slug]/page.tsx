@@ -1,16 +1,17 @@
-import type { ContentBlock } from "@/app/content/blogPages";
-import Container from "@/app/components/layout/Container";
-import Section from "@/app/components/layout/Section";
-import HeroSection from "@/app/components/_sections/HeroSection";
-import Badge from "@/app/components/_ui/Badge";
-import Callout from "@/app/components/_ui/Callout";
-import ReadingInfoBanner from "@/app/components/_ui/ReadingInfoBanner";
-import TocClient from "@/app/components/_ui/TocClient";
-import Markdown from 'react-markdown';
-import CodeBlock from "@/app/components/_ui/CodeBlock.client";
-import Changelog from "@/app/components/_ui/Changelog";
-import Button from "@/app/components/_ui/Buttons";
 import { ArrowLeft, Github } from "lucide-react";
+import Markdown from 'react-markdown';
+import { HeroSection } from "@/_components/sections";
+
+/* Tipi */
+import type { ContentBlock, Sections } from "@/_types/blogPages";
+
+/* Componenti di layout */
+import { Container, Section } from "@/_components/layout";
+
+/* Componenti */
+import { Badge, Button, Callout } from "@/_components/ui";
+import { TocClient, CodeBlock, Changelog, ReadingInfoBanner } from "@/_components/features/blog";
+
 
 export default async function ProjectPage({ params }: { params: { slug: string } }) {
   const { slug } = await params;
@@ -18,7 +19,7 @@ export default async function ProjectPage({ params }: { params: { slug: string }
   let pageData;
 
   try {
-    pageData = await import(`@/app/content/blog/${slug}`);
+    pageData = await import(`@/_content/projects/${slug}`);
   } catch {
     return <div>Articolo non trovato</div>;
   }
@@ -26,7 +27,7 @@ export default async function ProjectPage({ params }: { params: { slug: string }
   const { heroSectionBlog, readingInfo, blogContent, changelog } = pageData;
 
   const sectionsForToc =
-    blogContent.sections?.map((s) => ({
+    blogContent.sections?.map((s: Sections) => ({
       id: s.id,
       label: s.badge ?? s.id,
     })) ?? [];
@@ -42,7 +43,7 @@ export default async function ProjectPage({ params }: { params: { slug: string }
         <Section>
           <div className="flex flex-col gap-10 xl:flex-row lg:gap-(--space-blog) relative">
             <div className="w-full min-w-0 order-2 xl:order-1">
-              {blogContent.sections?.map((s) => (
+              {blogContent.sections?.map((s: Sections) => (
                 <section
                   id={s.id}
                   key={s.id}

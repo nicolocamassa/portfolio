@@ -1,5 +1,5 @@
+import { Badge } from "@/_components/ui";
 import StackIcon from "tech-stack-icons"
-import Badge from "./Badge"
 
 export type InfoBanner = {
   time?: string | number;
@@ -8,7 +8,7 @@ export type InfoBanner = {
   status?: string;
 }
 
-export default function ReadingInfoBanner({ content }: { content?: InfoBanner }) {
+export function ReadingInfoBanner({ content }: { content?: InfoBanner }) {
 const {
   time = "n/a",
   tech = [""],

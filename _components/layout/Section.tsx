@@ -10,7 +10,7 @@ const sizes = {
     lg: "section-lg"
 }
 
-export default function Section({ children, id, className, size = "md" }: SectionProps){
+export function Section({ children, id, className, size = "md" }: SectionProps){
     return (
         <section className={`relative ${className} ${sizes[size]}`} id={id}>
             { children }

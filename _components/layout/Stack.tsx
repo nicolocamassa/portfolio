@@ -14,7 +14,7 @@ const gaps = {
     xl: "gap-xl",
 }
 
-export default function Stack({ 
+export function Stack({ 
     children, 
     className, 
     gap = "md", 

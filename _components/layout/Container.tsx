@@ -1,6 +1,4 @@
-import { Children } from "react";
-
-export default function Container({ children, className = "" }: { children: React.ReactNode, className?: string}) {
+export function Container({ children, className = "" }: { children: React.ReactNode, className?: string}) {
     return (
         <div className={`max-w-[1300px] mx-auto px-3 md:px-5 ${className}
                         [&_h2]:text-4xl  [&_h2]:md:text-6xl 

@@ -1,9 +1,8 @@
-import type { ContentBlock } from "@/types/blogPages";
-import type { BlogPage } from "../../types/blogPages";
-import type { InfoBanner } from "@/components/features/blog/ReadingInfoBanner";
-import { calculateReadingTime } from "@/utils/readingTime";
-import { HeroContent} from "@/components/sections/HeroSection";
-import { Bug, Rocket, GitBranch, BugIcon, Github, RocketIcon, type LucideIcon } from "lucide-react";
+import type { ContentBlock } from "@/_types/blogPages";
+import type { BlogPage } from "@/_types/blogPages";
+import type { InfoBanner } from "@/_components/features/blog/ReadingInfoBanner";
+import { calculateReadingTime } from "@/_utils/readingTime";
+import { HeroContent} from "@/_components/sections";
 
 type MetaChangelog = {
   numActivity: number,

@@ -27,7 +27,7 @@ type ChangelogProps = {
   };
 };
 
-export default function Changelog({ changelog }: ChangelogProps) {
+export function Changelog({ changelog }: ChangelogProps) {
   const [openId, setOpenId] = useState<number | null>(null);
   const [showAll, setShowAll] = useState(false);
  

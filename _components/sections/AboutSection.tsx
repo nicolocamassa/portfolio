@@ -1,11 +1,9 @@
-import Badge from "../_ui/Badge";
-import Container from "../layout/Container";
 import { Sparkles, Layers, SquareTerminal } from "lucide-react";
-import Section from "../layout/Section";
-import Stack from "../layout/Stack";
+import { Stack, Section, Container } from "@/_components/layout";
+import { Badge } from "../ui";
 
 
-export default function AboutSection() {
+export function AboutSection() {
   return (
     <Section>
       <Container className="px-4 sm:px-6">

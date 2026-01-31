@@ -1,11 +1,8 @@
-import Badge from "../_ui/Badge";
-import ProjectCard from "../_ui/ProjectCard";
-import Container from "../layout/Container";
-import Section from "../layout/Section";
-import Stack from "../layout/Stack";
+import { Badge } from "@/_components/ui";
+import ProjectCard from "./ProjectCard";
+import { Stack, Section, Container } from "@/_components/layout";
 
-
-export default function ProjectSection() {
+export function ProjectSection() {
   return (
     <Section id="projects">
       <Container className="px-4 sm:px-6">

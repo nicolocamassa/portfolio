@@ -1,10 +1,7 @@
-import Badge from "../_ui/Badge";
-import Button from "../_ui/Buttons";
-import HeroBanner from "../_ui/HeroBanner";
-import Container from "../layout/Container";
-import Section from "../layout/Section";
-import Stack from "../layout/Stack";
-import { BadgeProps } from "../_ui/Badge";
+import { BadgeProps } from "@/_components/ui/Badge";
+import { Badge, Button, HeroBanner } from "@/_components/ui";
+import { Stack, Section, Container } from "@/_components/layout";
+
 
 type HeroCta = { label: string; href: string; color?: "black" | "white"; size?: "md" | "lg" };
 
@@ -16,7 +13,7 @@ export type HeroContent = {
   heroBanner?: boolean;
 }
 
-export default function HeroSection({ content }: { content: HeroContent }) {
+export function HeroSection({ content }: { content: HeroContent }) {
   const { badge, title, description, ctas, heroBanner } = content;
 
   return (

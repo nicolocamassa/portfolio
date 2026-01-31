@@ -1,5 +1,5 @@
 "use client"
-import Badge from "../Badge";
+import { Badge } from "@/_components/ui";
 import { ChevronDown, type LucideIcon } from "lucide-react";
 
 type ChangelogItemType = {

@@ -1,7 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
-import Badge from "./Badge";
-import Button from "./Buttons";
-import Stack from "../layout/Stack";
+import { Badge, Button } from "@/_components/ui";
+import { Stack } from "@/_components/layout";
 
 const projects = [
   { slug: "demo-app", title: "Demo App" },
