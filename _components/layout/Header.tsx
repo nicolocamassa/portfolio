@@ -25,8 +25,6 @@ export function Header() {
               </Button>
             </li>
           </ul>
-
-          
         </nav>
       </div>
     </header>

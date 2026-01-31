@@ -1,8 +1,9 @@
-import type { ContentBlock } from "@/_types/blogPages";
-import type { BlogPage } from "@/_types/blogPages";
+import type { ContentBlock } from "@/_types/projectArticle";
+import type { ProjectArticle } from "@/_types/projectArticle";
 import type { InfoBanner } from "@/_components/features/blog/ReadingInfoBanner";
 import { calculateReadingTime } from "@/_utils/readingTime";
 import { HeroContent} from "@/_components/sections";
+
 
 type MetaChangelog = {
   numActivity: number,
@@ -26,6 +27,7 @@ type ChangelogItems = {
 
 type Changelog = {
   items: ChangelogItems[]
+  linkGithub: string
 }
 
 /* SEZIONE HERO */
@@ -53,6 +55,7 @@ export const readingInfo: InfoBanner = {
 }
 
 export const changelog: Changelog = {
+  linkGithub: "https://stackoverflow.com",
   items: [
     {
       id: 1,
@@ -125,7 +128,7 @@ export const changelog: Changelog = {
 };
 
 /* CONTENUTI PAGINA BLOG */
-export const blogContent: BlogPage = {
+export const projectArticle: ProjectArticle = {
   sections: [
     // SEZIONE 1: INTRODUZIONE
     {
@@ -273,4 +276,4 @@ console.log("3");
   ],
 };
 
-readingInfo.time = calculateReadingTime(blogContent);
+readingInfo.time = calculateReadingTime(projectArticle);

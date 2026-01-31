@@ -15,9 +15,9 @@ export type Sections = {
   blocks: ContentBlock[];
 };
 
-export type BlogPage = {
+export type ProjectArticle = {
   sections?: Sections[];
 };
 
-export const blogPages: BlogPage[] = [];
+export const blogPages: ProjectArticle[] = [];
 

@@ -1,7 +1,7 @@
 import { BadgeProps } from "@/_components/ui/Badge";
 import { Badge, Button, HeroBanner } from "@/_components/ui";
 import { Stack, Section, Container } from "@/_components/layout";
-import BlogImage from "@/_components/features/blog/BlogImage";
+import { BlogImage } from "@/_components/features/blog/BlogImage";
 
 /* TODO: Rimuovere  */
 type HeroCta = { label: string; href: string; color?: "black" | "white"; size?: "md" | "lg" };

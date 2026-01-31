@@ -1,10 +1,10 @@
 
 
-export default async function BlogImage({ slug }: { slug: string }){
+export async function BlogImage({ slug }: { slug: string }){
     let heroImage;
 
     try{
-        heroImage = await import(`@/app/content/blog/${slug}`)
+        heroImage = await import(`@/_content/projects/${slug}`)
     } catch {
         return <span>immagine non trovata</span>
     }

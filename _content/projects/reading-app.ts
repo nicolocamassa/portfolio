@@ -1,8 +1,8 @@
-import type { ContentBlock } from "@/_types/blogPages";
-import type { BlogPage } from "@/_types/blogPages";
+import type { ContentBlock, ProjectArticle } from "@/_types/projectArticle";
 import type { InfoBanner } from "@/_components/features/blog/ReadingInfoBanner";
 import { calculateReadingTime } from "@/_utils/readingTime";
 import { HeroContent} from "@/_components/sections";
+import { Project } from "next/dist/build/swc/types";
 
 type MetaChangelog = {
   numActivity: number,
@@ -26,12 +26,13 @@ type ChangelogItems = {
 
 type Changelog = {
   items: ChangelogItems[]
+  linkGithub: string
 }
 
 /* SEZIONE HERO */
 export const heroSectionBlog: HeroContent = {
   badge: { children: "Architettura" },
-  title: "Sistemi Distribuiti: Dalla Teoria alla Pratica",
+  title: "Sistemi Distribuiti: Dalla Teoria",
   description: "Scopri come Netflix, Spotify e Amazon gestiscono milioni di richieste al secondo attraverso microservizi, message queues e database distribuiti.",
   ctas: [
     { label: "Inizia il viaggio", href: "#introduzione" },
@@ -52,6 +53,7 @@ export const readingInfo: InfoBanner = {
 }
 
 export const changelog: Changelog = {
+  linkGithub: "www.google.com",
   items: [
     {
       id: 1,
@@ -144,7 +146,7 @@ export const changelog: Changelog = {
 };
 
 /* CONTENUTI PAGINA BLOG */
-export const blogContent: BlogPage = {
+export const projectArticle: ProjectArticle = {
   sections: [
     // SEZIONE 1: INTRODUZIONE
     {
@@ -607,4 +609,4 @@ try {
   ],
 };
 
-readingInfo.time = calculateReadingTime(blogContent);
+readingInfo.time = calculateReadingTime(projectArticle);

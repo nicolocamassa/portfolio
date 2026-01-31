@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const button = tv({
   base: "inline-flex items-center justify-center border border-(--border-default)"+
-  " active:bg-(--brand-dark) active:shadow-[0px_0px_0px_0px_rgba(0,0,0,0.5)] hover:cursor-pointer font-medium rounded-xl shadow-[0px_0px_4px_0px_rgba(0,_0,_0,_0.15)] duration-300 hover:shadow-[0px_0px_10px_0px_rgba(0,_0,_0,_0.25)]",
+  " gap-2 active:bg-(--brand-dark) active:shadow-[0px_0px_0px_0px_rgba(0,0,0,0.5)] hover:cursor-pointer font-medium rounded-xl shadow-[0px_0px_4px_0px_rgba(0,_0,_0,_0.15)] duration-300 hover:shadow-[0px_0px_10px_0px_rgba(0,_0,_0,_0.25)]",
   variants: {
     color: {
       textOnly: "shadow-none hover:text-black text-[var(--text-secondary)]",
@@ -28,14 +28,13 @@ const button = tv({
 
 type ButtonVariants = VariantProps<typeof button>;
 
-type ButtonProps = React.PropsWithChildren<{
-  className?: string;
-  href: string;
-}> & ButtonVariants;
+type ButtonProps = React.PropsWithChildren<
+  React.AnchorHTMLAttributes<HTMLAnchorElement> & ButtonVariants & { href: string }
+>;
 
 export function Button({ children, color, href, size, className }: ButtonProps) {
   return (
-    <Link className={button({ color, size, className })} href={href} role="button">
+    <Link target="_blank" rel="noopener noreferrer" className={button({ color, size, className })} href={href} role="button">
       {children}
     </Link>
   );
