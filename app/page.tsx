@@ -1,7 +1,5 @@
-import HeroSection from "./components/sections/HeroSection";
-import ProjectSection from "./components/sections/ProjectSection";
-import AboutSection from "./components/sections/AboutSection";
-import { heroSection } from "./content/home";
+import { AboutSection, ProjectSection, HeroSection } from "@/_components/sections/index"
+import { heroSection } from "@/_content/home";
 
 
 export default function Page() {
