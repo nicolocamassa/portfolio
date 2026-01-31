@@ -1,10 +1,10 @@
-import Badge from "../ui/Badge";
-import Button from "../ui/Buttons";
-import HeroBanner from "../ui/HeroBanner";
+import Badge from "../_ui/Badge";
+import Button from "../_ui/Buttons";
+import HeroBanner from "../_ui/HeroBanner";
 import Container from "../layout/Container";
 import Section from "../layout/Section";
 import Stack from "../layout/Stack";
-import { BadgeProps } from "../ui/Badge";
+import { BadgeProps } from "../_ui/Badge";
 
 type HeroCta = { label: string; href: string; color?: "black" | "white"; size?: "md" | "lg" };
 

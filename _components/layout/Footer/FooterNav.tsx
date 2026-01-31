@@ -1,5 +1,5 @@
 import Container from "../Container";
-import { LogoText } from "../../ui/Logo";
+import { LogoText } from "../../_ui/Logo";
 import Stack from "../Stack";
 
 export default function FooterNav() {

@@ -1,6 +1,6 @@
-import HeroSection from "./components/sections/HeroSection";
-import ProjectSection from "./components/sections/ProjectSection";
-import AboutSection from "./components/sections/AboutSection";
+import HeroSection from "./components/_sections/HeroSection";
+import ProjectSection from "./components/_sections/ProjectSection";
+import AboutSection from "./components/_sections/AboutSection";
 import { heroSection } from "./content/home";
 
 

@@ -57,7 +57,7 @@ export default function Changelog({ changelog }: ChangelogProps) {
         <ChangelogItem
           items={visibleItems}
           openId={openId}
-          toggleItem={toggleItem}
+          toggleItemAction={toggleItem}
         />
       </ul>
       {changelog.items.length > 3 && (

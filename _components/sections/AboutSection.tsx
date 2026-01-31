@@ -1,4 +1,4 @@
-import Badge from "../ui/Badge";
+import Badge from "../_ui/Badge";
 import Container from "../layout/Container";
 import { Sparkles, Layers, SquareTerminal } from "lucide-react";
 import Section from "../layout/Section";

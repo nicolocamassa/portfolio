@@ -1,15 +1,15 @@
 import type { ContentBlock } from "@/app/content/blogPages";
 import Container from "@/app/components/layout/Container";
 import Section from "@/app/components/layout/Section";
-import HeroSection from "@/app/components/sections/HeroSection";
-import Badge from "@/app/components/ui/Badge";
-import Callout from "@/app/components/ui/Callout";
-import ReadingInfoBanner from "@/app/components/ui/ReadingInfoBanner";
-import TocClient from "@/app/components/ui/TocClient";
+import HeroSection from "@/app/components/_sections/HeroSection";
+import Badge from "@/app/components/_ui/Badge";
+import Callout from "@/app/components/_ui/Callout";
+import ReadingInfoBanner from "@/app/components/_ui/ReadingInfoBanner";
+import TocClient from "@/app/components/_ui/TocClient";
 import Markdown from 'react-markdown';
-import CodeBlock from "@/app/components/ui/CodeBlock.client";
-import Changelog from "@/app/components/ui/Changelog";
-import Button from "@/app/components/ui/Buttons";
+import CodeBlock from "@/app/components/_ui/CodeBlock.client";
+import Changelog from "@/app/components/_ui/Changelog";
+import Button from "@/app/components/_ui/Buttons";
 import { ArrowLeft, Github } from "lucide-react";
 
 export default async function ProjectPage({ params }: { params: { slug: string } }) {

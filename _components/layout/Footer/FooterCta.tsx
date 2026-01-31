@@ -1,5 +1,5 @@
 import { Signature, SendHorizontal } from "lucide-react";
-import Button from "../../ui/Buttons";
+import Button from "../../_ui/Buttons";
 import Stack from "../../layout/Stack";
 import Container from "../../layout/Container";
 

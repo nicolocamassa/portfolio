@@ -1,5 +1,5 @@
-import Badge from "../ui/Badge";
-import ProjectCard from "../ui/ProjectCard";
+import Badge from "../_ui/Badge";
+import ProjectCard from "../_ui/ProjectCard";
 import Container from "../layout/Container";
 import Section from "../layout/Section";
 import Stack from "../layout/Stack";

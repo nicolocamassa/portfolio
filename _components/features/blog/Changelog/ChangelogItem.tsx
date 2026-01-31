@@ -1,5 +1,5 @@
 "use client"
-import Badge from "./Badge";
+import Badge from "../Badge";
 import { ChevronDown, type LucideIcon } from "lucide-react";
 
 type ChangelogItemType = {
@@ -21,10 +21,10 @@ type ChangelogItemType = {
 type Props = {
   items: ChangelogItemType[];
   openId: number | null;
-  toggleItem: (id: number) => void;
+  toggleItemAction: (id: number) => void;
 }
 
-export default function ChangelogItem({ items, openId, toggleItem }: Props) {
+export default function ChangelogItem({ items, openId, toggleItemAction }: Props) {
   return (
     <>
       {items.map((item, idx) => {
@@ -36,7 +36,7 @@ export default function ChangelogItem({ items, openId, toggleItem }: Props) {
             className={`border-b border-b-(--border-default) last:border-b-0 
                         transition-colors duration-200 cursor-pointer hover:bg-gray-50`}
             key={idx}
-            onClick={() => toggleItem(item.id)}
+            onClick={() => toggleItemAction(item.id)}
           >
             {/* Header: layout flessibile che passa da colonna (mobile) a riga (tablet) */}
             <div className="p-4 md:p-5 flex flex-col md:flex-row justify-between items-start gap-4">

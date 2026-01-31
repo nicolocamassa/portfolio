@@ -1,6 +1,6 @@
-import { LogoText } from "../ui/Logo";
-import Button from "../ui/Buttons";
-import NavItem from "../ui/NavItem";
+import { LogoText } from "../_ui/Logo";
+import Button from "../_ui/Buttons";
+import NavItem from "../_ui/NavItem";
 import { Download } from "lucide-react";
 
 export default function Header() {

@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Toc from "@/app/components/ui/TableOfContents";
-import NavItem from "@/app/components/ui/NavItem";
+import Toc from "@/app/components/_ui/TableOfContents";
+import NavItem from "@/app/components/_ui/NavItem";
 import Stack from "@/app/components/layout/Stack";
 
 
