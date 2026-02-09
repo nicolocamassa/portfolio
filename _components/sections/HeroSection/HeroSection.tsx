@@ -1,9 +1,13 @@
+"use client"
+
 import { BadgeProps } from "@/_components/ui/Badge";
 import { Badge, Button, HeroBanner } from "@/_components/ui";
 import { Stack, Section, Container } from "@/_components/layout";
 import { BlogImage } from "@/_components/features/blog/BlogImage";
+import { useGlobalAnimations } from "@/_utils/animation";
 
 /* TODO: Rimuovere  */
+
 type HeroCta = { label: string; href: string; color?: "black" | "white"; size?: "md" | "lg" };
 
 export type HeroContent = {
@@ -21,10 +25,12 @@ type HeroImage = {
 }
 
 export function HeroSection({ slug, content }: { slug: string, content: HeroContent }) {
+  useGlobalAnimations(slug);
+
   const { badge, title, description, ctas, heroBanner } = content;
 
   return (
-    <Section>
+    <Section className="reveal-main">
       <Container>
         <Stack gap="sm" className="items-center text-center">
           <Badge size={badge.size} type={badge.type}>
@@ -33,7 +39,7 @@ export function HeroSection({ slug, content }: { slug: string, content: HeroCont
 
           <Stack gap="md" className="items-center text-center">
              <h1
-              className="
+              className="reveal-main
                 w-full
                 font-sans font-semibold tracking-tighter text-balance
                 text-5xl leading-tighter
@@ -45,7 +51,7 @@ export function HeroSection({ slug, content }: { slug: string, content: HeroCont
             </h1>
 
             <Stack gap="xl" className="items-center text-center">
-                <p className="
+                <p className="reveal-main
                   max-w-9/10
                   text-base sm:text-md md:text-xl
                   text-(--text-secondary)
@@ -70,7 +76,7 @@ export function HeroSection({ slug, content }: { slug: string, content: HeroCont
 
       <div
         className="relative mt-20 sm:mt-24 lg:mt-35 w-full bg-cover bg-center pb-2"
-        style={{ backgroundImage: "url('/images/bg.png')" }}
+        style={{ backgroundImage: "url('/images/bgtest-2.png')" }}
       >
         <Container className="px-8 sm:px-6">
               <div className="
@@ -80,7 +86,7 @@ export function HeroSection({ slug, content }: { slug: string, content: HeroCont
                   divide-y md:divide-y-0 md:divide-x
                   divide-(--border-default)
                   shadow-[0_-8px_24px_-12px_rgba(0,0,0,0.15)]
-                  overflow-hidden"
+                  overflow-hidden border border-(--border-default)/50"
               >
               {heroBanner?.valueOf ? (
                 <HeroBanner></HeroBanner> 

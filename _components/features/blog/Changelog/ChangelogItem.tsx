@@ -50,7 +50,7 @@ export default function ChangelogItem({ items, openId, toggleItemAction }: Props
                     {/* Titolo, descrizione, badges */}
                     <div className="leading-tight flex-1 min-w-0">
                     <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-2 md:mb-1">
-                        <h4 className="font-semibold text-base md:text-lg truncate">{item.title}</h4>
+                        <h3 className="font-semibold text-base md:text-lg truncate">{item.title}</h3>
 
                         <div className="flex gap-1 flex-wrap">
                         {item.badges.map((badge, idx) => (

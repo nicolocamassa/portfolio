@@ -5,7 +5,7 @@ import { Button } from "@/_components/ui";
 
 export default function FooterCTA() {
   return (
-    <div className="w-full bg-foreground text-white rounded-xl overflow-hidden py-12 md:py-18 shadow-[0_0px_54px_-12px_rgba(0,0,0,0.15)] z-0">
+    <div className="w-full bg-foreground reveal text-white rounded-xl overflow-hidden py-12 md:py-18 shadow-[0_0px_54px_-12px_rgba(0,0,0,0.15)] z-0">
       <Container>
         {/* Gap icona top */}
         <Stack gap="lg" className="mx-auto text-center items-center justify-center">

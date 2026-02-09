@@ -51,7 +51,7 @@ export function Changelog({ changelog }: ChangelogProps) {
   return (
     <div className="border border-(--border-default) rounded-xl mt-20 bg-white">
       <div className="py-5 border-(--border-default) border-b px-5">
-        <h3 className="font-bold text-xl">Project Updates</h3>
+        <h2 className="font-bold text-xl!">Project Updates</h2>
       </div>
       <ul className="flex flex-col">
         <ChangelogItem
@@ -65,9 +65,9 @@ export function Changelog({ changelog }: ChangelogProps) {
           className="py-3 border-(--border-default) border-t px-5 flex justify-center gap-1 items-center bg-gray-50 rounded-b-xl text-(--text-secondary) hover:bg-(--brand) hover:text-white hover:cursor-pointer transition duration-200"
           onClick={toggleShowAll}
         >
-          <h3 className="text-center font-semibold text-sm">
+          <span className="text-center font-semibold text-sm">
             {showAll ? "Mostra meno" : "Mostra tutto"}
-          </h3>
+          </span>
           <ChevronDown size={16} className={`${showAll ? "rotate-180" : ""} transition-all`} />
         </div>
       )}

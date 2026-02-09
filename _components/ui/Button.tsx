@@ -32,9 +32,9 @@ type ButtonProps = React.PropsWithChildren<
   React.AnchorHTMLAttributes<HTMLAnchorElement> & ButtonVariants & { href: string }
 >;
 
-export function Button({ children, color, href, size, className }: ButtonProps) {
+export function Button({ children, color, href, size, className, target }: ButtonProps) {
   return (
-    <Link target="_blank" rel="noopener noreferrer" className={button({ color, size, className })} href={href} role="button">
+    <Link target={target} rel="noopener noreferrer" className={button({ color, size, className })} href={href} role="button">
       {children}
     </Link>
   );

@@ -13,14 +13,14 @@ export function AboutSection() {
           {/* layout principale: mobile colonna, md grid */}
           <div className="flex flex-col gap-8 md:grid md:grid-cols-12 md:gap-12 lg:gap-16">
             {/* left */}
-            <div className="md:col-span-7 md:row-start-1">
+            <div className="md:col-span-7 md:row-start-1 reveal">
               <h2 className="font-sans font-semibold tracking-tight text-balance text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
                 Il processo con cui lavoro.
               </h2>
             </div>
 
             {/* right */}
-            <div className="md:col-span-5 md:row-span-2 md:row-start-1">
+            <div className="md:col-span-5 md:row-span-2 md:row-start-1 reveal">
               <Stack gap="lg">
                 <p className="text-base sm:text-lg text-(--text-secondary)">
                   Lavoro unendo UX, UI e sviluppo, così da garantire coerenza tra idea, design e prodotto
@@ -43,22 +43,22 @@ export function AboutSection() {
             </div>
 
             {/* list */}
-            <ul className="flex flex-col gap-2 md:col-span-7 md:row-start-2">
+            <ul className="flex flex-col gap-2 md:col-span-7 md:row-start-2 reveal">
               <ul className="flex flex-col gap-2 md:col-span-7 md:row-start-2">
                 <li>
-                  <Badge type="list">
+                  <Badge rounded="lg" type="svg">
                     <Sparkles className="h-5 w-5" />
                     Esperienze pensate per l’utente
                   </Badge>
                 </li>
                 <li>
-                  <Badge type="list">
+                  <Badge rounded="lg" type="svg">
                     <Layers className="h-5 w-5" />
                     Interfacce chiare e coerenti
                   </Badge>
                 </li>
                 <li>
-                  <Badge type="list">
+                  <Badge rounded="lg" type="svg">
                     <SquareTerminal className="h-5 w-5" />
                     Codice solido e performante
                   </Badge>

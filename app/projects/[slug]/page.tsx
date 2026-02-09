@@ -1,3 +1,4 @@
+"use client"
 
 import { HeroSection } from "@/_components/sections";
 import { ProjectArticle } from "@/_components/sections/ProjectArticle/ProjectArticle";

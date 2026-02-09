@@ -12,7 +12,7 @@ export function HeroBanner() {
   return (
     <>
       <ContentBanner>
-        <Badge type="svg">
+        <Badge rounded="full" type="svg">
             <ScanEye size={20} strokeWidth={2.25} color="var(--brand)" />
         </Badge>
         <h3 className="font-semibold text-xl">Accessibilità</h3>
@@ -23,7 +23,7 @@ export function HeroBanner() {
       </ContentBanner>
 
       <ContentBanner>
-        <Badge type="svg">
+        <Badge rounded="full" type="svg">
             <Layers2 size={20} strokeWidth={2.25} color="var(--brand)" />
         </Badge>
         <h3 className="font-semibold text-xl">Design</h3>
@@ -34,7 +34,7 @@ export function HeroBanner() {
       </ContentBanner>
 
       <ContentBanner>
-        <Badge type="svg">
+        <Badge rounded="full" type="svg">
             <Code size={20} strokeWidth={2.25} color="var(--brand)" />
         </Badge>
         <h3 className="font-semibold text-xl">Codice</h3>

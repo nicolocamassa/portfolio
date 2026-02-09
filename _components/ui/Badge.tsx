@@ -7,7 +7,7 @@ const badge = tv({
     type: {
       normal: "bg-(--default-badge)/15 text-(--default-badge)",
       list: "rounded-lg border border-(--border-default) font-semibold [&_svg]:w-5 [&_svg]:text-(--brand) gap-2",
-      svg: "border border-(--border-default) [&_svg]:block",
+      svg: "border border-(--border-default) [&_svg]:block [&_svg]:text-(--brand) gap-3",
     },
     size: {
       xs: "text-[10px] px-4 py-1.5",
@@ -21,10 +21,18 @@ const badge = tv({
       draft:      "bg-(--draft-badge)/15 text-(--draft-badge) font-bold [&_svg]:block ",
       progress:   "bg-(--progress-badge)/15 text-(--progress-badge) font-bold [&_svg]:block",
       completed:  "bg-(--completed-badge)/15 text-(--completed-badge) font-bold [&_svg]:block"
+    },
+    rounded: {
+      full: "rounded-full",
+      xl: "rounded-xl",
+      lg: "rounded-lg",
+      md: "rounded-md",
+      sm: "rounded-sm",
+      xs: "rounded-xs",
     }
   },
   compoundVariants: [
-    { type: "svg", class: "rounded-2xl" },
+    { type: "svg" },
   ],
   defaultVariants: {
     type: "normal",
@@ -34,7 +42,7 @@ const badge = tv({
 
 export type BadgeProps = { children: React.ReactNode; className?: string } & VariantProps<typeof badge>;
 
-export function Badge({ children, size, type, className, color }: BadgeProps) {
+export function Badge({ children, size, type, rounded, className, color }: BadgeProps) {
   const renderIcon = () => {
     if (color === "draft"){
       return <CircleDashed size={17}/>
@@ -47,7 +55,7 @@ export function Badge({ children, size, type, className, color }: BadgeProps) {
     }
   };
 
-  return <span className={badge({ size, type, className, color })}>
+  return <span className={badge({ size, type, className, color, rounded })}>
     {renderIcon()} {children}
   </span>;
 }

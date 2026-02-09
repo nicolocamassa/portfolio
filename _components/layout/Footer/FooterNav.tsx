@@ -21,9 +21,9 @@ export default function FooterNav() {
             
             {/* Colonna 1: Link Utili */}
             <div className="flex flex-col gap-xs">
-              <h4 className="font-bold text-(--text-primary) text-md font-sans">
+              <span className="font-bold text-(--text-primary) text-md font-sans">
                 Link Utili
-              </h4>
+              </span>
               <ul className="flex flex-col gap-xs text-(--text-secondary)">
                 <li>
                   <a href="/" className="hover:text-[var(--text-primary)] transition-colors">Home</a>
@@ -42,9 +42,9 @@ export default function FooterNav() {
 
             {/* Colonna 2: Altri Link */}
             <div className="flex flex-col gap-4">
-              <h4 className="font-bold text-(--text-primary) text-md font-sans">
+              <span className="font-bold text-(--text-primary) text-md font-sans">
                 Social & Altri Link
-              </h4>
+              </span>
               <ul className="flex flex-col gap-xs text-(--text-secondary)">
                 <li>
                   <a href="https://github.com/..." target="_blank" rel="noopener noreferrer" className="hover:text-(--text-primary) transition-colors">GitHub</a>
@@ -60,9 +60,9 @@ export default function FooterNav() {
 
             {/* Colonna 3: Contatti */}
             <div className="flex flex-col gap-xs">
-              <h4 className="font-bold text-(--text-primary) text-md font-sans">
+              <span className="font-bold text-(--text-primary) text-md font-sans">
                 Contatti
-              </h4>
+              </span>
               <address className="flex flex-col gap-xs text-(--text-secondary) not-italic">
                 <a href="tel:+39359XXXXXXX" className="hover:text-(--text-primary) transition-colors">
                   +39 359 *** ***

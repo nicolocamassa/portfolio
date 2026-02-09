@@ -4,7 +4,6 @@ import { Stack } from "@/_components/layout";
 
 const projects = [
   { slug: "demo-app", title: "Demo App" },
-  { slug: "reading-app", title: "Demo App" },
 ];
 
 
@@ -23,12 +22,12 @@ export default function ProjectCard() {
           shadow-[0_0px_24px_-12px_rgba(0,0,0,0.25)]">
 
         {/* Left Container + gap badge */}
-        <Stack gap="sm" className="max-w-full md:max-w-1/2 items-center md:items-start">
+        <Stack  gap="sm" className="max-w-full md:max-w-1/2 items-center md:items-start">
           <Badge size="sm">Ultimo aggiornamento: 19.08.2026</Badge>
 
           {/* Gap dei testi */}
           <Stack gap="xs" className="items-center text-center md:items-start md:text-start">
-            <h3 className="font-semibold tracking-tight text-4xl sm:text-4xl md:text-5xl lg:text-6xl">
+            <h3 className=" font-semibold tracking-tight text-4xl sm:text-4xl md:text-5xl lg:text-6xl">
               Disponibile a breve.
             </h3>
 
@@ -53,7 +52,7 @@ export default function ProjectCard() {
         <Stack className="right w-full md:hidden">
           <div className="-mb-15 mt-10">
             <img
-              src="/images/Project.png"
+              src="/images/Project-2.png"
               alt=""
               className="w-full h-auto object-contain"
             />
@@ -61,9 +60,9 @@ export default function ProjectCard() {
         </Stack>
 
         {/* Tablet + Desktop image */}
-        <div className="right hidden md:block absolute right-6 lg:right-10 bottom-0 h-[85%] w-[48%] lg:w-[45%] pointer-events-none">
+        <div data-direction="right" className="reveal right hidden md:block absolute right-6 lg:right-10 -bottom-20 h-[110%] w-[48%] lg:w-[45%] pointer-events-none">
           <img
-            src="/images/Project.png"
+            src="/images/Project-2.png"
             alt=""
             className="h-full w-full object-contain object-bottom"
           />

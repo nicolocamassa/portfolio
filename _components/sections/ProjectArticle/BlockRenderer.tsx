@@ -57,13 +57,13 @@ const List = ({ block }: { block: Extract<ContentBlock, { type: 'list'}> }) => {
   }
 
   return (
-    <div className="flex flex-wrap gap-2 mt-(--space-xs)">
+    <ul className="flex flex-wrap gap-2 mt-(--space-xs)">
       {block.items.map((item, idx) => (
         <Badge key={idx} type="list" size="listBase" className={`max-w-full truncate text-(--text-secondary)`}>
           <Markdown>{item}</Markdown>
         </Badge>
       ))}
-    </div>
+    </ul>
   );
 };
 

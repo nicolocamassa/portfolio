@@ -10,7 +10,7 @@ export function SectionWrapper({ section, children }: SectionWrapperProps) {
   return (
     <section
       id={section.id}
-      className="mb-(--section-sm) -mt-25 pt-20 flex flex-col gap-2 lg:grid lg:grid-cols-[140px_minmax(0,1fr)] lg:gap-(--space-blog)"
+      className="mb-(--section-sm) px-2 -mt-25 pt-20 flex flex-col gap-2 lg:grid lg:grid-cols-[140px_minmax(0,1fr)] lg:gap-(--space-blog)"
     >
       <div className="text-left mb-2 lg:text-right lg:mb-0 lg:pt-2 lg:sticky lg:top-24 lg:self-start">
         {section.badge ? (

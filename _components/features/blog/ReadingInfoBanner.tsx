@@ -10,14 +10,14 @@ export type InfoBanner = {
 };
 
 const InfoBlock = ({ label, children, className }: { label: string, children: React.ReactNode, className?: string }) => (
-  <div className={`flex flex-col gap-1 items-center text-center ${className}`}>
-    <h5 className="text-sm font-medium text-(--text-secondary) uppercase tracking-wide text-[0.8rem]">
+  <dl className={`flex flex-col gap-1 items-center text-center ${className}`}>
+    <dt className="text-sm font-medium text-(--text-secondary) uppercase tracking-wide text-[0.8rem]">
       {label}
-    </h5>
-    <div className="flex items-center justify-center mt-1">
+    </dt>
+    <dd className="flex items-center justify-center mt-1">
       {children}
-    </div>
-  </div>
+    </dd>
+  </dl>
 );
 
 const VerticalDivider = () => (

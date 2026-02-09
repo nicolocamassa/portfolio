@@ -33,7 +33,7 @@ export function Callout({ children, type, title }: CalloutProps){
             
             {/* * Contenuto Callout */}
             <div>
-                {title ? <h3 className="font-bold">{title}</h3> : null}
+                {title ? <strong>{title}</strong> : null}
                 <p>{ children }</p>
             </div>
 
