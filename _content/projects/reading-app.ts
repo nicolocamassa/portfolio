@@ -159,7 +159,7 @@ export const projectArticle: ProjectArticle = {
           type: "image", 
           src: "https://hazelcast.com/wp-content/uploads/2021/12/18_DataPartitioning-1.png",
           alt: "Confronto tra architettura monolitica e distribuita",
-          caption: "L'evoluzione da un sistema monolitico a un'architettura distribuita scalabile."
+          caption: "L'evoluzione da un sistema monolitico a un'c distribuita scalabile."
         },
         { type: "paragraph", text: "Un sistema distribuito è un insieme di computer indipendenti che appaiono all'utente finale come un unico sistema coerente. Ogni macchina (o 'nodo') lavora in parallelo, comunica con gli altri, e insieme formano qualcosa di più potente della somma delle parti." },
         {
