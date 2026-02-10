@@ -46,55 +46,19 @@ export function AboutSection() {
             <ul className="flex flex-col gap-2 md:col-span-7 md:row-start-2 reveal">
               <ul className="flex flex-col gap-2 md:col-span-7 md:row-start-2">
                 <li>
-<<<<<<< Updated upstream:_components/sections/AboutSection.tsx
-<<<<<<< Updated upstream:_components/sections/AboutSection.tsx
-<<<<<<< Updated upstream:_components/sections/AboutSection.tsx
                   <Badge rounded="lg" type="svg">
-=======
-                  <Badge type="svg">
->>>>>>> Stashed changes:app/components/sections/AboutSection.tsx
-=======
-                  <Badge type="svg">
->>>>>>> Stashed changes:app/components/sections/AboutSection.tsx
-=======
-                  <Badge type="svg">
->>>>>>> Stashed changes:app/components/sections/AboutSection.tsx
                     <Sparkles className="h-5 w-5" />
                     Esperienze pensate per l’utente
                   </Badge>
                 </li>
                 <li>
-<<<<<<< Updated upstream:_components/sections/AboutSection.tsx
-<<<<<<< Updated upstream:_components/sections/AboutSection.tsx
-<<<<<<< Updated upstream:_components/sections/AboutSection.tsx
                   <Badge rounded="lg" type="svg">
-=======
-                  <Badge type="svg">
->>>>>>> Stashed changes:app/components/sections/AboutSection.tsx
-=======
-                  <Badge type="svg">
->>>>>>> Stashed changes:app/components/sections/AboutSection.tsx
-=======
-                  <Badge type="svg">
->>>>>>> Stashed changes:app/components/sections/AboutSection.tsx
                     <Layers className="h-5 w-5" />
                     Interfacce chiare e coerenti
                   </Badge>
                 </li>
                 <li>
-<<<<<<< Updated upstream:_components/sections/AboutSection.tsx
-<<<<<<< Updated upstream:_components/sections/AboutSection.tsx
-<<<<<<< Updated upstream:_components/sections/AboutSection.tsx
                   <Badge rounded="lg" type="svg">
-=======
-                  <Badge type="svg">
->>>>>>> Stashed changes:app/components/sections/AboutSection.tsx
-=======
-                  <Badge type="svg">
->>>>>>> Stashed changes:app/components/sections/AboutSection.tsx
-=======
-                  <Badge type="svg">
->>>>>>> Stashed changes:app/components/sections/AboutSection.tsx
                     <SquareTerminal className="h-5 w-5" />
                     Codice solido e performante
                   </Badge>
