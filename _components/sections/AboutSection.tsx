@@ -48,7 +48,11 @@ export function AboutSection() {
                 <li>
 <<<<<<< Updated upstream:_components/sections/AboutSection.tsx
 <<<<<<< Updated upstream:_components/sections/AboutSection.tsx
+<<<<<<< Updated upstream:_components/sections/AboutSection.tsx
                   <Badge rounded="lg" type="svg">
+=======
+                  <Badge type="svg">
+>>>>>>> Stashed changes:app/components/sections/AboutSection.tsx
 =======
                   <Badge type="svg">
 >>>>>>> Stashed changes:app/components/sections/AboutSection.tsx
@@ -62,7 +66,11 @@ export function AboutSection() {
                 <li>
 <<<<<<< Updated upstream:_components/sections/AboutSection.tsx
 <<<<<<< Updated upstream:_components/sections/AboutSection.tsx
+<<<<<<< Updated upstream:_components/sections/AboutSection.tsx
                   <Badge rounded="lg" type="svg">
+=======
+                  <Badge type="svg">
+>>>>>>> Stashed changes:app/components/sections/AboutSection.tsx
 =======
                   <Badge type="svg">
 >>>>>>> Stashed changes:app/components/sections/AboutSection.tsx
@@ -76,7 +84,11 @@ export function AboutSection() {
                 <li>
 <<<<<<< Updated upstream:_components/sections/AboutSection.tsx
 <<<<<<< Updated upstream:_components/sections/AboutSection.tsx
+<<<<<<< Updated upstream:_components/sections/AboutSection.tsx
                   <Badge rounded="lg" type="svg">
+=======
+                  <Badge type="svg">
+>>>>>>> Stashed changes:app/components/sections/AboutSection.tsx
 =======
                   <Badge type="svg">
 >>>>>>> Stashed changes:app/components/sections/AboutSection.tsx

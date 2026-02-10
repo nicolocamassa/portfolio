@@ -17,11 +17,14 @@ export default async function ProjectPage({ params }: { params: { slug: string }
   return (
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     <main>
       <HeroSection content={heroSectionBlog} slug={slug} />
       <ProjectArticle slug={slug}></ProjectArticle>
     </main>
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
     <>
