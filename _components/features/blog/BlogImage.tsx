@@ -1,5 +1,3 @@
-
-
 export async function BlogImage({ slug }: { slug: string }){
     let heroImage;
 

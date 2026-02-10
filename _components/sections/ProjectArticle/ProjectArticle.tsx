@@ -1,12 +1,9 @@
 import { ArrowLeft, Github } from "lucide-react";
 
-/* Tipi */
 import type { Sections } from "@/_types/projectArticle";
 
-/* Componenti di layout */
 import { Container, Section, Stack } from "@/_components/layout";
 
-/* Componenti */
 import { Button, Callout } from "@/_components/ui";
 import { TocClient, Changelog } from "@/_components/features/blog";
 import ReadingInfoBanner from "@/_components/features/blog/ReadingInfoBanner";

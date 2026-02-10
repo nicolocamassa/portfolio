@@ -93,7 +93,6 @@ body {
   overflow-x: hidden;
 }
 
-
 html{
   scroll-behavior: smooth;
 }
@@ -126,6 +125,11 @@ footer{
       --space-xl: 58px;
       --space-blog: 100px;
   }
+}
+
+.reveal-main {
+  opacity: 0;
+  transform: translateY(16px);
 }
 
 /*?============================= */

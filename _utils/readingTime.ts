@@ -1,6 +1,7 @@
-import type { BlogPage } from "@/app/content/blogPages";
+import type { projectArticle } from "@/_content/projects/demo-app";
 
-export function getFullText(blog: BlogPage): string {
+
+export function getFullText(blog: typeof projectArticle): string {
   let text = "";
 
   blog?.sections?.forEach(section => {
@@ -26,7 +27,7 @@ export function getFullText(blog: BlogPage): string {
 }
 
 export function calculateReadingTime(
-  blog: BlogPage,
+  blog: typeof projectArticle,
   wpm = 200
 ): string {
   const words = getFullText(blog).split(/\s+/).length;
